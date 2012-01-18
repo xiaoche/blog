@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: other | 小车的博客]]></title>
+  <link href="http://www.xiaoche.me/blog/categories/other/atom.xml" rel="self"/>
+  <link href="http://www.xiaoche.me/"/>
+  <updated>2012-01-18T22:09:58+08:00</updated>
+  <id>http://www.xiaoche.me/</id>
+  <author>
+    <name><![CDATA[小车]]></name>
+    <email><![CDATA[xiaoche2012@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[my first blog]]></title>
+    <link href="http://www.xiaoche.me/blog/2012/01/18/my-first-blog/"/>
+    <updated>2012-01-18T14:16:00+08:00</updated>
+    <id>http://www.xiaoche.me/blog/2012/01/18/my-first-blog</id>
+    <content type="html"><![CDATA[<h3>my first blog</h3>
+
+<p>很喜欢，非常的爽！</p>
+
+<ul>
+<li>test</li>
+<li>test</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -4,28 +4,69 @@
   <title><![CDATA[小车的博客]]></title>
   <link href="http://www.xiaoche.me/atom.xml" rel="self"/>
   <link href="http://www.xiaoche.me/"/>
-  <updated>2012-01-18T15:05:21+08:00</updated>
+  <updated>2012-01-18T22:09:58+08:00</updated>
   <id>http://www.xiaoche.me/</id>
   <author>
     <name><![CDATA[小车]]></name>
-    
+    <email><![CDATA[xiaoche2012@gmail.com]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
   
   <entry>
-    <title type="html"><![CDATA[my blog]]></title>
-    <link href="http://www.xiaoche.me/blog/2012/01/18/my-blog/"/>
-    <updated>2012-01-18T14:18:00+08:00</updated>
-    <id>http://www.xiaoche.me/blog/2012/01/18/my-blog</id>
-    <content type="html"><![CDATA[<h2>blog test</h2>
+    <title type="html"><![CDATA[从零开始在github上安装octopress]]></title>
+    <link href="http://www.xiaoche.me/blog/2012/01/18/install-octopress/"/>
+    <updated>2012-01-18T16:14:00+08:00</updated>
+    <id>http://www.xiaoche.me/blog/2012/01/18/install-octopress</id>
+    <content type="html"><![CDATA[<p>经过我不懈的努力，终于把Blog搞定了，通过这次折腾，学到了很多东西</p>
 
-<ol>
-<li>nihao</li>
-<li>sf 哈哈</li>
-<li>撒旦法</li>
-</ol>
+<p>在octopress上面有具体的文档，E文好的可以直接，[点击查看 <a href="http://octopress.org/docs/">http://octopress.org/docs/</a>]</p>
 
+<h3>Octopress 安装</h3>
+
+<p>需要的环境</p>
+
+<pre><code>* git
+* ruby 1.9.2
+</code></pre>
+
+<h4>安装Git</h4>
+
+<p>首页git是必备的，具体看到github官网上 <a href="http://help.github.com/mac-set-up-git/">http://help.github.com/mac-set-up-git/</a>，这个就比较简单了。</p>
+
+<h4>安装Ruby</h4>
+
+<p>Ruby可以利用RVM或者rbenv来安装，很轻松帮你搞定首页Ruby环境，我是用RVM来安装的。</p>
+
+<h6>1.安装 RVM</h6>
+
+<p>RVM(Ruby Version Manager)</p>
+
+<pre><code>$ bash -s stable &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
+</code></pre>
+
+<h6>2.安装Ruby1.9.2</h6>
+
+<pre><code>rvm install 1.9.2 &amp;&amp; rvm use 1.9.2
+</code></pre>
+
+<h6>3.安装Octopress</h6>
+
+<pre><code>git clone git://github.com/imathis/octopress.git octopress
+cd octopress    //这边会有提示信息，yes就行
+ruby --version  //Ruby的版本需要在1.9.2版本
+</code></pre>
+
+<h6>4.安装环境插件等等</h6>
+
+<pre><code>gem install bundler
+bundle install
+</code></pre>
+
+<h6>5.安装Octopress 主题</h6>
+
+<pre><code>rake install
+</code></pre>
 ]]></content>
   </entry>
   
@@ -34,13 +75,13 @@
     <link href="http://www.xiaoche.me/blog/2012/01/18/my-first-blog/"/>
     <updated>2012-01-18T14:16:00+08:00</updated>
     <id>http://www.xiaoche.me/blog/2012/01/18/my-first-blog</id>
-    <content type="html"><![CDATA[<h2>my first blog</h2>
+    <content type="html"><![CDATA[<h3>my first blog</h3>
 
 <p>很喜欢，非常的爽！</p>
 
 <ul>
-<li>需要github page</li>
-<li>需要ruby</li>
+<li>test</li>
+<li>test</li>
 </ul>
 
 ]]></content>
