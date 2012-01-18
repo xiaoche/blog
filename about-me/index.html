@@ -5,14 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>从零开始在github上安装octopress - 小车的博客</title>
+  <title>关于我 - 小车的博客</title>
   <meta name="author" content="小车">
 
   
-  <meta name="description" content="Octopress是使用Ruby语言编写的一套建立在jekyll上的博客系统，它有一些很独特的特点： 使用静态页面，不使用数据库；
-可以轻松使用makedown标记语言编写文章；
-可以与git紧密集成，方便进行博客的版本管理；
-可以于Github Pages集成，不需要单独的web hosting &hellip;">
+  <meta name="description" content="关于我 Jan 18th, 2012 生命不息，折腾不止！ 记录工作生活中点点滴滴，若有任何问题，或者有错误的地方，还请留言指教！ 我的自留地！ Jan 18th, 2012 Comments Please enable JavaScript to view the comments &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.xiaoche.me/blog/2012/01/18/install-octopress">
+  <link rel="canonical" href="http://www.xiaoche.me/about-me">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -79,15 +76,38 @@
   <div id="main">
     <div id="content">
       <div>
-<article class="hentry" role="article">
+<article role="article">
   
   <header>
-    
-      <h1 class="entry-title">从零开始在github上安装octopress</h1>
-    
-    
+    <h1 class="entry-title">关于我</h1>
+    <p class="meta">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-18T22:42:00+08:00" pubdate data-updated="true">Jan 18<span>th</span>, 2012</time></p>
+  </header>
+  
+  <blockquote><p>生命不息，折腾不止！</p></blockquote>
+
+<p><img src="/images/about.jpg" /></p>
+
+<p>记录工作生活中点点滴滴，若有任何问题，或者有错误的地方，还请留言指教！</p>
+
+<p>我的自留地！</p>
+
+  
+    <footer>
       <p class="meta">
         
+        
 
 
 
@@ -99,156 +119,19 @@
   
 
 
-<time datetime="2012-01-18T16:14:00+08:00" pubdate data-updated="true">Jan 18<span>th</span>, 2012</time>
+<time datetime="2012-01-18T22:42:00+08:00" pubdate data-updated="true">Jan 18<span>th</span>, 2012</time>
         
       </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>Octopress是使用Ruby语言编写的一套建立在jekyll上的博客系统，它有一些很独特的特点：</p>
-
-<ol>
-<li>使用静态页面，不使用数据库；</li>
-<li>可以轻松使用makedown标记语言编写文章；</li>
-<li>可以与git紧密集成，方便进行博客的版本管理；</li>
-<li>可以于Github Pages集成，不需要单独的web hosting，只要你有github帐号即可。</li>
-</ol>
-
-
-<h3>Octopress 安装</h3>
-
-<p>在octopress上面有具体的文档，E文好的可以直接，[<a href="http://octopress.org/docs/">点击查看</a>]</p>
-
-<p>我把我的安装过程整理的下，需要的环境：</p>
-
-<ul>
-<li>git</li>
-<li>Ruby 1.9.2</li>
-</ul>
-
-
-<h4>安装Git</h4>
-
-<p>首页git是必备的，具体看到github官网上查看<a href="http://help.github.com/mac-set-up-git/">帮助文档</a> ，这个就比较简单了。</p>
-
-<h4>安装Ruby</h4>
-
-<p>Ruby可以利用RVM或者rbenv来安装，很轻松帮你搞定首页Ruby环境，我是用RVM来安装的。</p>
-
-<h6>1.安装 RVM</h6>
-
-<p>RVM(Ruby Version Manager)</p>
-
-<pre><code>$ bash -s stable &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
-</code></pre>
-
-<h6>2.安装Ruby1.9.2</h6>
-
-<pre><code>rvm install 1.9.2 &amp;&amp; rvm use 1.9.2
-</code></pre>
-
-<h4>安装Octopress</h4>
-
-<h6>1.安装Octopress</h6>
-
-<pre><code>git clone git://github.com/imathis/octopress.git myblog
-cd myblog    //这边会有提示信息，yes就行
-ruby --version  //Ruby的版本需要在1.9.2版本
-</code></pre>
-
-<h6>2.安装插件等等</h6>
-
-<pre><code>gem install bundler //安装相关附属插件等
-bundle install
-</code></pre>
-
-<h6>3.安装Octopress 主题</h6>
-
-<pre><code>rake install
-</code></pre>
-
-<h6>4. 修改配置</h6>
-
-<p>修改配置文件_config.yml，修改url、title、subtitle、author等等，把评论disqus加上，google+、twitter、Facebook等等，统统都加上。
-在source下建CNAME文件，</p>
-
-<h5>5. 创建github pero</h5>
-
-<p>在<a href="www.github.com">github</a>上创建一个repository</p>
-
-<h5>6. 本地配置github分支</h5>
-
-<pre><code>rake setup_github_pages
-</code></pre>
-
-<p>当命令提示你输入github URL时，输入刚才建立的git地址</p>
-
-<h6>7. 写文章</h6>
-
-<pre><code>rake new_page["my first blog"] 
-</code></pre>
-
-<p>在&#8221;myblog/source/_post&#8221;下生成一个**.makedown文件，编辑文章即可。</p>
-
-<h5>8. 生成，预览</h5>
-
-<pre><code>rake generate
-rake preview
-</code></pre>
-
-<p>在本地 http://127.0.0.1:4000 就可在本地调试页面</p>
-
-<h5>9. git提交</h5>
-
-<pre><code>rake deploy
-</code></pre>
-
-<p>直接把_deploy提交到github上，完工！</p>
-
-<p>以后发博客只需要在本地用命令就OK了。</p>
-</div>
-
-
-  <footer>
-    <p class="meta">
       
-  
-
-<span class="byline author vcard">Posted by <span class="fn">小车</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-18T16:14:00+08:00" pubdate data-updated="true">Jan 18<span>th</span>, 2012</time>
-      
-
-
-    </p>
-    
-      <div class="sharing">
+        <div class="sharing">
   
   
   
 </div>
 
-    
-    <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/01/18/my-first-blog/" title="Previous Post: my first blog">&laquo; my first blog</a>
-      
-      
-    </p>
-  </footer>
+    </footer>
+  
 </article>
 
   <section>
@@ -306,8 +189,8 @@ rake preview
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.xiaoche.me/blog/2012/01/18/install-octopress/';
-        var disqus_url = 'http://www.xiaoche.me/blog/2012/01/18/install-octopress/';
+        var disqus_identifier = 'http://www.xiaoche.me/about-me/index.html';
+        var disqus_url = 'http://www.xiaoche.me/about-me/index.html';
         var disqus_script = 'embed.js';
       
     (function () {
