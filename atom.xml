@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[小车的博客]]></title>
-  <link href="http://xiaoche.github.com/atom.xml" rel="self"/>
-  <link href="http://xiaoche.github.com/"/>
-  <updated>2012-01-18T14:19:58+08:00</updated>
-  <id>http://xiaoche.github.com/</id>
+  <link href="http://www.xiaoche.me/atom.xml" rel="self"/>
+  <link href="http://www.xiaoche.me/"/>
+  <updated>2012-01-18T15:00:32+08:00</updated>
+  <id>http://www.xiaoche.me/</id>
   <author>
     <name><![CDATA[小车]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[my blog]]></title>
-    <link href="http://xiaoche.github.com/blog/2012/01/18/my-blog/"/>
+    <link href="http://www.xiaoche.me/blog/2012/01/18/my-blog/"/>
     <updated>2012-01-18T14:18:00+08:00</updated>
-    <id>http://xiaoche.github.com/blog/2012/01/18/my-blog</id>
+    <id>http://www.xiaoche.me/blog/2012/01/18/my-blog</id>
     <content type="html"><![CDATA[<h2>blog test</h2>
 
 <ol>
@@ -31,9 +31,9 @@
   
   <entry>
     <title type="html"><![CDATA[my first blog]]></title>
-    <link href="http://xiaoche.github.com/blog/2012/01/18/my-first-blog/"/>
+    <link href="http://www.xiaoche.me/blog/2012/01/18/my-first-blog/"/>
     <updated>2012-01-18T14:16:00+08:00</updated>
-    <id>http://xiaoche.github.com/blog/2012/01/18/my-first-blog</id>
+    <id>http://www.xiaoche.me/blog/2012/01/18/my-first-blog</id>
     <content type="html"><![CDATA[<h2>my first blog</h2>
 
 <p>很喜欢，非常的爽！</p>
