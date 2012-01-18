@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+    <url>
+        <loc>http://xiaoche.github.com/blog/2012/01/18/my-first-blog/</loc>
+        <lastmod>2012-01-18T14:17:24+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://xiaoche.github.com/blog/2012/01/18/my-blog/</loc>
+        <lastmod>2012-01-18T14:19:27+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://xiaoche.github.com/blog/archives/</loc>
+        <lastmod>2012-01-18T14:19:27+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://xiaoche.github.com/</loc>
+        <lastmod>2012-01-18T14:19:27+08:00</lastmod>
+    </url>
+</urlset>

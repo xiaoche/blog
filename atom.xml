@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[小车的博客]]></title>
+  <link href="http://xiaoche.github.com/atom.xml" rel="self"/>
+  <link href="http://xiaoche.github.com/"/>
+  <updated>2012-01-18T14:19:58+08:00</updated>
+  <id>http://xiaoche.github.com/</id>
+  <author>
+    <name><![CDATA[小车]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[my blog]]></title>
+    <link href="http://xiaoche.github.com/blog/2012/01/18/my-blog/"/>
+    <updated>2012-01-18T14:18:00+08:00</updated>
+    <id>http://xiaoche.github.com/blog/2012/01/18/my-blog</id>
+    <content type="html"><![CDATA[<h2>blog test</h2>
+
+<ol>
+<li>nihao</li>
+<li>sf 哈哈</li>
+<li>撒旦法</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[my first blog]]></title>
+    <link href="http://xiaoche.github.com/blog/2012/01/18/my-first-blog/"/>
+    <updated>2012-01-18T14:16:00+08:00</updated>
+    <id>http://xiaoche.github.com/blog/2012/01/18/my-first-blog</id>
+    <content type="html"><![CDATA[<h2>my first blog</h2>
+
+<p>很喜欢，非常的爽！</p>
+
+<ul>
+<li>需要github page</li>
+<li>需要ruby</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
