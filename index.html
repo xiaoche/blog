@@ -9,10 +9,7 @@
   <meta name="author" content="小车">
 
   
-  <meta name="description" content="Octopress是使用Ruby语言编写的一套建立在jekyll上的博客系统，它有一些很独特的特点： 使用静态页面，不使用数据库；
-可以轻松使用makedown标记语言编写文章；
-可以与git紧密集成，方便进行博客的版本管理；
-可以于Github Pages集成，不需要单独的web hosting &hellip;">
+  <meta name="description" content="这几天研究github page，由于用jekyll本地测试时会生成_site文件夹，所以需要把这个文件夹排除在外再提交到github，到底怎么设置呢？ 这就需要用到.gitignore，即不加入版本控制，在git根目录下建立.gitignore，具体设定如下： tmp.txt //忽略tmp. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +77,80 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/01/19/github-gitignore/">github中不加入版本控制.gitignore设定</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-19T10:16:00+08:00" pubdate data-updated="true">Jan 19<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>这几天研究github page，由于用jekyll本地测试时会生成_site文件夹，所以需要把这个文件夹排除在外再提交到github，到底怎么设置呢？</p>
+
+<p>这就需要用到.gitignore，即不加入版本控制，在git根目录下建立.gitignore，具体设定如下：</p>
+
+<pre><code>tmp.txt         //忽略tmp.txt
+*.log           //忽略所有log文件
+tmp/*           //忽略tmp文件夹所有文件
+log/**/*.log    //忽略log目录下的包括子目录下的所有log文件
+</code></pre>
+
+<p>其他的一些过滤条件</p>
+
+<ul>
+<li>？：代表任意的一个字符</li>
+<li>＊：代表任意数目的字符</li>
+<li>{!ab}：必须不是此类型</li>
+<li>{ab,bb,cx}：代表ab,bb,cx中任一类型即可</li>
+<li>[abc]：代表a,b,c中任一字符即可</li>
+<li>[ ^abc]：代表必须不是a,b,c中任一字符</li>
+</ul>
+
+
+<p>由于git不会加入空目录，所以下面做法会导致tmp不会存在</p>
+
+<pre><code>tmp/*             //忽略tmp文件夹所有文件
+</code></pre>
+
+<p>改下方法，在tmp下也加一个.gitignore,内容为</p>
+
+<pre><code>*
+!.gitignore
+</code></pre>
+
+<p>还有一种情况，就是已经commit了，再加入gitignore是无效的，所以需要删除下缓存</p>
+
+<pre><code>git rm --cached ignore_file
+</code></pre>
+
+<p>这样就OK了。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -217,50 +288,6 @@ rake preview
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/01/18/my-first-blog/">My First Blog</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-18T14:16:00+08:00" pubdate data-updated="true">Jan 18<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>my first blog</h3>
-
-<p>很喜欢，非常的爽！</p>
-
-<ul>
-<li>test</li>
-<li>test</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -274,11 +301,11 @@ rake preview
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2012/01/18/install-octopress/">从零开始在github上安装octopress</a>
+        <a href="/blog/2012/01/19/github-gitignore/">github中不加入版本控制.gitignore设定</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/01/18/my-first-blog/">my first blog</a>
+        <a href="/blog/2012/01/18/install-octopress/">从零开始在github上安装octopress</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: other | 小车的博客]]></title>
   <link href="http://www.xiaoche.me/blog/categories/other/atom.xml" rel="self"/>
   <link href="http://www.xiaoche.me/"/>
-  <updated>2012-01-19T00:32:31+08:00</updated>
+  <updated>2012-01-19T11:05:39+08:00</updated>
   <id>http://www.xiaoche.me/</id>
   <author>
     <name><![CDATA[小车]]></name>
@@ -14,19 +14,49 @@
 
   
   <entry>
-    <title type="html"><![CDATA[my first blog]]></title>
-    <link href="http://www.xiaoche.me/blog/2012/01/18/my-first-blog/"/>
-    <updated>2012-01-18T14:16:00+08:00</updated>
-    <id>http://www.xiaoche.me/blog/2012/01/18/my-first-blog</id>
-    <content type="html"><![CDATA[<h3>my first blog</h3>
+    <title type="html"><![CDATA[github中不加入版本控制.gitignore设定]]></title>
+    <link href="http://www.xiaoche.me/blog/2012/01/19/github-gitignore/"/>
+    <updated>2012-01-19T10:16:00+08:00</updated>
+    <id>http://www.xiaoche.me/blog/2012/01/19/github-gitignore</id>
+    <content type="html"><![CDATA[<p>这几天研究github page，由于用jekyll本地测试时会生成_site文件夹，所以需要把这个文件夹排除在外再提交到github，到底怎么设置呢？</p>
 
-<p>很喜欢，非常的爽！</p>
+<p>这就需要用到.gitignore，即不加入版本控制，在git根目录下建立.gitignore，具体设定如下：</p>
+
+<pre><code>tmp.txt         //忽略tmp.txt
+*.log           //忽略所有log文件
+tmp/*           //忽略tmp文件夹所有文件
+log/**/*.log    //忽略log目录下的包括子目录下的所有log文件
+</code></pre>
+
+<p>其他的一些过滤条件</p>
 
 <ul>
-<li>test</li>
-<li>test</li>
+<li>？：代表任意的一个字符</li>
+<li>＊：代表任意数目的字符</li>
+<li>{!ab}：必须不是此类型</li>
+<li>{ab,bb,cx}：代表ab,bb,cx中任一类型即可</li>
+<li>[abc]：代表a,b,c中任一字符即可</li>
+<li>[ ^abc]：代表必须不是a,b,c中任一字符</li>
 </ul>
 
+
+<p>由于git不会加入空目录，所以下面做法会导致tmp不会存在</p>
+
+<pre><code>tmp/*             //忽略tmp文件夹所有文件
+</code></pre>
+
+<p>改下方法，在tmp下也加一个.gitignore,内容为</p>
+
+<pre><code>*
+!.gitignore
+</code></pre>
+
+<p>还有一种情况，就是已经commit了，再加入gitignore是无效的，所以需要删除下缓存</p>
+
+<pre><code>git rm --cached ignore_file
+</code></pre>
+
+<p>这样就OK了。</p>
 ]]></content>
   </entry>
   
