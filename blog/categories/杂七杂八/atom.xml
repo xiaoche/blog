@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 杂七杂八 | 小车的博客]]></title>
   <link href="http://www.xiaoche.me/blog/categories/杂七杂八/atom.xml" rel="self"/>
   <link href="http://www.xiaoche.me/"/>
-  <updated>2012-01-30T20:56:26+08:00</updated>
+  <updated>2012-01-30T21:26:20+08:00</updated>
   <id>http://www.xiaoche.me/</id>
   <author>
     <name><![CDATA[小车]]></name>
@@ -24,12 +24,12 @@
 <li><p><strong>浏览器</strong></p>
 
 <ul>
-<li><p><strong>Safrai</strong> <br />
-默认浏览器，也是Mac下最好用的浏览器，特别是在Lion后，全屏配上各种手势，不要太好用哦（^ _ ^），唯一缺陷就是Flash，很容易因为Flash而崩溃，后来装一个屏蔽flash的插件，这个世界清静了，还有一个问题就是公司的上网验证在safrai下不行，验证不了，每天上班必须先用chrome登陆。</p></li>
+<li><p><strong>Safari</strong> <br />
+默认浏览器，也是Mac下最好用的浏览器，特别是在Lion后，全屏配上各种手势，不要太好用哦（^ _ ^），唯一缺陷就是Flash，很容易因为Flash而出现各种问题，后来装了一个屏蔽flash的插件，这个世界清静了，还有一个问题就是公司的上网验证在Safari下不行，验证不了，每天上班必须先用Chrome登陆。</p></li>
 <li><p><strong>Chrome</strong> <br />
-原来在win下最喜欢的浏览器，在mac下还行，我只有在看优酷的时候才用，因为我在safrai下屏蔽的Flash，话说优酷就能向youtube一样改用html5播放器吗?</p></li>
+原来在win下最喜欢的浏览器，在mac下还行，我只有在看优酷的时候才用，因为我在Safari下屏蔽的Flash，话说优酷就不能像Youtube一样改用html5播放器吗?</p></li>
 <li><p><strong>Firefox</strong> <br />
-前端开发必备的，firebug还是那样的经典，虽说Chrome和Safari的开发者工具有赶超之势。</p></li>
+前端开发必备，firebug还是那样的经典，虽说Chrome和Safari的开发者工具有赶超之势,但我还是习惯用firebug调试。</p></li>
 <li><p><strong>Opera</strong> <br />
 很少用，不过还是必备，谁让我们是前端攻城师呢，么得办法。</p></li>
 </ul>
@@ -44,20 +44,22 @@
 <li><p><strong>Chocolat</strong> <br />
 icon做的很好看，打蛋器加一盆巧克力。很小巧的一款编辑器，各种语言、自动补全、等等功能应有尽有。</p></li>
 <li><p><strong>AptanaStudio3</strong> <br />
-升级到3.0版本后，比较大，很适合调试JS。</p></li>
+升级到3.0版本后，比较大，适合调试JS。</p></li>
 <li><p><strong>F5</strong> <br />
 这个很适合前端码农，不用来回切换，来回F5。</p></li>
-<li><p><strong>iTerm</strong> <br />
-替换终端</p></li>
+<li><p><strong>Weinre</strong> <br/>
+Web移动应用调试工具，远程调试工具，更改元素，样式等。</p></li>
+<li><p><strong>Textmate</strong> <br />
+著名的菊花，最近终于升级了2.0，还没空研究。</p></li>
 </ul>
 </li>
 <li><p><strong>下载</strong></p>
 
 <ul>
 <li><p><strong>迅雷</strong> <br />
-都说Mac的迅雷速度不行，不过我用它的唯一用处就是用来下载迅雷离线资源和bt电驴，这个速度还是可以的。</p></li>
+都说Mac的迅雷速度不行，不过我用它的唯一用处就是用来下载迅雷离线资源和bt电驴，下载这些速度还是可以的。</p></li>
 <li><p><strong>Speed Download</strong> <br />
-除了不能下载Bt、电驴，其他很好，很快。</p></li>
+除了不能下载Bt、电驴，其他很好，很快，很快。</p></li>
 </ul>
 </li>
 <li><p><strong>词典</strong></p>
@@ -73,7 +75,7 @@ icon做的很好看，打蛋器加一盆巧克力。很小巧的一款编辑器�
 
 <ul>
 <li><strong>搜狗输入法</strong> <br />
-用遍了mac的各种输入法，什么自带的、QQ输入法、FIT、QIM，还是那句话，适合自己的才好。</li>
+用遍了mac的各种输入法，什么自带的输入法、QQ输入法、FIT、QIM，还是那句话，适合自己的才好。</li>
 </ul>
 </li>
 <li><p><strong>媒体音乐播放</strong></p>
@@ -86,7 +88,7 @@ icon做的很好看，打蛋器加一盆巧克力。很小巧的一款编辑器�
 <li><p><strong>QuickTime Player</strong> <br/>
 系统自带，播放mov很好</p></li>
 <li><p><strong>亦歌</strong> <br />
-在线听歌，用过几次，还行，后来一直听豆瓣音乐。</p></li>
+在线听音乐，用过几次，还行，后来一直听豆瓣音乐。</p></li>
 <li><p><strong>MusicSeekerX</strong> <br />
 搜索下载歌曲，下载速度很快，好像开发这个软件的哥们还有个搞了个在线直播的，牛人。</p></li>
 </ul>
@@ -95,18 +97,18 @@ icon做的很好看，打蛋器加一盆巧克力。很小巧的一款编辑器�
 
 <ul>
 <li><p><strong>QQ</strong> <br />
-这个么的话说，国人必备，话说这两年腾讯对mac支持很好，从QQ到QQ拼音，投入很多，版本更新很快，值得很多国内的企业学习。</p></li>
+这个么的话说，国人必备，话说这两年马化腾对mac支持很给力，从QQ到QQ拼音，投入很多，版本更新很快，值得很多国内的企业学习。</p></li>
 <li><p><strong>iChat</strong> <br />
-系统自带，用iphone的人都很熟悉。很实在的软件，其实将来iMassage也会移植到OSX上。</p></li>
+系统自带，用iPhone的人都很熟悉。很实在的软件，其实将来iMassage也会移植到OSX上。</p></li>
 <li><p><strong>MSN</strong> <br />
-半死不活的，没有办法，要不是有好友在上面，早就彻底删除了。</p></li>
+半死不活的，没有办法，要不是有好友在上面，早就彻底说88了。</p></li>
 </ul>
 </li>
 <li><p><strong>在线视频</strong></p>
 
 <ul>
 <li><p><strong>PPS</strong> <br />
-原先买MBP的时候还在犹豫没有PPS，怎么看电影呢，现在好了，有了，都有了，虽说现在版本做的跟win下没什么区别，完全没有mac的风格，不过我相信，将来一点会做的很好的。</p></li>
+原先买MBP的时候还在犹豫没有PPS，怎么看电影呢，现在好了，有了，都有了，虽说现在版本做的跟win下没什么区别，完全没有mac的风格，而且速度很慢，不过我相信，将来肯定会做的越来越好的。</p></li>
 <li><p><strong>PPlive</strong> <br />
 虽说这两个软件的速度都很慢，但是，我认为他比pps唯一强的就是界面做的好，怎么说也有点mac的风格。</p></li>
 </ul>
@@ -114,7 +116,7 @@ icon做的很好看，打蛋器加一盆巧克力。很小巧的一款编辑器�
 </ol>
 
 
-<p>写来写去，发现太多了，还是分两篇写吧。</p>
+<p>写来写去，发现太多了，还是分两篇写吧。暂时先到这里，欲知后事如何，且听我下回分解！</p>
 ]]></content>
   </entry>
   
