@@ -1598,12 +1598,14 @@ aside.sidebar a {
 	-o-transition:color 0.5s;
 	transition:color 0.5s
 }
+/*
 aside.sidebar:hover a {
 	color:#1863a1
 }
 aside.sidebar:hover a:hover {
 	color:#0181eb
 }
+*/
 .aside-alt-link, #tweets a[href*='twitter.com/search'], #pinboard_linkroll .pin-tag {
 color:#7e7e7e
 }
