@@ -140,6 +140,8 @@ h5, section h4, section section h3 {
 h6, section h5, section section h4, section section section h3 {
 	font-size:.8em
 }
+p{ text-indent:2.0em}
+ol p, ul p{text-indent:0;}
 p, blockquote, ul, ol {
 	margin-bottom:1.5em
 }
