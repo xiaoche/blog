@@ -4,7 +4,7 @@
   <title><![CDATA[小车的博客]]></title>
   <link href="http://www.xiaoche.me/atom.xml" rel="self"/>
   <link href="http://www.xiaoche.me/"/>
-  <updated>2012-01-30T21:30:34+08:00</updated>
+  <updated>2012-01-30T21:47:49+08:00</updated>
   <id>http://www.xiaoche.me/</id>
   <author>
     <name><![CDATA[小车]]></name>
@@ -342,6 +342,15 @@ rake preview
 <li>两地分居的问题，争取在年初解决</li>
 </ol>
 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[结婚一周年纪念]]></title>
+    <link href="http://www.xiaoche.me/blog/2012/01/01/wedding-anniversary/"/>
+    <updated>2012-01-01T05:20:00+08:00</updated>
+    <id>http://www.xiaoche.me/blog/2012/01/01/wedding-anniversary</id>
+    <content type="html"><![CDATA[<p><embed src="http://player.youku.com/player.php/sid/XMzM3OTU1NDY4/v.swf" allowFullScreen="true" quality="high" width="780" height="600" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
 ]]></content>
   </entry>
   
