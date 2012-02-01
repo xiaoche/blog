@@ -4,7 +4,7 @@
   <title><![CDATA[小车的博客]]></title>
   <link href="http://www.xiaoche.me/atom.xml" rel="self"/>
   <link href="http://www.xiaoche.me/"/>
-  <updated>2012-02-01T11:55:09+08:00</updated>
+  <updated>2012-02-01T17:00:44+08:00</updated>
   <id>http://www.xiaoche.me/</id>
   <author>
     <name><![CDATA[小车]]></name>
@@ -12,6 +12,142 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mac开发者利器-Homebrew介绍及安装]]></title>
+    <link href="http://www.xiaoche.me/blog/2012/02/01/homebrew-install/"/>
+    <updated>2012-02-01T16:11:00+08:00</updated>
+    <id>http://www.xiaoche.me/blog/2012/02/01/homebrew-install</id>
+    <content type="html"><![CDATA[<h4>介绍</h4>
+
+<p><img src="http://farm8.staticflickr.com/7012/6800060127_cf6d03237a_z.jpg" title="homebrew" alt="homebrew"></p>
+
+<blockquote><p>Homebrew is the bee’s knees, friends. So far it’s a perfect replacement for MacPorts.</p><footer><strong>@thillerson</strong> <cite><a href='http://twitter.com/thillerson/status/6688848379'>twitter.com/thillerson/status/&hellip;</a></cite></footer></blockquote>
+
+
+<p>Homebrew作为OS X上强大的包管理器，为系统软件提供了非常方便的安装方式，独特式的解决了包的依赖问题，并不再需要烦人的sudo，一键式编译，无参数困扰，真的，你值得拥有。</p>
+
+<h4>安装</h4>
+
+<p>Homebrew依赖于XCode，首先需要安装，lion后XCode也是免费的了，直接到App store下载。同时Homebrew也依赖ruby，Mac已经自带ruby。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ruby -e "$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)"</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>使用</h4>
+
+<ul>
+<li>查看brew的帮助</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew --help</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>安装软件</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew install git</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>卸载软件</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew uninstall git</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>搜索软件</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew search git</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>显示已经安装软件列表</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew list</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>更新软件，把所有的Formula目录更新，并且会对本机已经安装并有更新的软件用*标明。</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew update</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>更新某具体软件</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew upgrade git</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>查看软件信息</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew [info | home] [FORMULA...]</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>删除程序，和upgrade一样，单个软件删除和所有程序老版删除。</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew cleanup git
+</span><span class='line'>brew cleanup</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>查看那些已安装的程序需要更新</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew outdated</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>程序安装路径及文件夹</h4>
+
+<p>Homebrew将本地的<code>/usr/local</code>初始化为git的工作树，并将目录所有者变更为当前所操作的用户，以后的操作将不需要sudo。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>-bin          用于存放所安装程序的启动链接（相当于快捷方式）
+</span><span class='line'>-Cellar       所以brew安装的程序，都将以[程序名/版本号]存放于本目录下
+</span><span class='line'>-etc          brew安装程序的配置文件默认存放路径
+</span><span class='line'>-Library      Homebrew 系统自身文件夹
+</span><span class='line'>+–Formula     程序的下载路径和编译参数及安装路径等配置文件存放地
+</span><span class='line'>+–Homebrew    brew程序自身命令集</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mac常用软件推荐（二）]]></title>

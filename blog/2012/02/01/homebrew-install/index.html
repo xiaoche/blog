@@ -5,13 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Mac中SSD+HDD优化方案 - 小车的博客</title>
+  <title>Mac开发者利器-Homebrew介绍及安装 - 小车的博客</title>
   <meta name="author" content="小车">
 
   
-  <meta name="description" content="mac升级SSD，Mac中SSD+HDD优化方案,开启SSD trim。">
+  <meta name="description" content="Mac开发者利器-Homebrew介绍及安装。Homebrew作为OS X上强大的包管理器，为系统软件提供了非常方便的安装方式，独特式的解决了包的依赖问题，并不再需要烦人的sudo，一键式编译，无参数困扰。">
   
-  <meta name="keywords" content="mac,ssd,hdd,mbp,SSD优化,trim,SSD升级,mac优化">
+  <meta name="keywords" content="apple,mbp,macbook,mac,homebrew,包管理器">
 
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.xiaoche.me/blog/2011/12/08/optimize-ssd-on-mac">
+  <link rel="canonical" href="http://www.xiaoche.me/blog/2012/02/01/homebrew-install">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -82,7 +82,7 @@
   
   <header>
     
-      <h1 class="entry-title">Mac中SSD+HDD优化方案</h1>
+      <h1 class="entry-title">Mac开发者利器-Homebrew介绍及安装</h1>
     
     
       <p class="meta">
@@ -98,68 +98,141 @@
   
 
 
-<time datetime="2011-12-08T20:11:00+08:00" pubdate data-updated="true">Dec 8<span>th</span>, 2011</time>
+<time datetime="2012-02-01T16:11:00+08:00" pubdate data-updated="true">Feb 1<span>st</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>对电子产品毫无抵抗力的我再次出手了，终于下单购买了SSD（OCZ 120G）和8G内存（金士顿4G*2），具体拆机过程就不写了，上篇也发过拆机视频<a href="" target="_blank" title="">视频: 2011款MBP光驱位升级SSD教程</a>。</p>
+<div class="entry-content"><h4>介绍</h4>
 
-<p>至于讨论的比较多的是SSD放在光驱位还是放在硬盘位，有两种说法：</p>
+<p><img src="http://farm8.staticflickr.com/7012/6800060127_cf6d03237a_z.jpg" title="homebrew" alt="homebrew"></p>
 
-<ol>
-<li>光驱位的SATA接口的传输速度是1.5G/s,而硬盘位传输速度是3G/s；</li>
-<li>硬盘位的在设计的时候有相应的减震设计，适合传统的机械硬盘，光驱位硬盘托架由于厚度限制没有做相应的减振设计，所以不适合传统硬盘。</li>
-</ol>
+<blockquote><p>Homebrew is the bee’s knees, friends. So far it’s a perfect replacement for MacPorts.</p><footer><strong>@thillerson</strong> <cite><a href='http://twitter.com/thillerson/status/6688848379'>twitter.com/thillerson/status/&hellip;</a></cite></footer></blockquote>
 
 
-<p>可是我的SSD放在光驱位不能用，只能识别，不能抹盘，也不能装系统，所以我还是把SSD放在原来的硬盘位，至于所说的减震设计我也没不太去注意，平时使用的时候小心点。</p>
+<p>Homebrew作为OS X上强大的包管理器，为系统软件提供了非常方便的安装方式，独特式的解决了包的依赖问题，并不再需要烦人的sudo，一键式编译，无参数困扰，真的，你值得拥有。</p>
 
-<p>由于SSD空间有限，对于寸土寸金的SSD空间来说我们能省则省，充分发挥双硬盘的优势才是当务之急，综合网上很多办法，今天就把我的Mac的SSD优化方案分享给大家，给大家提高一个参考。</p>
+<h4>安装</h4>
 
-<p>更换SSD的最大好处就是速度快，最大的缺点就是空间小。如何充分发挥他的优势，弱化他的缺点正是我们优化的最终目的。针对这个就不难理解，把lion系统、bootcamp、应用程序等必须放在SSD上，其余的一些文件可以放在HDD上，必要的做个软连接。</p>
+<p>Homebrew依赖于XCode，首先需要安装，lion后XCode也是免费的了，直接到App store下载。同时Homebrew也依赖ruby，Mac已经自带ruby。</p>
 
-<ol>
-<li>转移文件
-把Lion安装在SSD上，用Timemachine把备份恢复到新系统，在HDD上面对应的建上Documents, Downloads, Music, Movies, Pictures等目录</li>
-</ol>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ruby -e "$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)"</span></code></pre></td></tr></table></div></figure>
 
 
-<p><img src="http://farm8.staticflickr.com/7025/6795320791_7550c3b37e.jpg"></p>
+<h4>使用</h4>
 
-<p>将想要移动的SSD的文件夹拷贝到HDD对应文件夹下<br />
-进入Terminal，</p>
+<ul>
+<li>查看brew的帮助</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew --help</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>安装软件</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew install git</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>卸载软件</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew uninstall git</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>搜索软件</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew search git</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>显示已经安装软件列表</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew list</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>更新软件，把所有的Formula目录更新，并且会对本机已经安装并有更新的软件用*标明。</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew update</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>更新某具体软件</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew upgrade git</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>查看软件信息</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew [info | home] [FORMULA...]</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>删除程序，和upgrade一样，单个软件删除和所有程序老版删除。</li>
+</ul>
+
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd /Users/username
-</span><span class='line'>sudo rm -rf Downloads     //Downloads为例,删除原用户下的Downloads文件夹
-</span><span class='line'>ln -s /Volumes/HDD/User/Downloads ~/Downloads  //将移动后的文件夹做个软连接放到用户文件夹下</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew cleanup git
+</span><span class='line'>brew cleanup</span></code></pre></td></tr></table></div></figure>
 
 
-<p>按照相同的办法把想要转移的文件夹挪位。对于我来说，我通常会把下面这些文件夹从SSD移动到HDD。（如图）</p>
+<ul>
+<li>查看那些已安装的程序需要更新</li>
+</ul>
 
-<p><img src="http://farm8.staticflickr.com/7161/6795346321_05205b5a2c.jpg"></p>
 
-<ol>
-<li>开启trim <br /></li>
-</ol>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew outdated</span></code></pre></td></tr></table></div></figure>
 
+
+<h4>程序安装路径及文件夹</h4>
+
+<p>Homebrew将本地的<code>/usr/local</code>初始化为git的工作树，并将目录所有者变更为当前所操作的用户，以后的操作将不需要sudo。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo cp /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage /IOAHCIBlockStorage.original
-</span><span class='line'>sudo perl -pi -e 's|(\x52\x6F\x74\x61\x74\x69\x6F\x6E\x61\x6C\x00).{9}(\x00\x51)|$1\x00\x00\x00\x00\x00\x00\x00\x00\x00$2|sg' /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage
-</span><span class='line'>sudo kextcache -system-prelinked-kernel
-</span><span class='line'>sudo kextcache -system-caches</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>-bin          用于存放所安装程序的启动链接（相当于快捷方式）
+</span><span class='line'>-Cellar       所以brew安装的程序，都将以[程序名/版本号]存放于本目录下
+</span><span class='line'>-etc          brew安装程序的配置文件默认存放路径
+</span><span class='line'>-Library      Homebrew 系统自身文件夹
+</span><span class='line'>+–Formula     程序的下载路径和编译参数及安装路径等配置文件存放地
+</span><span class='line'>+–Homebrew    brew程序自身命令集</span></code></pre></td></tr></table></div></figure>
 
-
-<p>经过这样简单的操作，我们就很好的把SSD和HDD利用起来了，体验秒开秒关的感觉，再也不要看菊花的眼色了！(^ _ ^)</p>
 </div>
 
 
@@ -182,7 +255,7 @@
   
 
 
-<time datetime="2011-12-08T20:11:00+08:00" pubdate data-updated="true">Dec 8<span>th</span>, 2011</time>
+<time datetime="2012-02-01T16:11:00+08:00" pubdate data-updated="true">Feb 1<span>st</span>, 2012</time>
       
 
 <span class="categories">
@@ -210,7 +283,7 @@
     type:'2',
     count:'1', /**是否显示分享数，1显示(可选)*/
     appkey:'', /**您申请的应用appkey,显示分享来源(可选)*/
-    title:'小车的博客--Mac中SSD+HDD优化方案', /**分享的文字内容(可选，默认为所在页面的title)*/
+    title:'小车的博客--Mac开发者利器-Homebrew介绍及安装', /**分享的文字内容(可选，默认为所在页面的title)*/
     pic:'', /**分享图片的路径(可选)*/
     ralateUid:'1801663534', /**关联用户的UID，分享微博会@该用户(可选)*/
 	language:'zh_cn', /**设置语言，zh_cn|zh_tw(可选)*/
@@ -231,10 +304,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2011/12/01/mbp-update-ssd/" title="Previous Post: 视频: 2011款MBP光驱位升级SSD教程">&laquo; 视频: 2011款MBP光驱位升级SSD教程</a>
+        <a class="basic-alignment left" href="/blog/2012/01/31/mac-soft-recommend2/" title="Previous Post: Mac常用软件推荐（二）">&laquo; Mac常用软件推荐（二）</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2011/12/15/system-folder-localizations/" title="next Post: Mac中自定义文件夹中文名">Mac中自定义文件夹中文名 &raquo;</a>
       
     </p>
   </footer>
@@ -359,8 +430,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.xiaoche.me/blog/2011/12/08/optimize-ssd-on-mac/';
-        var disqus_url = 'http://www.xiaoche.me/blog/2011/12/08/optimize-ssd-on-mac/';
+        var disqus_identifier = 'http://www.xiaoche.me/blog/2012/02/01/homebrew-install/';
+        var disqus_url = 'http://www.xiaoche.me/blog/2012/02/01/homebrew-install/';
         var disqus_script = 'embed.js';
       
     (function () {

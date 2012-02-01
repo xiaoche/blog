@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: 杂七杂八 | 小车的博客]]></title>
-  <link href="http://www.xiaoche.me/blog/categories/杂七杂八/atom.xml" rel="self"/>
+  <title><![CDATA[Category: other | 小车的博客]]></title>
+  <link href="http://www.xiaoche.me/blog/categories/other/atom.xml" rel="self"/>
   <link href="http://www.xiaoche.me/"/>
-  <updated>2012-02-01T11:55:09+08:00</updated>
+  <updated>2012-02-01T17:00:46+08:00</updated>
   <id>http://www.xiaoche.me/</id>
   <author>
     <name><![CDATA[小车]]></name>

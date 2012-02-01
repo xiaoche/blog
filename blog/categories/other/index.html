@@ -5,13 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Mac中SSD+HDD优化方案 - 小车的博客</title>
+  <title>Category: other - 小车的博客</title>
   <meta name="author" content="小车">
 
   
-  <meta name="description" content="mac升级SSD，Mac中SSD+HDD优化方案,开启SSD trim。">
+  <meta name="description" content="Category: other">
   
-  <meta name="keywords" content="mac,ssd,hdd,mbp,SSD优化,trim,SSD升级,mac优化">
+  <meta name="keywords" content="前端开发,用户体验,前端工程师,果粉,IOS开发,经验分享,OSX,Mac,Apple,IOS,web app,mobile web,IUX,UED">
 
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.xiaoche.me/blog/2011/12/08/optimize-ssd-on-mac">
+  <link rel="canonical" href="http://www.xiaoche.meblog/categories/other">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -78,173 +78,50 @@
   <div id="main">
     <div id="content">
       <div>
-<article class="hentry" role="article">
+<article role="article">
   
   <header>
-    
-      <h1 class="entry-title">Mac中SSD+HDD优化方案</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-08T20:11:00+08:00" pubdate data-updated="true">Dec 8<span>th</span>, 2011</time>
-        
-      </p>
+    <h1 class="entry-title">Category: Other</h1>
     
   </header>
-
-
-<div class="entry-content"><p>对电子产品毫无抵抗力的我再次出手了，终于下单购买了SSD（OCZ 120G）和8G内存（金士顿4G*2），具体拆机过程就不写了，上篇也发过拆机视频<a href="" target="_blank" title="">视频: 2011款MBP光驱位升级SSD教程</a>。</p>
-
-<p>至于讨论的比较多的是SSD放在光驱位还是放在硬盘位，有两种说法：</p>
-
-<ol>
-<li>光驱位的SATA接口的传输速度是1.5G/s,而硬盘位传输速度是3G/s；</li>
-<li>硬盘位的在设计的时候有相应的减震设计，适合传统的机械硬盘，光驱位硬盘托架由于厚度限制没有做相应的减振设计，所以不适合传统硬盘。</li>
-</ol>
-
-
-<p>可是我的SSD放在光驱位不能用，只能识别，不能抹盘，也不能装系统，所以我还是把SSD放在原来的硬盘位，至于所说的减震设计我也没不太去注意，平时使用的时候小心点。</p>
-
-<p>由于SSD空间有限，对于寸土寸金的SSD空间来说我们能省则省，充分发挥双硬盘的优势才是当务之急，综合网上很多办法，今天就把我的Mac的SSD优化方案分享给大家，给大家提高一个参考。</p>
-
-<p>更换SSD的最大好处就是速度快，最大的缺点就是空间小。如何充分发挥他的优势，弱化他的缺点正是我们优化的最终目的。针对这个就不难理解，把lion系统、bootcamp、应用程序等必须放在SSD上，其余的一些文件可以放在HDD上，必要的做个软连接。</p>
-
-<ol>
-<li>转移文件
-把Lion安装在SSD上，用Timemachine把备份恢复到新系统，在HDD上面对应的建上Documents, Downloads, Music, Movies, Pictures等目录</li>
-</ol>
-
-
-<p><img src="http://farm8.staticflickr.com/7025/6795320791_7550c3b37e.jpg"></p>
-
-<p>将想要移动的SSD的文件夹拷贝到HDD对应文件夹下<br />
-进入Terminal，</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd /Users/username
-</span><span class='line'>sudo rm -rf Downloads     //Downloads为例,删除原用户下的Downloads文件夹
-</span><span class='line'>ln -s /Volumes/HDD/User/Downloads ~/Downloads  //将移动后的文件夹做个软连接放到用户文件夹下</span></code></pre></td></tr></table></div></figure>
-
-
-<p>按照相同的办法把想要转移的文件夹挪位。对于我来说，我通常会把下面这些文件夹从SSD移动到HDD。（如图）</p>
-
-<p><img src="http://farm8.staticflickr.com/7161/6795346321_05205b5a2c.jpg"></p>
-
-<ol>
-<li>开启trim <br /></li>
-</ol>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo cp /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage /IOAHCIBlockStorage.original
-</span><span class='line'>sudo perl -pi -e 's|(\x52\x6F\x74\x61\x74\x69\x6F\x6E\x61\x6C\x00).{9}(\x00\x51)|$1\x00\x00\x00\x00\x00\x00\x00\x00\x00$2|sg' /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage
-</span><span class='line'>sudo kextcache -system-prelinked-kernel
-</span><span class='line'>sudo kextcache -system-caches</span></code></pre></td></tr></table></div></figure>
-
-
-<p>经过这样简单的操作，我们就很好的把SSD和HDD利用起来了，体验秒开秒关的感觉，再也不要看菊花的眼色了！(^ _ ^)</p>
-</div>
-
-
-  <footer>
-    <p class="meta">
-      
   
-
-<span class="byline author vcard">Posted by <span class="fn">小车</span></span>
-
-      
-
-
-
-
-
+  <div id="blog-archives" class="category">
 
 
 
   
+  <h2>2012</h2>
 
-
-<time datetime="2011-12-08T20:11:00+08:00" pubdate data-updated="true">Dec 8<span>th</span>, 2011</time>
-      
-
-<span class="categories">
+<article>
   
-    <a class='category' href='/blog/categories/mac/'>Mac</a>
-  
-</span>
+<h1><a href="/blog/2012/01/03/annual-summarymou/">2011年总结及2012年计划</a></h1>
+<time datetime="2012-01-03T20:18:00+08:00" pubdate><span class='month'>Jan</span> <span class='day'>03</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/other/'>other</a></span>
+</footer>
 
 
-    </p>
-    
-      <div class="sharing">
-  
-  
-  <div class="g-plusone" data-size="medium"></div>
-  
-  
-
-  
-<script type="text/javascript" charset="utf-8">
-(function(){
-  var _w = 90 , _h = 24;
-  var param = {
-    url:location.href,
-    type:'2',
-    count:'1', /**是否显示分享数，1显示(可选)*/
-    appkey:'', /**您申请的应用appkey,显示分享来源(可选)*/
-    title:'小车的博客--Mac中SSD+HDD优化方案', /**分享的文字内容(可选，默认为所在页面的title)*/
-    pic:'', /**分享图片的路径(可选)*/
-    ralateUid:'1801663534', /**关联用户的UID，分享微博会@该用户(可选)*/
-	language:'zh_cn', /**设置语言，zh_cn|zh_tw(可选)*/
-    rnd:new Date().valueOf()
-  }
-  var temp = [];
-  for( var p in param ){
-    temp.push(p + '=' + encodeURIComponent( param[p] || '' ) )
-  }
-  document.write('<iframe allowTransparency="true" frameborder="0" scrolling="no" src="http://hits.sinajs.cn/A1/weiboshare.html?' + temp.join('&') + '" width="'+ _w+'" height="'+_h+'"></iframe>')
-})()
-</script>
-
-  
-
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2011/12/01/mbp-update-ssd/" title="Previous Post: 视频: 2011款MBP光驱位升级SSD教程">&laquo; 视频: 2011款MBP光驱位升级SSD教程</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2011/12/15/system-folder-localizations/" title="next Post: Mac中自定义文件夹中文名">Mac中自定义文件夹中文名 &raquo;</a>
-      
-    </p>
-  </footer>
 </article>
 
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<article>
+  
+<h1><a href="/blog/2012/01/01/wedding-anniversary/">结婚一周年纪念</a></h1>
+<time datetime="2012-01-01T05:20:00+08:00" pubdate><span class='month'>Jan</span> <span class='day'>01</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/other/'>other</a></span>
+</footer>
+
+
+</article>
+
 </div>
-  </section>
+
+  
+</article>
 
 </div>
 
@@ -358,10 +235,7 @@
       var disqus_shortname = 'xiaoche';
       
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.xiaoche.me/blog/2011/12/08/optimize-ssd-on-mac/';
-        var disqus_url = 'http://www.xiaoche.me/blog/2011/12/08/optimize-ssd-on-mac/';
-        var disqus_script = 'embed.js';
+        var disqus_script = 'count.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

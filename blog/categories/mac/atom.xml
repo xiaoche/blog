@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Apple | 小车的博客]]></title>
-  <link href="http://www.xiaoche.me/blog/categories/apple/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Mac | 小车的博客]]></title>
+  <link href="http://www.xiaoche.me/blog/categories/mac/atom.xml" rel="self"/>
   <link href="http://www.xiaoche.me/"/>
-  <updated>2012-02-01T11:55:09+08:00</updated>
+  <updated>2012-02-01T17:00:46+08:00</updated>
   <id>http://www.xiaoche.me/</id>
   <author>
     <name><![CDATA[小车]]></name>
@@ -12,6 +12,90 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mac开发者利器-Homebrew介绍及安装]]></title>
+    <link href="http://www.xiaoche.me/blog/2012/02/01/homebrew-install/"/>
+    <updated>2012-02-01T16:11:00+08:00</updated>
+    <id>http://www.xiaoche.me/blog/2012/02/01/homebrew-install</id>
+    <content type="html"><![CDATA[<h4>介绍</h4>
+
+<p>{% img http://farm8.staticflickr.com/7012/6800060127_cf6d03237a_z.jpg 'homebrew' 'homebrew' %}</p>
+
+<p>{% blockquote @thillerson http://twitter.com/thillerson/status/6688848379 %}
+Homebrew is the bee’s knees, friends. So far it’s a perfect replacement for MacPorts.
+{% endblockquote %}</p>
+
+<p>Homebrew作为OS X上强大的包管理器，为系统软件提供了非常方便的安装方式，独特式的解决了包的依赖问题，并不再需要烦人的sudo，一键式编译，无参数困扰，真的，你值得拥有。</p>
+
+<h4>安装</h4>
+
+<p>Homebrew依赖于XCode，首先需要安装，lion后XCode也是免费的了，直接到App store下载。同时Homebrew也依赖ruby，Mac已经自带ruby。</p>
+
+<p>{% codeblock %}
+ruby -e "$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)"
+{% endcodeblock %}</p>
+
+<h4>使用</h4>
+
+<ul>
+<li><p>查看brew的帮助
+{% codeblock %}
+brew --help
+{% endcodeblock %}</p></li>
+<li><p>安装软件
+{% codeblock %}
+brew install git
+{% endcodeblock %}</p></li>
+<li><p>卸载软件
+<code>
+brew uninstall git
+</code></p></li>
+<li><p>搜索软件
+<code>
+brew search git
+</code></p></li>
+<li>显示已经安装软件列表
+<code>
+brew list
+</code></li>
+<li>更新软件，把所有的Formula目录更新，并且会对本机已经安装并有更新的软件用*标明。
+<code>
+brew update
+</code></li>
+<li>更新某具体软件
+<code>
+brew upgrade git
+</code></li>
+<li><p>查看软件信息
+{% codeblock %}
+brew [info | home] [FORMULA...]
+{% endcodeblock %}</p></li>
+<li><p>删除程序，和upgrade一样，单个软件删除和所有程序老版删除。
+<code>
+brew cleanup git
+brew cleanup
+</code></p></li>
+<li><p>查看那些已安装的程序需要更新
+<code>
+brew outdated
+</code></p></li>
+</ul>
+
+
+<h4>程序安装路径及文件夹</h4>
+
+<p>Homebrew将本地的<code>/usr/local</code>初始化为git的工作树，并将目录所有者变更为当前所操作的用户，以后的操作将不需要sudo。
+<code>
+-bin          用于存放所安装程序的启动链接（相当于快捷方式）
+-Cellar       所以brew安装的程序，都将以[程序名/版本号]存放于本目录下
+-etc          brew安装程序的配置文件默认存放路径
+-Library      Homebrew 系统自身文件夹
++–Formula     程序的下载路径和编译参数及安装路径等配置文件存放地
++–Homebrew    brew程序自身命令集
+</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mac常用软件推荐（二）]]></title>
@@ -244,21 +328,23 @@ mac下最好的管理和播放音乐的软件</p></li>
 <p>首先需要找到设置中文的字符串资源文件，路径是/System/Library/CoreServices/SystemFolderLocalizations/zh_CN.lproj/SystemFolderLocalizations.strings。
 编辑文件显示是乱码，如图：</p>
 
-<p><img src="http://farm8.staticflickr.com/7009/6799330475_17e1b7f027_b.jpg"></p>
+<p>{% img http://farm8.staticflickr.com/7009/6799330475_17e1b7f027_b.jpg %}</p>
 
 <p>在lion系统中是二进制格式的，首先要把它转成XML格式的。</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo plutil -convert xml1 SystemFolderLocalizations.strings</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock %}
+sudo plutil -convert xml1 SystemFolderLocalizations.strings
+{% endcodeblock %}</p>
 
 <p>转换之后就可以编辑了，如图：</p>
 
-<p><img src="http://farm8.staticflickr.com/7146/6799330887_bdf040fa12_z.jpg"></p>
+<p>{% img http://farm8.staticflickr.com/7146/6799330887_bdf040fa12_z.jpg %}</p>
 
 <p>对应增加你想添加的中文名，之后再把文件转换成二进制。</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo plutil -convert binary1 SystemFolderLocalizations.strings</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock %}
+sudo plutil -convert binary1 SystemFolderLocalizations.strings
+{% endcodeblock %}</p>
 
 <p>最后一步，在需要中文名的文件夹下，新建一个名为.localized的隐藏文件即可。大功告成！</p>
 ]]></content>
@@ -291,48 +377,34 @@ mac下最好的管理和播放音乐的软件</p></li>
 </ol>
 
 
-<p><img src="http://farm8.staticflickr.com/7025/6795320791_7550c3b37e.jpg"></p>
+<p>{% img http://farm8.staticflickr.com/7025/6795320791_7550c3b37e.jpg %}</p>
 
 <p>将想要移动的SSD的文件夹拷贝到HDD对应文件夹下<br />
 进入Terminal，</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd /Users/username
-</span><span class='line'>sudo rm -rf Downloads       //Downloads为例,删除原用户下的Downloads文件夹
-</span><span class='line'>ln -s /Volumes/HDD/User/Downloads ~/Downloads  //将移动后的文件夹做个软连接放到用户文件夹下</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock %}
+cd /Users/username
+sudo rm -rf Downloads       //Downloads为例,删除原用户下的Downloads文件夹
+ln -s /Volumes/HDD/User/Downloads ~/Downloads  //将移动后的文件夹做个软连接放到用户文件夹下
+{% endcodeblock %}</p>
 
 <p>按照相同的办法把想要转移的文件夹挪位。对于我来说，我通常会把下面这些文件夹从SSD移动到HDD。（如图）</p>
 
-<p><img src="http://farm8.staticflickr.com/7161/6795346321_05205b5a2c.jpg"></p>
+<p>{% img http://farm8.staticflickr.com/7161/6795346321_05205b5a2c.jpg %}</p>
 
 <ol>
 <li>开启trim <br /></li>
 </ol>
 
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo cp /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage /IOAHCIBlockStorage.original
-</span><span class='line'>sudo perl -pi -e 's|(\x52\x6F\x74\x61\x74\x69\x6F\x6E\x61\x6C\x00).{9}(\x00\x51)|$1\x00\x00\x00\x00\x00\x00\x00\x00\x00$2|sg' /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage
-</span><span class='line'>sudo kextcache -system-prelinked-kernel
-</span><span class='line'>sudo kextcache -system-caches</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock %}
+sudo cp /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage /IOAHCIBlockStorage.original
+sudo perl -pi -e 's|(\x52\x6F\x74\x61\x74\x69\x6F\x6E\x61\x6C\x00).{9}(\x00\x51)|$1\x00\x00\x00\x00\x00\x00\x00\x00\x00$2|sg' /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage
+sudo kextcache -system-prelinked-kernel
+sudo kextcache -system-caches
+{% endcodeblock %}</p>
 
 <p>经过这样简单的操作，我们就很好的把SSD和HDD利用起来了，体验秒开秒关的感觉，再也不要看菊花的眼色了！(^ _ ^)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[视频: 2011款MBP光驱位升级SSD教程]]></title>
-    <link href="http://www.xiaoche.me/blog/2011/12/01/mbp-update-ssd/"/>
-    <updated>2011-12-01T21:20:00+08:00</updated>
-    <id>http://www.xiaoche.me/blog/2011/12/01/mbp-update-ssd</id>
-    <content type="html"><![CDATA[<p><embed src="http://player.youku.com/player.php/sid/XMzEzNzU3MjE2/v.swf" allowFullScreen="true" quality="high" width="740" height="600" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
-
-<p>2011款13寸Macbook Pro替换光驱位为SSD或硬盘的教学录像。</p>
 ]]></content>
   </entry>
   
