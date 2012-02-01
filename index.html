@@ -716,6 +716,65 @@ rake preview
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2011/12/15/system-folder-localizations/">Mac中自定义文件夹中文名</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-15T22:10:00+08:00" pubdate data-updated="true">Dec 15<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在OSX系统中，我们打开finer，就会看到很多中文名的文件夹，比如“应用程序”、“桌面”等等，而在系统中都是以英文命名的。我们也可以自己去设置中文名。</p>
+
+<p>首先需要找到设置中文的字符串资源文件，路径是/System/Library/CoreServices/SystemFolderLocalizations/zh_CN.lproj/SystemFolderLocalizations.strings。
+编辑文件显示是乱码，如图：</p>
+
+<p><img src="http://farm8.staticflickr.com/7009/6799330475_17e1b7f027_b.jpg"></p>
+
+<p>在lion系统中是二进制格式的，首先要把它转成XML格式的。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo plutil -convert xml1 SystemFolderLocalizations.strings</span></code></pre></td></tr></table></div></figure>
+
+
+<p>转换之后就可以编辑了，如图：</p>
+
+<p><img src="http://farm8.staticflickr.com/7146/6799330887_bdf040fa12_z.jpg"></p>
+
+<p>对应增加你想添加的中文名，之后再把文件转换成二进制。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo plutil -convert binary1 SystemFolderLocalizations.strings</span></code></pre></td></tr></table></div></figure>
+
+
+<p>最后一步，在需要中文名的文件夹下，新建一个名为.localized的隐藏文件即可。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2011/12/08/optimize-ssd-on-mac/">Mac中SSD+HDD优化方案</a></h1>
     
     
