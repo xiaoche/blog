@@ -4,7 +4,7 @@
   <title><![CDATA[小车的博客]]></title>
   <link href="http://www.xiaoche.me/atom.xml" rel="self"/>
   <link href="http://www.xiaoche.me/"/>
-  <updated>2012-02-01T11:51:12+08:00</updated>
+  <updated>2012-02-01T11:55:09+08:00</updated>
   <id>http://www.xiaoche.me/</id>
   <author>
     <name><![CDATA[小车]]></name>
@@ -510,7 +510,7 @@ rake preview
 </pre></td><td class='code'><pre><code class=''><span class='line'>sudo plutil -convert binary1 SystemFolderLocalizations.strings</span></code></pre></td></tr></table></div></figure>
 
 
-<p>最后一步，在需要中文名的文件夹下，新建一个名为.localized的隐藏文件即可。</p>
+<p>最后一步，在需要中文名的文件夹下，新建一个名为.localized的隐藏文件即可。大功告成！</p>
 ]]></content>
   </entry>
   
