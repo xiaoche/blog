@@ -4,7 +4,7 @@
   <title><![CDATA[小车的博客]]></title>
   <link href="http://www.xiaoche.me/atom.xml" rel="self"/>
   <link href="http://www.xiaoche.me/"/>
-  <updated>2012-01-31T15:15:47+08:00</updated>
+  <updated>2012-02-01T11:01:47+08:00</updated>
   <id>http://www.xiaoche.me/</id>
   <author>
     <name><![CDATA[小车]]></name>
@@ -479,6 +479,80 @@ rake preview
 <p>以此纪念我们结婚一周年，我感激命运对我的厚爱，让你来到我身边。</p>
 
 <p>亲爱的老婆! <strong>结婚一周年快乐！我爱你！</strong></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac中SSD+HDD优化方案]]></title>
+    <link href="http://www.xiaoche.me/blog/2011/12/08/optimize-ssd-on-mac/"/>
+    <updated>2011-12-08T20:11:00+08:00</updated>
+    <id>http://www.xiaoche.me/blog/2011/12/08/optimize-ssd-on-mac</id>
+    <content type="html"><![CDATA[<p>对电子产品毫无抵抗力的我再次出手了，终于下单购买了SSD（OCZ 120G）和8G内存（金士顿4G*2），具体拆机过程就不写了，上篇也发过拆机视频<a href="" target="_blank" title="">视频: 2011款MBP光驱位升级SSD教程</a>。</p>
+
+<p>至于讨论的比较多的是SSD放在光驱位还是放在硬盘位，有两种说法：</p>
+
+<ol>
+<li>光驱位的SATA接口的传输速度是1.5G/s,而硬盘位传输速度是3G/s；</li>
+<li>硬盘位的在设计的时候有相应的减震设计，适合传统的机械硬盘，光驱位硬盘托架由于厚度限制没有做相应的减振设计，所以不适合传统硬盘。</li>
+</ol>
+
+
+<p>可是我的SSD放在光驱位不能用，只能识别，不能抹盘，也不能装系统，所以我还是把SSD放在原来的硬盘位，至于所说的减震设计我也没不太去注意，平时使用的时候小心点。</p>
+
+<p>由于SSD空间有限，对于寸土寸金的SSD空间来说我们能省则省，充分发挥双硬盘的优势才是当务之急，综合网上很多办法，今天就把我的Mac的SSD优化方案分享给大家，给大家提高一个参考。</p>
+
+<p>更换SSD的最大好处就是速度快，最大的缺点就是空间小。如何充分发挥他的优势，弱化他的缺点正是我们优化的最终目的。针对这个就不难理解，把lion系统、bootcamp、应用程序等必须放在SSD上，其余的一些文件可以放在HDD上，必要的做个软连接。</p>
+
+<ol>
+<li>转移文件
+把Lion安装在SSD上，用Timemachine把备份恢复到新系统，在HDD上面对应的建上Documents, Downloads, Music, Movies, Pictures等目录</li>
+</ol>
+
+
+<p><img src="http://farm8.staticflickr.com/7025/6795320791_7550c3b37e.jpg"></p>
+
+<p>将想要移动的SSD的文件夹拷贝到HDD对应文件夹下<br />
+进入Terminal，</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd /Users/username
+</span><span class='line'>sudo rm -rf Downloads     //Downloads为例,删除原用户下的Downloads文件夹
+</span><span class='line'>ln -s /Volumes/HDD/User/Downloads ~/Downloads  //将移动后的文件夹做个软连接放到用户文件夹下</span></code></pre></td></tr></table></div></figure>
+
+
+<p>按照相同的办法把想要转移的文件夹挪位。对于我来说，我通常会把下面这些文件夹从SSD移动到HDD。（如图）</p>
+
+<p><img src="http://farm8.staticflickr.com/7161/6795346321_05205b5a2c.jpg"></p>
+
+<ol>
+<li>开启trim <br /></li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo cp /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage /IOAHCIBlockStorage.original
+</span><span class='line'>sudo perl -pi -e 's|(\x52\x6F\x74\x61\x74\x69\x6F\x6E\x61\x6C\x00).{9}(\x00\x51)|$1\x00\x00\x00\x00\x00\x00\x00\x00\x00$2|sg' /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage
+</span><span class='line'>sudo kextcache -system-prelinked-kernel
+</span><span class='line'>sudo kextcache -system-caches</span></code></pre></td></tr></table></div></figure>
+
+
+<p>经过这样简单的操作，我们就很好的把SSD和HDD利用起来了，体验秒开秒关的感觉，再也不要看菊花的眼色了！(^ _ ^)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[视频: 2011款MBP光驱位升级SSD教程]]></title>
+    <link href="http://www.xiaoche.me/blog/2011/12/01/mbp-update-ssd/"/>
+    <updated>2011-12-01T21:20:00+08:00</updated>
+    <id>http://www.xiaoche.me/blog/2011/12/01/mbp-update-ssd</id>
+    <content type="html"><![CDATA[<p><embed src="http://player.youku.com/player.php/sid/XMzEzNzU3MjE2/v.swf" allowFullScreen="true" quality="high" width="740" height="600" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
+
+<p>2011款13寸Macbook Pro替换光驱位为SSD或硬盘的教学录像。</p>
 ]]></content>
   </entry>
   

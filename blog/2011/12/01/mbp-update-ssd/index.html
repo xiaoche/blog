@@ -5,13 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>github中不加入版本控制.gitignore设定 - 小车的博客</title>
+  <title>视频: 2011款MBP光驱位升级SSD教程 - 小车的博客</title>
   <meta name="author" content="小车">
 
   
-  <meta name="description" content="github中不加入版本控制.gitignore设定">
+  <meta name="description" content="2011款13寸Macbook Pro替换光驱位为SSD或硬盘的教学录像。">
   
-  <meta name="keywords" content="github,版本控制,gitignore,">
+  <meta name="keywords" content="apple,mbp,macbook,ssd,光驱换硬盘">
 
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.xiaoche.me/blog/2012/01/19/github-gitignore">
+  <link rel="canonical" href="http://www.xiaoche.me/blog/2011/12/01/mbp-update-ssd">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -82,7 +82,7 @@
   
   <header>
     
-      <h1 class="entry-title">github中不加入版本控制.gitignore设定</h1>
+      <h1 class="entry-title">视频: 2011款MBP光驱位升级SSD教程</h1>
     
     
       <p class="meta">
@@ -98,52 +98,16 @@
   
 
 
-<time datetime="2012-01-19T10:16:00+08:00" pubdate data-updated="true">Jan 19<span>th</span>, 2012</time>
+<time datetime="2011-12-01T21:20:00+08:00" pubdate data-updated="true">Dec 1<span>st</span>, 2011</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>这几天研究github page，由于用jekyll本地测试时会生成_site文件夹，所以需要把这个文件夹排除在外再提交到github，到底怎么设置呢？</p>
+<div class="entry-content"><p><embed src="http://player.youku.com/player.php/sid/XMzEzNzU3MjE2/v.swf" allowFullScreen="true" quality="high" width="740" height="600" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
 
-<p>这就需要用到.gitignore，即不加入版本控制，在git根目录下建立.gitignore，具体设定如下：</p>
-
-<pre><code>tmp.txt         //忽略tmp.txt
-*.log           //忽略所有log文件
-tmp/*           //忽略tmp文件夹所有文件
-log/**/*.log    //忽略log目录下的包括子目录下的所有log文件
-</code></pre>
-
-<p>其他的一些过滤条件</p>
-
-<ul>
-<li>？：代表任意的一个字符</li>
-<li>＊：代表任意数目的字符</li>
-<li>{!ab}：必须不是此类型</li>
-<li>{ab,bb,cx}：代表ab,bb,cx中任一类型即可</li>
-<li>[abc]：代表a,b,c中任一字符即可</li>
-<li>[ ^abc]：代表必须不是a,b,c中任一字符</li>
-</ul>
-
-
-<p>由于git不会加入空目录，所以下面做法会导致tmp不会存在</p>
-
-<pre><code>tmp/*             //忽略tmp文件夹所有文件
-</code></pre>
-
-<p>改下方法，在tmp下也加一个.gitignore,内容为</p>
-
-<pre><code>*
-!.gitignore
-</code></pre>
-
-<p>还有一种情况，就是已经commit了，再加入gitignore是无效的，所以需要删除下缓存</p>
-
-<pre><code>git rm --cached ignore_file
-</code></pre>
-
-<p>这样就OK了。</p>
+<p>2011款13寸Macbook Pro替换光驱位为SSD或硬盘的教学录像。</p>
 </div>
 
 
@@ -166,12 +130,12 @@ log/**/*.log    //忽略log目录下的包括子目录下的所有log文件
   
 
 
-<time datetime="2012-01-19T10:16:00+08:00" pubdate data-updated="true">Jan 19<span>th</span>, 2012</time>
+<time datetime="2011-12-01T21:20:00+08:00" pubdate data-updated="true">Dec 1<span>st</span>, 2011</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/技术研究/'>技术研究</a>
+    <a class='category' href='/blog/categories/apple/'>Apple</a>
   
 </span>
 
@@ -194,7 +158,7 @@ log/**/*.log    //忽略log目录下的包括子目录下的所有log文件
     type:'2',
     count:'1', /**是否显示分享数，1显示(可选)*/
     appkey:'', /**您申请的应用appkey,显示分享来源(可选)*/
-    title:'小车的博客github中不加入版本控制.gitignore设定', /**分享的文字内容(可选，默认为所在页面的title)*/
+    title:'小车的博客视频: 2011款MBP光驱位升级SSD教程', /**分享的文字内容(可选，默认为所在页面的title)*/
     pic:'', /**分享图片的路径(可选)*/
     ralateUid:'1801663534', /**关联用户的UID，分享微博会@该用户(可选)*/
 	language:'zh_cn', /**设置语言，zh_cn|zh_tw(可选)*/
@@ -215,10 +179,8 @@ log/**/*.log    //忽略log目录下的包括子目录下的所有log文件
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/01/18/install-octopress/" title="Previous Post: 从零开始在github上安装octopress">&laquo; 从零开始在github上安装octopress</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/01/30/mac-soft-recommend1/" title="next Post: Mac常用软件推荐（一）">Mac常用软件推荐（一） &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2011/12/08/optimize-ssd-on-mac/" title="next Post: Mac中SSD+HDD优化方案">Mac中SSD+HDD优化方案 &raquo;</a>
       
     </p>
   </footer>
@@ -333,8 +295,8 @@ log/**/*.log    //忽略log目录下的包括子目录下的所有log文件
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.xiaoche.me/blog/2012/01/19/github-gitignore/';
-        var disqus_url = 'http://www.xiaoche.me/blog/2012/01/19/github-gitignore/';
+        var disqus_identifier = 'http://www.xiaoche.me/blog/2011/12/01/mbp-update-ssd/';
+        var disqus_url = 'http://www.xiaoche.me/blog/2011/12/01/mbp-update-ssd/';
         var disqus_script = 'embed.js';
       
     (function () {

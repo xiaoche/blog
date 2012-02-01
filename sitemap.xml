@@ -1,39 +1,51 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://www.xiaoche.me/blog/2011/12/01/mbp-update-ssd/</loc>
+        <lastmod>2012-01-31T23:25:43+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.xiaoche.me/blog/2011/12/08/optimize-ssd-on-mac/</loc>
+        <lastmod>2012-02-01T10:57:31+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://www.xiaoche.me/blog/2012/01/01/wedding-anniversary/</loc>
-        <lastmod>2012-01-30T22:14:33+08:00</lastmod>
+        <lastmod>2012-01-31T23:25:43+08:00</lastmod>
     </url>
     <url>
         <loc>http://www.xiaoche.me/blog/2012/01/03/annual-summarymou/</loc>
-        <lastmod>2012-01-30T20:23:30+08:00</lastmod>
+        <lastmod>2012-01-31T23:25:43+08:00</lastmod>
     </url>
     <url>
         <loc>http://www.xiaoche.me/blog/2012/01/18/install-octopress/</loc>
-        <lastmod>2012-01-30T20:29:00+08:00</lastmod>
+        <lastmod>2012-01-31T23:25:43+08:00</lastmod>
     </url>
     <url>
         <loc>http://www.xiaoche.me/blog/2012/01/19/github-gitignore/</loc>
-        <lastmod>2012-01-30T20:23:21+08:00</lastmod>
+        <lastmod>2012-01-31T23:25:43+08:00</lastmod>
     </url>
     <url>
         <loc>http://www.xiaoche.me/blog/2012/01/30/mac-soft-recommend1/</loc>
-        <lastmod>2012-01-31T14:31:34+08:00</lastmod>
+        <lastmod>2012-01-31T23:25:43+08:00</lastmod>
     </url>
     <url>
         <loc>http://www.xiaoche.me/blog/2012/01/31/mac-soft-recommend2/</loc>
-        <lastmod>2012-01-31T15:15:00+08:00</lastmod>
+        <lastmod>2012-01-31T23:25:43+08:00</lastmod>
     </url>
     <url>
         <loc>http://www.xiaoche.me/about-me/</loc>
-        <lastmod>2012-01-19T00:13:40+08:00</lastmod>
+        <lastmod>2012-01-31T23:25:43+08:00</lastmod>
     </url>
     <url>
         <loc>http://www.xiaoche.me/blog/archives/</loc>
-        <lastmod>2012-01-31T15:15:00+08:00</lastmod>
+        <lastmod>2012-02-01T10:57:31+08:00</lastmod>
     </url>
     <url>
         <loc>http://www.xiaoche.me/</loc>
-        <lastmod>2012-01-31T15:15:00+08:00</lastmod>
+        <lastmod>2012-02-01T10:57:31+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://www.xiaoche.me/readme/</loc>
+        <lastmod>2012-01-31T23:25:43+08:00</lastmod>
     </url>
 </urlset>
