@@ -4,7 +4,7 @@
   <title><![CDATA[小车的博客]]></title>
   <link href="http://www.xiaoche.me/atom.xml" rel="self"/>
   <link href="http://www.xiaoche.me/"/>
-  <updated>2012-02-01T17:00:44+08:00</updated>
+  <updated>2012-02-02T23:13:46+08:00</updated>
   <id>http://www.xiaoche.me/</id>
   <author>
     <name><![CDATA[小车]]></name>
@@ -12,6 +12,261 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mac OSX lion中Web开发环境配置]]></title>
+    <link href="http://www.xiaoche.me/blog/2012/02/02/mac-php-mysql/"/>
+    <updated>2012-02-02T16:11:00+08:00</updated>
+    <id>http://www.xiaoche.me/blog/2012/02/02/mac-php-mysql</id>
+    <content type="html"><![CDATA[<p>做为一名前端码农，配置本地web开发环境是必须的，本文以Mac OSX Lion为例进行安装。</p>
+
+<h3>一. 启动Apache</h3>
+
+<p>在系统偏好设置-共享，里面打开Web共享，即可启动Apache，
+也可在终端下输入<code>sudo apachectl start</code> 启动，
+可以用<code>apachectl -v</code>来看当前系统的Apache版本号</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Server version: Apache/2.2.21 (Unix)
+</span><span class='line'>Server built:   Nov 15 2011 15:12:57</span></code></pre></td></tr></table></div></figure>
+
+
+<p>启动Apache后就可以在浏览器里输入“http://localhost”，即可看到It works!”的页面。
+默认文件路径在“/Library/WebServer/Documents/”目录下。</p>
+
+<h3>二. 运行PHP</h3>
+
+<p>1.修改Apache配置文件。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo vi /etc/apache2/httpd.conf</span></code></pre></td></tr></table></div></figure>
+
+
+<p>把注释“#”去掉。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#LoadModule php5_module libexec/apache2/libphp5.so</span></code></pre></td></tr></table></div></figure>
+
+
+<p>2.创建PHP的配置文件</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo cp /etc/php.ini.default /etc/php.ini</span></code></pre></td></tr></table></div></figure>
+
+
+<p>修改一些参数，比如：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>post_max_size = 128M
+</span><span class='line'>upload_max_filesize = 128M</span></code></pre></td></tr></table></div></figure>
+
+
+<p>3.重启Apache<code>sudo apachectl restart</code>，这样PHP就搞定。</p>
+
+<p>4.新建info.php文件，查看PHP相关信息。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd /Library/WebSever/Document
+</span><span class='line'>cp index.html.en info.php
+</span><span class='line'>vi info.php</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在&#8221;It‘s works!&#8221;后面加上<code>&lt;?php phpinfo(); ?></code>,</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;h1&gt;</span>It works!<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>    <span class="cp">&lt;?php phpinfo(); ?&gt;</span>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>保存即可，在http://localhost/info.php中就可以看到PHP的相关信息。</p>
+
+<h3>三. 安装MySQL</h3>
+
+<p>可以到<a href="http://dev.mysql.com/downloads/mysql/" title="mysql" target="_blank">官方网站</a>下载相应的程序文件安装，也可以用Homebrew来安装，方便快捷。</p>
+
+<p>Homebrew的使用方法见我的上篇博文<a href=”http://www.xiaoche.me/blog/2012/02/01/homebrew-install/“ target="_blank" title="Mac开发者利器-Homebrew介绍及安装">Mac开发者利器-Homebrew介绍及安装</a></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew install mysql</span></code></pre></td></tr></table></div></figure>
+
+
+<p>安装mysql需要一些依赖程序比如<code>cmake</code>，<code>readline</code>，<code>pidof</code>，<code>Xcode</code>。安装完成后,按照说明执行下面代码：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>unset TMPDIR
+</span><span class='line'>mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp</span></code></pre></td></tr></table></div></figure>
+
+
+<p>启动mysql</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mysql.server start</span></code></pre></td></tr></table></div></figure>
+
+
+<p>还有些设置用户密码等等。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mysql -uroot</span></code></pre></td></tr></table></div></figure>
+
+
+<p>就可以进入mysql了。</p>
+
+<h3>四. 安装phpmyadmin</h3>
+
+<p>phpMyAdmin是用PHP开发的管理MySQL的程序，非常实用。同样也可以用Homebrew来安装，也可以去<a href="http://www.phpmyadmin.net/home_page/downloads.php" target="_blank" title="phpmyadmin"> 官方网站</a>下载。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew install phpmydadmin</span></code></pre></td></tr></table></div></figure>
+
+
+<p>安装过程需要一些依赖程序<code>mcrypt</code>，<code>mcrypt-php</code>，这些都交给Homebrew去做吧，安装完成后按照说明把配置写到apache的配置文件中</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Webserver configuration example (add this at the end of
+</span><span class='line'>your /etc/apache2/httpd.conf for instance) :
+</span><span class='line'>  Alias /phpmyadmin /usr/local/share/phpmyadmin
+</span><span class='line'>  &lt;Directory /usr/local/share/phpmyadmin/&gt;
+</span><span class='line'>    Options Indexes FollowSymLinks MultiViews
+</span><span class='line'>    AllowOverride All
+</span><span class='line'>    Order allow,deny
+</span><span class='line'>    Allow from all
+</span><span class='line'>  &lt;/Directory&gt;
+</span><span class='line'>Then, open http://localhost/phpmyadmin</span></code></pre></td></tr></table></div></figure>
+
+
+<p>修改phpmyadmin的配置文件，在phpmyadmin会出现“#2002 无法登录 MySQL 服务器”，把localhost改成127.0.0.1就行了，</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd /usr/local/Cellar/phpmyadmin/3.4.7/share/phpmyadmin
+</span><span class='line'>cp config.sample.inc.php config.inc.php</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$cfg['Servers'][$i]['host'] = '127.0.0.1';</span></code></pre></td></tr></table></div></figure>
+
+
+<p>修改允许空密码登陆</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$cfg['Servers'][$i]['AllowNoPassword'] = true;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这样登陆<code>http://localhost/phpmyadmin</code>,就可以访问了。</p>
+
+<h3>五. 虚拟主机设置</h3>
+
+<p>1.修改Apache的配置文件</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo vi /etc/apache2/httpd.conf</span></code></pre></td></tr></table></div></figure>
+
+
+<p>去掉这行注释</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#Include /private/etc/apache2/extra/httpd-vhosts.conf</span></code></pre></td></tr></table></div></figure>
+
+
+<p>2.配置虚拟主机</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo vi /etc/apache2/extra/httpd-vhosts.conf</span></code></pre></td></tr></table></div></figure>
+
+
+<p>里面提供两个例子，</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;VirtualHost *:80&gt;
+</span><span class='line'>    ServerAdmin webmaster@dummy-host.example.com
+</span><span class='line'>    DocumentRoot "/usr/docs/dummy-host.example.com"
+</span><span class='line'>    ServerName dummy-host.example.com
+</span><span class='line'>    ErrorLog "/private/var/log/apache2/dummy-host.example.com-error_log"
+</span><span class='line'>    CustomLog "/private/var/log/apache2/dummy-host.example.com-access_log" common
+</span><span class='line'>&lt;/VirtualHost&gt;
+</span><span class='line'>&lt;VirtualHost *:80&gt;
+</span><span class='line'>    ServerAdmin webmaster@dummy-host2.example.com
+</span><span class='line'>    DocumentRoot "/usr/docs/dummy-host2.example.com"
+</span><span class='line'>    ServerName dummy-host2.example.com
+</span><span class='line'>    ErrorLog "/private/var/log/apache2/dummy-host2.example.com-error_log"
+</span><span class='line'>    CustomLog "/private/var/log/apache2/dummy-host2.example.com-access_log" common
+</span><span class='line'>&lt;/VirtualHost&gt; </span></code></pre></td></tr></table></div></figure>
+
+
+<p>改成你需要配置的主机。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;VirtualHost *:80&gt;
+</span><span class='line'>    DocumentRoot "/文件路径"
+</span><span class='line'>    ServerName www.b2c.com
+</span><span class='line'>    ErrorLog "/private/var/log/apache2/b2c-error_log"
+</span><span class='line'>    CustomLog "/private/var/log/apache2/b2c-access_log" common
+</span><span class='line'>&lt;/VirtualHost&gt; </span></code></pre></td></tr></table></div></figure>
+
+
+<p>保存退出，重启Apache<code>sudo apachectl restart</code></p>
+
+<p>3.修改host文件</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo vi /etc/hosts</span></code></pre></td></tr></table></div></figure>
+
+
+<p>加入新配置的本地环境</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>127.0.0.1 www.b2c.com</span></code></pre></td></tr></table></div></figure>
+
+
+<p>用浏览器访问www.b2c.com，大功告成。</p>
+
+<p>当然了，你还可以使用<a href="http://www.apachefriends.org/en/xampp-macosx.html" title="xampp" target="_blank">XAMPP</a>来配置开发环境，这个就相对比较简单了，里面集成的apache、mysql、phpmyadmin。对于爱折腾的我还是比较喜欢单独安装。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mac开发者利器-Homebrew介绍及安装]]></title>

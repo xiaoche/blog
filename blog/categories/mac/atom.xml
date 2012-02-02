@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mac | 小车的博客]]></title>
   <link href="http://www.xiaoche.me/blog/categories/mac/atom.xml" rel="self"/>
   <link href="http://www.xiaoche.me/"/>
-  <updated>2012-02-01T17:00:46+08:00</updated>
+  <updated>2012-02-02T23:13:46+08:00</updated>
   <id>http://www.xiaoche.me/</id>
   <author>
     <name><![CDATA[小车]]></name>
@@ -14,17 +14,212 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Mac OSX lion中Web开发环境配置]]></title>
+    <link href="http://www.xiaoche.me/blog/2012/02/02/mac-php-mysql/"/>
+    <updated>2012-02-02T16:11:00+08:00</updated>
+    <id>http://www.xiaoche.me/blog/2012/02/02/mac-php-mysql</id>
+    <content type="html"><![CDATA[<p>做为一名前端码农，配置本地web开发环境是必须的，本文以Mac OSX Lion为例进行安装。</p>
+
+<h3>一. 启动Apache</h3>
+
+<p>在系统偏好设置-共享，里面打开Web共享，即可启动Apache，
+也可在终端下输入<code>sudo apachectl start</code> 启动，
+可以用<code>apachectl -v</code>来看当前系统的Apache版本号
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Server version: Apache/2.2.21 (Unix)
+</span><span class='line'>Server built:   Nov 15 2011 15:12:57</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>启动Apache后就可以在浏览器里输入“http://localhost”，即可看到It works!”的页面。
+默认文件路径在“/Library/WebServer/Documents/”目录下。</p>
+
+<h3>二. 运行PHP</h3>
+
+<p>1.修改Apache配置文件。
+<code>
+sudo vi /etc/apache2/httpd.conf
+</code>
+把注释“#”去掉。
+```</p>
+
+<h1>LoadModule php5_module libexec/apache2/libphp5.so</h1>
+
+<p>```</p>
+
+<p>2.创建PHP的配置文件
+<code>
+sudo cp /etc/php.ini.default /etc/php.ini
+</code>
+修改一些参数，比如：
+<code>
+post_max_size = 128M
+upload_max_filesize = 128M
+</code>
+3.重启Apache<code>sudo apachectl restart</code>，这样PHP就搞定。</p>
+
+<p>4.新建info.php文件，查看PHP相关信息。
+<code>
+cd /Library/WebSever/Document
+cp index.html.en info.php
+vi info.php
+</code>
+在"It‘s works!"后面加上<code>&lt;?php phpinfo(); ?></code>,
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;pre&gt;&lt;code&gt;</span><span class="ni">&amp;lt;</span>h1<span class="ni">&amp;gt;</span>It works!<span class="ni">&amp;lt;</span>/h1<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>?php phpinfo(); ?<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+保存即可，在http://localhost/info.php中就可以看到PHP的相关信息。</p>
+
+<h3>三. 安装MySQL</h3>
+
+<p>可以到<a href="http://dev.mysql.com/downloads/mysql/" title="mysql" target="_blank">官方网站</a>下载相应的程序文件安装，也可以用Homebrew来安装，方便快捷。</p>
+
+<p>Homebrew的使用方法见我的上篇博文<a href=”http://www.xiaoche.me/blog/2012/02/01/homebrew-install/“ target="_blank" title="Mac开发者利器-Homebrew介绍及安装">Mac开发者利器-Homebrew介绍及安装</a>
+<code>
+brew install mysql
+</code>
+安装mysql需要一些依赖程序比如<code>cmake</code>，<code>readline</code>，<code>pidof</code>，<code>Xcode</code>。安装完成后,按照说明执行下面代码：
+<code>
+unset TMPDIR
+mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp
+</code>
+启动mysql
+<code>
+mysql.server start
+</code>
+还有些设置用户密码等等。
+<code>
+mysql -uroot
+</code>
+就可以进入mysql了。</p>
+
+<h3>四. 安装phpmyadmin</h3>
+
+<p>phpMyAdmin是用PHP开发的管理MySQL的程序，非常实用。同样也可以用Homebrew来安装，也可以去<a href="http://www.phpmyadmin.net/home_page/downloads.php" target="_blank" title="phpmyadmin"> 官方网站</a>下载。
+<code>
+brew install phpmydadmin
+</code>
+安装过程需要一些依赖程序<code>mcrypt</code>，<code>mcrypt-php</code>，这些都交给Homebrew去做吧，安装完成后按照说明把配置写到apache的配置文件中
+```
+Webserver configuration example (add this at the end of
+your /etc/apache2/httpd.conf for instance) :
+  Alias /phpmyadmin /usr/local/share/phpmyadmin
+  <Directory /usr/local/share/phpmyadmin/></p>
+
+<pre><code>Options Indexes FollowSymLinks MultiViews
+AllowOverride All
+Order allow,deny
+Allow from all
+</code></pre>
+
+<p>  </Directory>
+Then, open http://localhost/phpmyadmin
+<code>
+修改phpmyadmin的配置文件，在phpmyadmin会出现“#2002 无法登录 MySQL 服务器”，把localhost改成127.0.0.1就行了，
+</code>
+cd /usr/local/Cellar/phpmyadmin/3.4.7/share/phpmyadmin
+cp config.sample.inc.php config.inc.php
+```</p>
+
+<p><code>
+$cfg['Servers'][$i]['host'] = '127.0.0.1';
+</code>
+修改允许空密码登陆
+<code>
+$cfg['Servers'][$i]['AllowNoPassword'] = true;
+</code>
+这样登陆<code>http://localhost/phpmyadmin</code>,就可以访问了。</p>
+
+<h3>五. 虚拟主机设置</h3>
+
+<p>1.修改Apache的配置文件
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo vi /etc/apache2/httpd.conf</span></code></pre></td></tr></table></div></figure></notextile></div>
+去掉这行注释
+```</p>
+
+<h1>Include /private/etc/apache2/extra/httpd-vhosts.conf</h1>
+
+<p><code>
+2.配置虚拟主机
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo vi /etc/apache2/extra/httpd-vhosts.conf</span></code></pre></td></tr></table></div></figure></notextile></div>
+里面提供两个例子，
+</code>
+<VirtualHost *:80></p>
+
+<pre><code>ServerAdmin webmaster@dummy-host.example.com
+DocumentRoot "/usr/docs/dummy-host.example.com"
+ServerName dummy-host.example.com
+ErrorLog "/private/var/log/apache2/dummy-host.example.com-error_log"
+CustomLog "/private/var/log/apache2/dummy-host.example.com-access_log" common
+</code></pre>
+
+<p></VirtualHost>
+<VirtualHost *:80></p>
+
+<pre><code>ServerAdmin webmaster@dummy-host2.example.com
+DocumentRoot "/usr/docs/dummy-host2.example.com"
+ServerName dummy-host2.example.com
+ErrorLog "/private/var/log/apache2/dummy-host2.example.com-error_log"
+CustomLog "/private/var/log/apache2/dummy-host2.example.com-access_log" common
+</code></pre>
+
+<p></VirtualHost>
+<code>
+改成你需要配置的主机。
+</code>
+<VirtualHost *:80></p>
+
+<pre><code>DocumentRoot "/文件路径"
+ServerName www.b2c.com
+ErrorLog "/private/var/log/apache2/b2c-error_log"
+CustomLog "/private/var/log/apache2/b2c-access_log" common
+</code></pre>
+
+<p></VirtualHost>
+```
+保存退出，重启Apache<code>sudo apachectl restart</code></p>
+
+<p>3.修改host文件
+<code>
+sudo vi /etc/hosts
+</code>
+加入新配置的本地环境
+<code>
+127.0.0.1 www.b2c.com
+</code>
+用浏览器访问www.b2c.com，大功告成。</p>
+
+<p>当然了，你还可以使用<a href="http://www.apachefriends.org/en/xampp-macosx.html" title="xampp" target="_blank">XAMPP</a>来配置开发环境，这个就相对比较简单了，里面集成的apache、mysql、phpmyadmin。对于爱折腾的我还是比较喜欢单独安装。</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Mac开发者利器-Homebrew介绍及安装]]></title>
     <link href="http://www.xiaoche.me/blog/2012/02/01/homebrew-install/"/>
     <updated>2012-02-01T16:11:00+08:00</updated>
     <id>http://www.xiaoche.me/blog/2012/02/01/homebrew-install</id>
     <content type="html"><![CDATA[<h4>介绍</h4>
 
-<p>{% img http://farm8.staticflickr.com/7012/6800060127_cf6d03237a_z.jpg 'homebrew' 'homebrew' %}</p>
+<p><img src="http://farm8.staticflickr.com/7012/6800060127_cf6d03237a_z.jpg" title="homebrew" alt="homebrew"></p>
 
-<p>{% blockquote @thillerson http://twitter.com/thillerson/status/6688848379 %}
-Homebrew is the bee’s knees, friends. So far it’s a perfect replacement for MacPorts.
-{% endblockquote %}</p>
+<p><blockquote><p>Homebrew is the bee’s knees, friends. So far it’s a perfect replacement for MacPorts.</p><footer><strong>@thillerson</strong> <cite><a href='http://twitter.com/thillerson/status/6688848379'>twitter.com/thillerson/status/&hellip;</a></cite></footer></blockquote></p>
 
 <p>Homebrew作为OS X上强大的包管理器，为系统软件提供了非常方便的安装方式，独特式的解决了包的依赖问题，并不再需要烦人的sudo，一键式编译，无参数困扰，真的，你值得拥有。</p>
 
@@ -32,21 +227,18 @@ Homebrew is the bee’s knees, friends. So far it’s a perfect replacement for 
 
 <p>Homebrew依赖于XCode，首先需要安装，lion后XCode也是免费的了，直接到App store下载。同时Homebrew也依赖ruby，Mac已经自带ruby。</p>
 
-<p>{% codeblock %}
-ruby -e "$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)"
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ruby -e "$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)"</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h4>使用</h4>
 
 <ul>
 <li><p>查看brew的帮助
-{% codeblock %}
-brew --help
-{% endcodeblock %}</p></li>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew --help</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
 <li><p>安装软件
-{% codeblock %}
-brew install git
-{% endcodeblock %}</p></li>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew install git</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
 <li><p>卸载软件
 <code>
 brew uninstall git
@@ -68,9 +260,8 @@ brew update
 brew upgrade git
 </code></li>
 <li><p>查看软件信息
-{% codeblock %}
-brew [info | home] [FORMULA...]
-{% endcodeblock %}</p></li>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew [info | home] [FORMULA...]</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
 <li><p>删除程序，和upgrade一样，单个软件删除和所有程序老版删除。
 <code>
 brew cleanup git
@@ -328,83 +519,23 @@ mac下最好的管理和播放音乐的软件</p></li>
 <p>首先需要找到设置中文的字符串资源文件，路径是/System/Library/CoreServices/SystemFolderLocalizations/zh_CN.lproj/SystemFolderLocalizations.strings。
 编辑文件显示是乱码，如图：</p>
 
-<p>{% img http://farm8.staticflickr.com/7009/6799330475_17e1b7f027_b.jpg %}</p>
+<p><img src="http://farm8.staticflickr.com/7009/6799330475_17e1b7f027_b.jpg"></p>
 
 <p>在lion系统中是二进制格式的，首先要把它转成XML格式的。</p>
 
-<p>{% codeblock %}
-sudo plutil -convert xml1 SystemFolderLocalizations.strings
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo plutil -convert xml1 SystemFolderLocalizations.strings</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>转换之后就可以编辑了，如图：</p>
 
-<p>{% img http://farm8.staticflickr.com/7146/6799330887_bdf040fa12_z.jpg %}</p>
+<p><img src="http://farm8.staticflickr.com/7146/6799330887_bdf040fa12_z.jpg"></p>
 
 <p>对应增加你想添加的中文名，之后再把文件转换成二进制。</p>
 
-<p>{% codeblock %}
-sudo plutil -convert binary1 SystemFolderLocalizations.strings
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo plutil -convert binary1 SystemFolderLocalizations.strings</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>最后一步，在需要中文名的文件夹下，新建一个名为.localized的隐藏文件即可。大功告成！</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mac中SSD+HDD优化方案]]></title>
-    <link href="http://www.xiaoche.me/blog/2011/12/08/optimize-ssd-on-mac/"/>
-    <updated>2011-12-08T20:11:00+08:00</updated>
-    <id>http://www.xiaoche.me/blog/2011/12/08/optimize-ssd-on-mac</id>
-    <content type="html"><![CDATA[<p>对电子产品毫无抵抗力的我再次出手了，终于下单购买了SSD（OCZ 120G）和8G内存（金士顿4G*2），具体拆机过程就不写了，上篇也发过拆机视频<a href="" target="_blank" title="">视频: 2011款MBP光驱位升级SSD教程</a>。</p>
-
-<p>至于讨论的比较多的是SSD放在光驱位还是放在硬盘位，有两种说法：</p>
-
-<ol>
-<li>光驱位的SATA接口的传输速度是1.5G/s,而硬盘位传输速度是3G/s；</li>
-<li>硬盘位的在设计的时候有相应的减震设计，适合传统的机械硬盘，光驱位硬盘托架由于厚度限制没有做相应的减振设计，所以不适合传统硬盘。</li>
-</ol>
-
-
-<p>可是我的SSD放在光驱位不能用，只能识别，不能抹盘，也不能装系统，所以我还是把SSD放在原来的硬盘位，至于所说的减震设计我也没不太去注意，平时使用的时候小心点。</p>
-
-<p>由于SSD空间有限，对于寸土寸金的SSD空间来说我们能省则省，充分发挥双硬盘的优势才是当务之急，综合网上很多办法，今天就把我的Mac的SSD优化方案分享给大家，给大家提高一个参考。</p>
-
-<p>更换SSD的最大好处就是速度快，最大的缺点就是空间小。如何充分发挥他的优势，弱化他的缺点正是我们优化的最终目的。针对这个就不难理解，把lion系统、bootcamp、应用程序等必须放在SSD上，其余的一些文件可以放在HDD上，必要的做个软连接。</p>
-
-<ol>
-<li>转移文件
-把Lion安装在SSD上，用Timemachine把备份恢复到新系统，在HDD上面对应的建上Documents, Downloads, Music, Movies, Pictures等目录</li>
-</ol>
-
-
-<p>{% img http://farm8.staticflickr.com/7025/6795320791_7550c3b37e.jpg %}</p>
-
-<p>将想要移动的SSD的文件夹拷贝到HDD对应文件夹下<br />
-进入Terminal，</p>
-
-<p>{% codeblock %}
-cd /Users/username
-sudo rm -rf Downloads       //Downloads为例,删除原用户下的Downloads文件夹
-ln -s /Volumes/HDD/User/Downloads ~/Downloads  //将移动后的文件夹做个软连接放到用户文件夹下
-{% endcodeblock %}</p>
-
-<p>按照相同的办法把想要转移的文件夹挪位。对于我来说，我通常会把下面这些文件夹从SSD移动到HDD。（如图）</p>
-
-<p>{% img http://farm8.staticflickr.com/7161/6795346321_05205b5a2c.jpg %}</p>
-
-<ol>
-<li>开启trim <br /></li>
-</ol>
-
-
-<p>{% codeblock %}
-sudo cp /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage /IOAHCIBlockStorage.original
-sudo perl -pi -e 's|(\x52\x6F\x74\x61\x74\x69\x6F\x6E\x61\x6C\x00).{9}(\x00\x51)|$1\x00\x00\x00\x00\x00\x00\x00\x00\x00$2|sg' /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage
-sudo kextcache -system-prelinked-kernel
-sudo kextcache -system-caches
-{% endcodeblock %}</p>
-
-<p>经过这样简单的操作，我们就很好的把SSD和HDD利用起来了，体验秒开秒关的感觉，再也不要看菊花的眼色了！(^ _ ^)</p>
 ]]></content>
   </entry>
   
