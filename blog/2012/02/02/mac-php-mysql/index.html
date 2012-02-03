@@ -222,7 +222,7 @@
 
 
 <p>安装过程需要一些依赖程序<code>mcrypt</code>，<code>mcrypt-php</code>，这些都交给Homebrew去做吧。<br/>
-P.S：安装mcrypt-php过程中会提示将配置文件写到<code>/etc/php.ini</code>里面。</p>
+<strong>P.S：</strong>安装mcrypt-php过程中会提示将配置文件写到<code>/etc/php.ini</code>里面。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -365,18 +365,20 @@ P.S：安装mcrypt-php过程中会提示将配置文件写到<code>/etc/php.ini<
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>&lt;VirtualHost *:80&gt;
-</span><span class='line'>    DocumentRoot "/站点目录"
-</span><span class='line'>   &lt;Directory "/站点目录"&gt;
+</span><span class='line'>  DocumentRoot "/Users/username/Sites/b2c"
+</span><span class='line'>  &lt;Directory "/Users/username/Sites/b2c"&gt;
 </span><span class='line'>      Options FollowSymLinks
 </span><span class='line'>      AllowOverride FileInfo
 </span><span class='line'>      Order allow,deny
 </span><span class='line'>      Allow from all
-</span><span class='line'>   &lt;/Directory&gt;
-</span><span class='line'>   ServerName www.b2c.com
-</span><span class='line'>    ErrorLog "/private/var/log/apache2/b2c-error_log"
-</span><span class='line'>    CustomLog "/private/var/log/apache2/b2c-access_log" common
+</span><span class='line'>  &lt;/Directory&gt;
+</span><span class='line'>  ServerName www.b2c.com
+</span><span class='line'>  ErrorLog "/private/var/log/apache2/b2c-error_log"
+</span><span class='line'>  CustomLog "/private/var/log/apache2/b2c-access_log" common
 </span><span class='line'>&lt;/VirtualHost&gt; </span></code></pre></td></tr></table></div></figure>
 
+
+<p><strong>P.S:</strong> 站点目录一定要<code>/Users/username/Sites</code>，不能用<code>~/Sites</code>。</p>
 
 <p>保存退出，重启Apache<code>sudo apachectl restart</code></p>
 
