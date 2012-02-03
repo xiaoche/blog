@@ -224,7 +224,22 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>brew install phpmydadmin</span></code></pre></td></tr></table></div></figure>
 
 
-<p>安装过程需要一些依赖程序<code>mcrypt</code>，<code>mcrypt-php</code>，这些都交给Homebrew去做吧，安装完成后按照说明把配置写到apache的配置文件中</p>
+<p>安装过程需要一些依赖程序<code>mcrypt</code>，<code>mcrypt-php</code>，这些都交给Homebrew去做吧。<br/>
+P.S：安装mcrypt-php过程中会提示将配置文件写到<code>/etc/php.ini</code>里面。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>To finish mcrypt-php installation, you need to add the
+</span><span class='line'>following line into php.ini:
+</span><span class='line'>  extension="/usr/local/Cellar/mcrypt-php/5.3.6/mcrypt.so"
+</span><span class='line'>Then, restart your webserver and check in phpinfo if
+</span><span class='line'>you're able to see something about mcrypt</span></code></pre></td></tr></table></div></figure>
+
+
+<p>安装完成后按照说明把配置写到apache的配置文件中</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -248,7 +263,7 @@
 </span><span class='line'>Then, open http://localhost/phpmyadmin</span></code></pre></td></tr></table></div></figure>
 
 
-<p>修改phpmyadmin的配置文件，在phpmyadmin会出现“#2002 无法登录 MySQL 服务器”，把localhost改成127.0.0.1就行了，</p>
+<p>打开phpmyadmin会出现“不允许空密码登陆”和“#2002 无法登录 MySQL 服务器”的错误，因为我们没有去配置phpmyadmin的配置文件。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -256,16 +271,16 @@
 </span><span class='line'>cp config.sample.inc.php config.inc.php</span></code></pre></td></tr></table></div></figure>
 
 
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$cfg['Servers'][$i]['host'] = '127.0.0.1';</span></code></pre></td></tr></table></div></figure>
-
-
 <p>修改允许空密码登陆</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$cfg['Servers'][$i]['AllowNoPassword'] = true;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>解决“#2002 无法登录 MySQL 服务器”的错误</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$cfg['Servers'][$i]['host'] = '127.0.0.1';</span></code></pre></td></tr></table></div></figure>
 
 
 <p>这样登陆<code>http://localhost/phpmyadmin</code>,就可以访问了。</p>
@@ -331,8 +346,36 @@
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>&lt;VirtualHost *:80&gt;
-</span><span class='line'>    DocumentRoot "/文件路径"
+</span><span class='line'>    DocumentRoot "/站点目录"
 </span><span class='line'>    ServerName www.b2c.com
+</span><span class='line'>    ErrorLog "/private/var/log/apache2/b2c-error_log"
+</span><span class='line'>    CustomLog "/private/var/log/apache2/b2c-access_log" common
+</span><span class='line'>&lt;/VirtualHost&gt; </span></code></pre></td></tr></table></div></figure>
+
+
+<p>最好在配置中加上Directory配置。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;VirtualHost *:80&gt;
+</span><span class='line'>    DocumentRoot "/站点目录"
+</span><span class='line'>   &lt;Directory "/站点目录"&gt;
+</span><span class='line'>      Options FollowSymLinks
+</span><span class='line'>      AllowOverride FileInfo
+</span><span class='line'>      Order allow,deny
+</span><span class='line'>      Allow from all
+</span><span class='line'>   &lt;/Directory&gt;
+</span><span class='line'>   ServerName www.b2c.com
 </span><span class='line'>    ErrorLog "/private/var/log/apache2/b2c-error_log"
 </span><span class='line'>    CustomLog "/private/var/log/apache2/b2c-access_log" common
 </span><span class='line'>&lt;/VirtualHost&gt; </span></code></pre></td></tr></table></div></figure>

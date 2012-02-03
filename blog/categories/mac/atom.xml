@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mac | 小车的博客]]></title>
   <link href="http://www.xiaoche.me/blog/categories/mac/atom.xml" rel="self"/>
   <link href="http://www.xiaoche.me/"/>
-  <updated>2012-02-02T23:15:27+08:00</updated>
+  <updated>2012-02-03T11:07:21+08:00</updated>
   <id>http://www.xiaoche.me/</id>
   <author>
     <name><![CDATA[小车]]></name>
@@ -114,7 +114,16 @@ mysql -uroot
 <code>
 brew install phpmydadmin
 </code>
-安装过程需要一些依赖程序<code>mcrypt</code>，<code>mcrypt-php</code>，这些都交给Homebrew去做吧，安装完成后按照说明把配置写到apache的配置文件中
+安装过程需要一些依赖程序<code>mcrypt</code>，<code>mcrypt-php</code>，这些都交给Homebrew去做吧。<br/>
+P.S：安装mcrypt-php过程中会提示将配置文件写到<code>/etc/php.ini</code>里面。
+<code>
+To finish mcrypt-php installation, you need to add the
+following line into php.ini:
+  extension="/usr/local/Cellar/mcrypt-php/5.3.6/mcrypt.so"
+Then, restart your webserver and check in phpinfo if
+you're able to see something about mcrypt
+</code>
+安装完成后按照说明把配置写到apache的配置文件中
 ```
 Webserver configuration example (add this at the end of
 your /etc/apache2/httpd.conf for instance) :
@@ -130,19 +139,19 @@ Allow from all
 <p>  </Directory>
 Then, open http://localhost/phpmyadmin
 <code>
-修改phpmyadmin的配置文件，在phpmyadmin会出现“#2002 无法登录 MySQL 服务器”，把localhost改成127.0.0.1就行了，
+打开phpmyadmin会出现“不允许空密码登陆”和“#2002 无法登录 MySQL 服务器”的错误，因为我们没有去配置phpmyadmin的配置文件。
 </code>
 cd /usr/local/Cellar/phpmyadmin/3.4.7/share/phpmyadmin
 cp config.sample.inc.php config.inc.php
-```</p>
-
-<p><code>
-$cfg['Servers'][$i]['host'] = '127.0.0.1';
-</code>
-修改允许空密码登陆
 <code>
-$cfg['Servers'][$i]['AllowNoPassword'] = true;
+修改允许空密码登陆
 </code>
+$cfg['Servers'][$i]['AllowNoPassword'] = true;
+<code>
+解决“#2002 无法登录 MySQL 服务器”的错误
+</code>
+$cfg['Servers'][$i]['host'] = '127.0.0.1';
+```
 这样登陆<code>http://localhost/phpmyadmin</code>,就可以访问了。</p>
 
 <h3>五. 虚拟主机设置</h3>
@@ -186,8 +195,26 @@ CustomLog "/private/var/log/apache2/dummy-host2.example.com-access_log" common
 </code>
 <VirtualHost *:80></p>
 
-<pre><code>DocumentRoot "/文件路径"
+<pre><code>DocumentRoot "/站点目录"
 ServerName www.b2c.com
+ErrorLog "/private/var/log/apache2/b2c-error_log"
+CustomLog "/private/var/log/apache2/b2c-access_log" common
+</code></pre>
+
+<p></VirtualHost>
+<code>
+最好在配置中加上Directory配置。
+</code>
+<VirtualHost *:80></p>
+
+<pre><code>DocumentRoot "/站点目录"
+ &lt;Directory "/站点目录"&gt;
+    Options FollowSymLinks
+    AllowOverride FileInfo
+    Order allow,deny
+    Allow from all
+ &lt;/Directory&gt;
+ ServerName www.b2c.com
 ErrorLog "/private/var/log/apache2/b2c-error_log"
 CustomLog "/private/var/log/apache2/b2c-access_log" common
 </code></pre>
