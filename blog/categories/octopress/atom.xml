@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | 小车的博客]]></title>
   <link href="http://www.xiaoche.me/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://www.xiaoche.me/"/>
-  <updated>2012-02-03T12:56:23+08:00</updated>
+  <updated>2012-02-03T17:10:40+08:00</updated>
   <id>http://www.xiaoche.me/</id>
   <author>
     <name><![CDATA[小车]]></name>
@@ -98,7 +98,7 @@ bundle install
 
 <h6>7. 写文章</h6>
 
-<pre><code>rake new_page["my first blog"] 
+<pre><code>rake new_post["my first blog"] 
 </code></pre>
 
 <p>在"myblog/source/_post"下生成一个**.makedown文件，编辑文章即可。</p>

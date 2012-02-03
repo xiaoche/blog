@@ -4,7 +4,7 @@
   <title><![CDATA[小车的博客]]></title>
   <link href="http://www.xiaoche.me/atom.xml" rel="self"/>
   <link href="http://www.xiaoche.me/"/>
-  <updated>2012-02-03T12:56:23+08:00</updated>
+  <updated>2012-02-03T17:10:40+08:00</updated>
   <id>http://www.xiaoche.me/</id>
   <author>
     <name><![CDATA[小车]]></name>
@@ -39,8 +39,9 @@
 
 <p>1.修改Apache配置文件。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo vi /etc/apache2/httpd.conf</span></code></pre></td></tr></table></div></figure>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>sudo vi /etc/apache2/httpd.conf
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>把注释“#”去掉。</p>
@@ -67,12 +68,13 @@
 
 <p>4.新建info.php文件，查看PHP相关信息。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd /Library/WebSever/Document
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">cd</span> /Library/WebSever/Document
 </span><span class='line'>cp index.html.en info.php
-</span><span class='line'>vi info.php</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>vi info.php
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>在&#8221;It‘s works!&#8221;后面加上<code>&lt;?php phpinfo(); ?></code>,</p>
@@ -256,7 +258,7 @@
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>&lt;VirtualHost *:80&gt;
-</span><span class='line'>    DocumentRoot "/站点目录"
+</span><span class='line'>    DocumentRoot "/Users/username/Sites/b2c"
 </span><span class='line'>    ServerName www.b2c.com
 </span><span class='line'>    ErrorLog "/private/var/log/apache2/b2c-error_log"
 </span><span class='line'>    CustomLog "/private/var/log/apache2/b2c-access_log" common
@@ -802,7 +804,7 @@ bundle install
 
 <h6>7. 写文章</h6>
 
-<pre><code>rake new_page["my first blog"] 
+<pre><code>rake new_post["my first blog"] 
 </code></pre>
 
 <p>在&#8221;myblog/source/_post&#8221;下生成一个**.makedown文件，编辑文章即可。</p>

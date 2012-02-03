@@ -9,10 +9,10 @@
   <meta name="author" content="小车">
 
   
-  <meta name="description" content="小车的博客,记录我工作生活学习中点点滴">
+  <meta name="description" content="做为一名前端码农，配置本地web开发环境是必须的，本文以Mac OSX Lion为例进行安装。 一. 启动Apache 在系统偏好设置-共享，里面打开Web共享，即可启动Apache，
+也可在终端下输入sudo apachectl start 启动，
+可以用apachectl - &hellip;">
   
-  <meta name="keywords" content="前端开发,用户体验,前端工程师,果粉,IOS开发,经验分享,OSX,Mac,Apple,IOS,web app,mobile web,IUX,UED">
-
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -69,9 +69,9 @@
 </form>
   
 <ul class="main-navigation">
-    <li><a href="/">Blog</a></li>
+  <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
-    <li><a href="/about-me">About</a></li>
+  <li><a href="/about-me">About</a></li>
 </ul>
 
 </nav>
@@ -129,8 +129,9 @@
 
 <p>1.修改Apache配置文件。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo vi /etc/apache2/httpd.conf</span></code></pre></td></tr></table></div></figure>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>sudo vi /etc/apache2/httpd.conf
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>把注释“#”去掉。</p>
@@ -157,12 +158,13 @@
 
 <p>4.新建info.php文件，查看PHP相关信息。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd /Library/WebSever/Document
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">cd</span> /Library/WebSever/Document
 </span><span class='line'>cp index.html.en info.php
-</span><span class='line'>vi info.php</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>vi info.php
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>在&#8221;It‘s works!&#8221;后面加上<code>&lt;?php phpinfo(); ?></code>,</p>
@@ -346,7 +348,7 @@
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>&lt;VirtualHost *:80&gt;
-</span><span class='line'>    DocumentRoot "/站点目录"
+</span><span class='line'>    DocumentRoot "/Users/username/Sites/b2c"
 </span><span class='line'>    ServerName www.b2c.com
 </span><span class='line'>    ErrorLog "/private/var/log/apache2/b2c-error_log"
 </span><span class='line'>    CustomLog "/private/var/log/apache2/b2c-access_log" common
@@ -1027,7 +1029,7 @@ bundle install
 
 <h6>7. 写文章</h6>
 
-<pre><code>rake new_page["my first blog"] 
+<pre><code>rake new_post["my first blog"] 
 </code></pre>
 
 <p>在&#8221;myblog/source/_post&#8221;下生成一个**.makedown文件，编辑文章即可。</p>
@@ -1392,16 +1394,6 @@ rake preview
 </section>
 
 <section>
-<h1>分类</h1>
-<ul>
-  <li><a href='/blog/categories/github'>Github (1)</a></li>
-  <li><a href='/blog/categories/mac'>Mac (7)</a></li>
-  <li><a href='/blog/categories/octopress'>Octopress (1)</a></li>
-  <li><a href='/blog/categories/other'>Other (2)</a></li>
-</ul>
-</section>
-
-<section>
   <h1>友情链接</h1>
   <ul id="links">
       <li class="post">
@@ -1426,6 +1418,10 @@ rake preview
         <a href="http://www.vicenteforever.com" title="" target="_blank">王强LAMP博客</a>
       </li>
   </ul>
+</section>
+<section>
+  <h1>最新评论</h1>
+  <div id="recentcomments" class="dsq-widget"><script type="text/javascript" src="http://xiaoche.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=0&avatar_size=32&excerpt_length=200"></script></div>
 </section>
 
 <section class="">
@@ -1490,7 +1486,6 @@ rake preview
 
 
 
-<!--
   <script type="text/javascript">
     (function(){
       var twitterWidgets = document.createElement('script');
@@ -1499,8 +1494,7 @@ rake preview
       twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
-</script>
--->
+  </script>
 
 
 

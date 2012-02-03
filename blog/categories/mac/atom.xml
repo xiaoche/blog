@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mac | 小车的博客]]></title>
   <link href="http://www.xiaoche.me/blog/categories/mac/atom.xml" rel="self"/>
   <link href="http://www.xiaoche.me/"/>
-  <updated>2012-02-03T12:56:23+08:00</updated>
+  <updated>2012-02-03T17:10:40+08:00</updated>
   <id>http://www.xiaoche.me/</id>
   <author>
     <name><![CDATA[小车]]></name>
@@ -36,9 +36,9 @@
 <h3>二. 运行PHP</h3>
 
 <p>1.修改Apache配置文件。
-<code>
-sudo vi /etc/apache2/httpd.conf
-</code>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>sudo vi /etc/apache2/httpd.conf
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 把注释“#”去掉。
 ```</p>
 
@@ -58,11 +58,13 @@ upload_max_filesize = 128M
 3.重启Apache<code>sudo apachectl restart</code>，这样PHP就搞定。</p>
 
 <p>4.新建info.php文件，查看PHP相关信息。
-<code>
-cd /Library/WebSever/Document
-cp index.html.en info.php
-vi info.php
-</code>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">cd</span> /Library/WebSever/Document
+</span><span class='line'>cp index.html.en info.php
+</span><span class='line'>vi info.php
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 在"It‘s works!"后面加上<code>&lt;?php phpinfo(); ?></code>,
 <div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -195,7 +197,7 @@ CustomLog "/private/var/log/apache2/dummy-host2.example.com-access_log" common
 </code>
 <VirtualHost *:80></p>
 
-<pre><code>DocumentRoot "/站点目录"
+<pre><code>DocumentRoot "/Users/username/Sites/b2c"
 ServerName www.b2c.com
 ErrorLog "/private/var/log/apache2/b2c-error_log"
 CustomLog "/private/var/log/apache2/b2c-access_log" common
