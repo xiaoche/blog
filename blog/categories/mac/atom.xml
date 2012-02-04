@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mac | 小车的博客]]></title>
   <link href="http://www.xiaoche.me/blog/categories/mac/atom.xml" rel="self"/>
   <link href="http://www.xiaoche.me/"/>
-  <updated>2012-02-03T17:10:40+08:00</updated>
+  <updated>2012-02-04T20:55:03+08:00</updated>
   <id>http://www.xiaoche.me/</id>
   <author>
     <name><![CDATA[小车]]></name>
@@ -25,10 +25,10 @@
 <p>在系统偏好设置-共享，里面打开Web共享，即可启动Apache，
 也可在终端下输入<code>sudo apachectl start</code> 启动，
 可以用<code>apachectl -v</code>来看当前系统的Apache版本号
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Server version: Apache/2.2.21 (Unix)
-</span><span class='line'>Server built:   Nov 15 2011 15:12:57</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+{% codeblock %}
+Server version: Apache/2.2.21 (Unix)
+Server built:   Nov 15 2011 15:12:57
+{% endcodeblock %}</p>
 
 <p>启动Apache后就可以在浏览器里输入“http://localhost”，即可看到It works!”的页面。
 默认文件路径在“/Library/WebServer/Documents/”目录下。</p>
@@ -36,15 +36,18 @@
 <h3>二. 运行PHP</h3>
 
 <p>1.修改Apache配置文件。
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>sudo vi /etc/apache2/httpd.conf
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+{% codeblock lang:sh %}
+sudo vi /etc/apache2/httpd.conf
+{% endcodeblock %}
 把注释“#”去掉。
 ```</p>
 
 <h1>LoadModule php5_module libexec/apache2/libphp5.so</h1>
 
 <p>```</p>
+
+<!--more-->
+
 
 <p>2.创建PHP的配置文件
 <code>
@@ -58,33 +61,23 @@ upload_max_filesize = 128M
 3.重启Apache<code>sudo apachectl restart</code>，这样PHP就搞定。</p>
 
 <p>4.新建info.php文件，查看PHP相关信息。
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">cd</span> /Library/WebSever/Document
-</span><span class='line'>cp index.html.en info.php
-</span><span class='line'>vi info.php
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+{% codeblock lang:sh %}
+cd /Library/WebSever/Document
+cp index.html.en info.php
+vi info.php
+{% endcodeblock %}
 在"It‘s works!"后面加上<code>&lt;?php phpinfo(); ?></code>,
-<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;</span>
-</span><span class='line'><span class="nt">&lt;body&gt;&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;pre&gt;&lt;code&gt;</span><span class="ni">&amp;lt;</span>h1<span class="ni">&amp;gt;</span>It works!<span class="ni">&amp;lt;</span>/h1<span class="ni">&amp;gt;</span>
-</span><span class='line'><span class="ni">&amp;lt;</span>?php phpinfo(); ?<span class="ni">&amp;gt;</span>
-</span><span class='line'><span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;&lt;/body&gt;</span>
-</span><span class='line'><span class="nt">&lt;/html&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+{% codeblock lang:html %}
+<html>
+<body></p>
+
+<pre><code>&lt;h1&gt;It works!&lt;/h1&gt;
+&lt;?php phpinfo(); ?&gt;
+</code></pre>
+
+<p></body>
+</html>
+{% endcodeblock %}
 保存即可，在http://localhost/info.php中就可以看到PHP的相关信息。</p>
 
 <h3>三. 安装MySQL</h3>
@@ -159,8 +152,9 @@ $cfg['Servers'][$i]['host'] = '127.0.0.1';
 <h3>五. 虚拟主机设置</h3>
 
 <p>1.修改Apache的配置文件
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo vi /etc/apache2/httpd.conf</span></code></pre></td></tr></table></div></figure></notextile></div>
+{% codeblock %}
+sudo vi /etc/apache2/httpd.conf
+{% endcodeblock %}
 去掉这行注释
 ```</p>
 
@@ -168,8 +162,9 @@ $cfg['Servers'][$i]['host'] = '127.0.0.1';
 
 <p><code>
 2.配置虚拟主机
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo vi /etc/apache2/extra/httpd-vhosts.conf</span></code></pre></td></tr></table></div></figure></notextile></div>
+{% codeblock %}
+sudo vi /etc/apache2/extra/httpd-vhosts.conf
+{% endcodeblock %}
 里面提供两个例子，
 </code>
 <VirtualHost *:80></p>
@@ -248,9 +243,11 @@ sudo vi /etc/hosts
     <id>http://www.xiaoche.me/blog/2012/02/01/homebrew-install</id>
     <content type="html"><![CDATA[<h4>介绍</h4>
 
-<p><img src="http://farm8.staticflickr.com/7012/6800060127_cf6d03237a_z.jpg" title="homebrew" alt="homebrew"></p>
+<p>{% img http://farm8.staticflickr.com/7012/6800060127_cf6d03237a_z.jpg 'homebrew' 'homebrew' %}</p>
 
-<p><blockquote><p>Homebrew is the bee’s knees, friends. So far it’s a perfect replacement for MacPorts.</p><footer><strong>@thillerson</strong> <cite><a href='http://twitter.com/thillerson/status/6688848379'>twitter.com/thillerson/status/&hellip;</a></cite></footer></blockquote></p>
+<p>{% blockquote @thillerson http://twitter.com/thillerson/status/6688848379 %}
+Homebrew is the bee’s knees, friends. So far it’s a perfect replacement for MacPorts.
+{% endblockquote %}</p>
 
 <p>Homebrew作为OS X上强大的包管理器，为系统软件提供了非常方便的安装方式，独特式的解决了包的依赖问题，并不再需要烦人的sudo，一键式编译，无参数困扰，真的，你值得拥有。</p>
 
@@ -258,18 +255,28 @@ sudo vi /etc/hosts
 
 <p>Homebrew依赖于XCode，首先需要安装，lion后XCode也是免费的了，直接到App store下载。同时Homebrew也依赖ruby，Mac已经自带ruby。</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ruby -e "$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)"</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock %}
+ruby -e "$(curl -fsSLk https://gist.github.com/raw/323731/install_homebrew.rb)"
+{% endcodeblock %}</p>
 
 <h4>使用</h4>
 
 <ul>
-<li><p>查看brew的帮助
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew --help</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+<li>查看brew的帮助
+{% codeblock %}
+brew --help
+{% endcodeblock %}</li>
+</ul>
+
+
+<!--more-->
+
+
+<ul>
 <li><p>安装软件
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew install git</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+{% codeblock %}
+brew install git
+{% endcodeblock %}</p></li>
 <li><p>卸载软件
 <code>
 brew uninstall git
@@ -291,8 +298,9 @@ brew update
 brew upgrade git
 </code></li>
 <li><p>查看软件信息
-<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew [info | home] [FORMULA...]</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+{% codeblock %}
+brew [info | home] [FORMULA...]
+{% endcodeblock %}</p></li>
 <li><p>删除程序，和upgrade一样，单个软件删除和所有程序老版删除。
 <code>
 brew cleanup git
@@ -356,6 +364,13 @@ Mac下的解压缩出现最多问题就是乱码，试用了好几个软件，�
 在win下一直用这个软件，在mac下就不用调整，用的很顺。</li>
 </ul>
 </li>
+</ol>
+
+
+<!--more-->
+
+
+<ol>
 <li><p><strong>虚拟机</strong></p>
 
 <ul>
@@ -471,6 +486,13 @@ Web移动应用调试工具，远程调试工具，更改元素，样式等。</
 著名的菊花，最近终于升级了2.0，还没空研究。</p></li>
 </ul>
 </li>
+</ol>
+
+
+<!--more-->
+
+
+<ol>
 <li><p><strong>下载</strong></p>
 
 <ul>
@@ -550,21 +572,26 @@ mac下最好的管理和播放音乐的软件</p></li>
 <p>首先需要找到设置中文的字符串资源文件，路径是/System/Library/CoreServices/SystemFolderLocalizations/zh_CN.lproj/SystemFolderLocalizations.strings。
 编辑文件显示是乱码，如图：</p>
 
-<p><img src="http://farm8.staticflickr.com/7009/6799330475_17e1b7f027_b.jpg"></p>
+<!--more-->
+
+
+<p>{% img http://farm8.staticflickr.com/7009/6799330475_17e1b7f027_b.jpg %}</p>
 
 <p>在lion系统中是二进制格式的，首先要把它转成XML格式的。</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo plutil -convert xml1 SystemFolderLocalizations.strings</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock %}
+sudo plutil -convert xml1 SystemFolderLocalizations.strings
+{% endcodeblock %}</p>
 
 <p>转换之后就可以编辑了，如图：</p>
 
-<p><img src="http://farm8.staticflickr.com/7146/6799330887_bdf040fa12_z.jpg"></p>
+<p>{% img http://farm8.staticflickr.com/7146/6799330887_bdf040fa12_z.jpg %}</p>
 
 <p>对应增加你想添加的中文名，之后再把文件转换成二进制。</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo plutil -convert binary1 SystemFolderLocalizations.strings</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>{% codeblock %}
+sudo plutil -convert binary1 SystemFolderLocalizations.strings
+{% endcodeblock %}</p>
 
 <p>最后一步，在需要中文名的文件夹下，新建一个名为.localized的隐藏文件即可。大功告成！</p>
 ]]></content>

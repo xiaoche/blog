@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | 小车的博客]]></title>
   <link href="http://www.xiaoche.me/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://www.xiaoche.me/"/>
-  <updated>2012-02-03T17:10:40+08:00</updated>
+  <updated>2012-02-04T20:55:03+08:00</updated>
   <id>http://www.xiaoche.me/</id>
   <author>
     <name><![CDATA[小车]]></name>
@@ -43,6 +43,9 @@
 <h4>安装Git</h4>
 
 <p>首页git是必备的，具体看到github官网上查看<a href="http://help.github.com/mac-set-up-git/">帮助文档</a> ，这个就比较简单了。</p>
+
+<!--more-->
+
 
 <h4>安装Ruby</h4>
 

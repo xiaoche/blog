@@ -4,7 +4,7 @@
   <title><![CDATA[小车的博客]]></title>
   <link href="http://www.xiaoche.me/atom.xml" rel="self"/>
   <link href="http://www.xiaoche.me/"/>
-  <updated>2012-02-03T17:10:40+08:00</updated>
+  <updated>2012-02-04T20:55:00+08:00</updated>
   <id>http://www.xiaoche.me/</id>
   <author>
     <name><![CDATA[小车]]></name>
@@ -48,6 +48,9 @@
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>#LoadModule php5_module libexec/apache2/libphp5.so</span></code></pre></td></tr></table></div></figure>
+
+
+<!--more-->
 
 
 <p>2.创建PHP的配置文件</p>
@@ -348,6 +351,11 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>brew --help</span></code></pre></td></tr></table></div></figure>
 
 
+
+
+<!--more-->
+
+
 <ul>
 <li>安装软件</li>
 </ul>
@@ -488,6 +496,13 @@ Mac下的解压缩出现最多问题就是乱码，试用了好几个软件，�
 在win下一直用这个软件，在mac下就不用调整，用的很顺。</li>
 </ul>
 </li>
+</ol>
+
+
+<!--more-->
+
+
+<ol>
 <li><p><strong>虚拟机</strong></p>
 
 <ul>
@@ -603,6 +618,13 @@ Web移动应用调试工具，远程调试工具，更改元素，样式等。</
 著名的菊花，最近终于升级了2.0，还没空研究。</p></li>
 </ul>
 </li>
+</ol>
+
+
+<!--more-->
+
+
+<ol>
 <li><p><strong>下载</strong></p>
 
 <ul>
@@ -699,6 +721,9 @@ log/**/*.log    //忽略log目录下的包括子目录下的所有log文件
 </ul>
 
 
+<!--more-->
+
+
 <p>由于git不会加入空目录，所以下面做法会导致tmp不会存在</p>
 
 <pre><code>tmp/*             //忽略tmp文件夹所有文件
@@ -749,6 +774,9 @@ log/**/*.log    //忽略log目录下的包括子目录下的所有log文件
 <h4>安装Git</h4>
 
 <p>首页git是必备的，具体看到github官网上查看<a href="http://help.github.com/mac-set-up-git/">帮助文档</a> ，这个就比较简单了。</p>
+
+<!--more-->
+
 
 <h4>安装Ruby</h4>
 
@@ -842,7 +870,7 @@ rake preview
 <ol>
 <li><p>去年最大的事就是结婚了，由男孩成长为男人，责任更大了，压力更大了。</p></li>
 <li><p>终于狠心在亚马逊上面分期购买了MBP，为抢到亚马逊的秒杀价格特意写了一个小的JS程序，后来为了更好的体验，升级了SSD和8G内存，最后年底也入手了magic mouse，烧钱啊。</p></li>
-<li><p>旅游</p>
+<li>旅游
 
 <ul>
 <li>浙江安吉</li>
@@ -850,7 +878,14 @@ rake preview
 <li>帝都</li>
 </ul>
 </li>
-<li><p>老婆在怀孕了，来年我们将有个龙宝宝了（^ - ^）。</p></li>
+</ol>
+
+
+<!--more-->
+
+
+<ol>
+<li>老婆在怀孕了，来年我们将有个龙宝宝了（^ - ^）。</li>
 <li>2012年元旦是我们结婚一周年，特意用一周的时间做了一个周年纪念视频。</li>
 </ol>
 
@@ -904,6 +939,9 @@ rake preview
     <id>http://www.xiaoche.me/blog/2012/01/01/wedding-anniversary</id>
     <content type="html"><![CDATA[<p><embed src="http://player.youku.com/player.php/sid/XMzM3OTU1NDY4/v.swf" allowFullScreen="true" quality="high" width="740" height="600" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
 
+<!--more-->
+
+
 <p>时光流逝，在感慨2012到来之际，我们也迎来了结婚一周年的日子。从相识到今天牵手走过了这些岁月，欢笑比眼泪多，这就足够让我坚信我的选择没有错。我们的婚姻没有那种富贵的成份，更多的也许只有两人背靠背的温暖和对这份感情的执着，也要谢谢你即使这样也陪在我的身边。</p>
 
 <p>虽然婚后我们两地分居，但两座城市的距离并没有将我们之间的距离拉远，反而更是让我期待，期待每次的见面，期待每次你笑脸相迎，这段不算太短的日子里，我们拥有着彼此。明年我们将要结束这样的日子，我们要每天都宅在一起，一起憧憬着宝宝出生后的美丽生活。</p>
@@ -929,6 +967,9 @@ rake preview
 
 <p>首先需要找到设置中文的字符串资源文件，路径是/System/Library/CoreServices/SystemFolderLocalizations/zh_CN.lproj/SystemFolderLocalizations.strings。
 编辑文件显示是乱码，如图：</p>
+
+<!--more-->
+
 
 <p><img src="http://farm8.staticflickr.com/7009/6799330475_17e1b7f027_b.jpg"></p>
 
@@ -968,6 +1009,9 @@ rake preview
 
 
 <p>可是我的SSD放在光驱位不能用，只能识别，不能抹盘，也不能装系统，所以我还是把SSD放在原来的硬盘位，至于所说的减震设计我也没不太去注意，平时使用的时候小心点。</p>
+
+<!--more-->
+
 
 <p>由于SSD空间有限，对于寸土寸金的SSD空间来说我们能省则省，充分发挥双硬盘的优势才是当务之急，综合网上很多办法，今天就把我的Mac的SSD优化方案分享给大家，给大家提高一个参考。</p>
 

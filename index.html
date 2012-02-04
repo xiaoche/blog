@@ -140,270 +140,12 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>#LoadModule php5_module libexec/apache2/libphp5.so</span></code></pre></td></tr></table></div></figure>
 
 
-<p>2.创建PHP的配置文件</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo cp /etc/php.ini.default /etc/php.ini</span></code></pre></td></tr></table></div></figure>
-
-
-<p>修改一些参数，比如：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>post_max_size = 128M
-</span><span class='line'>upload_max_filesize = 128M</span></code></pre></td></tr></table></div></figure>
-
-
-<p>3.重启Apache<code>sudo apachectl restart</code>，这样PHP就搞定。</p>
-
-<p>4.新建info.php文件，查看PHP相关信息。</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">cd</span> /Library/WebSever/Document
-</span><span class='line'>cp index.html.en info.php
-</span><span class='line'>vi info.php
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>在&#8221;It‘s works!&#8221;后面加上<code>&lt;?php phpinfo(); ?></code>,</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;</span>
-</span><span class='line'><span class="nt">&lt;body&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;h1&gt;</span>It works!<span class="nt">&lt;/h1&gt;</span>
-</span><span class='line'>    <span class="cp">&lt;?php phpinfo(); ?&gt;</span>
-</span><span class='line'><span class="nt">&lt;/body&gt;</span>
-</span><span class='line'><span class="nt">&lt;/html&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>保存即可，在http://localhost/info.php中就可以看到PHP的相关信息。</p>
-
-<h3>三. 安装MySQL</h3>
-
-<p>可以到<a href="http://dev.mysql.com/downloads/mysql/" title="mysql" target="_blank">官方网站</a>下载相应的程序文件安装，也可以用Homebrew来安装，方便快捷。</p>
-
-<p>Homebrew的使用方法见我的上篇博文<a href=”http://www.xiaoche.me/blog/2012/02/01/homebrew-install/“ target="_blank" title="Mac开发者利器-Homebrew介绍及安装">Mac开发者利器-Homebrew介绍及安装</a></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew install mysql</span></code></pre></td></tr></table></div></figure>
-
-
-<p>安装mysql需要一些依赖程序比如<code>cmake</code>，<code>readline</code>，<code>pidof</code>，<code>Xcode</code>。安装完成后,按照说明执行下面代码：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>unset TMPDIR
-</span><span class='line'>mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp</span></code></pre></td></tr></table></div></figure>
-
-
-<p>启动mysql</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>mysql.server start</span></code></pre></td></tr></table></div></figure>
-
-
-<p>还有些设置用户密码等等。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>mysql -uroot</span></code></pre></td></tr></table></div></figure>
-
-
-<p>就可以进入mysql了。</p>
-
-<h3>四. 安装phpmyadmin</h3>
-
-<p>phpMyAdmin是用PHP开发的管理MySQL的程序，非常实用。同样也可以用Homebrew来安装，也可以去<a href="http://www.phpmyadmin.net/home_page/downloads.php" target="_blank" title="phpmyadmin"> 官方网站</a>下载。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew install phpmydadmin</span></code></pre></td></tr></table></div></figure>
-
-
-<p>安装过程需要一些依赖程序<code>mcrypt</code>，<code>mcrypt-php</code>，这些都交给Homebrew去做吧。<br/>
-<strong>P.S：</strong>安装mcrypt-php过程中会提示将配置文件写到<code>/etc/php.ini</code>里面。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>To finish mcrypt-php installation, you need to add the
-</span><span class='line'>following line into php.ini:
-</span><span class='line'>  extension="/usr/local/Cellar/mcrypt-php/5.3.6/mcrypt.so"
-</span><span class='line'>Then, restart your webserver and check in phpinfo if
-</span><span class='line'>you're able to see something about mcrypt</span></code></pre></td></tr></table></div></figure>
-
-
-<p>安装完成后按照说明把配置写到apache的配置文件中</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Webserver configuration example (add this at the end of
-</span><span class='line'>your /etc/apache2/httpd.conf for instance) :
-</span><span class='line'>  Alias /phpmyadmin /usr/local/share/phpmyadmin
-</span><span class='line'>  &lt;Directory /usr/local/share/phpmyadmin/&gt;
-</span><span class='line'>    Options Indexes FollowSymLinks MultiViews
-</span><span class='line'>    AllowOverride All
-</span><span class='line'>    Order allow,deny
-</span><span class='line'>    Allow from all
-</span><span class='line'>  &lt;/Directory&gt;
-</span><span class='line'>Then, open http://localhost/phpmyadmin</span></code></pre></td></tr></table></div></figure>
-
-
-<p>打开phpmyadmin会出现“不允许空密码登陆”和“#2002 无法登录 MySQL 服务器”的错误，因为我们没有去配置phpmyadmin的配置文件。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd /usr/local/Cellar/phpmyadmin/3.4.7/share/phpmyadmin
-</span><span class='line'>cp config.sample.inc.php config.inc.php</span></code></pre></td></tr></table></div></figure>
-
-
-<p>修改允许空密码登陆</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$cfg['Servers'][$i]['AllowNoPassword'] = true;</span></code></pre></td></tr></table></div></figure>
-
-
-<p>解决“#2002 无法登录 MySQL 服务器”的错误</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$cfg['Servers'][$i]['host'] = '127.0.0.1';</span></code></pre></td></tr></table></div></figure>
-
-
-<p>这样登陆<code>http://localhost/phpmyadmin</code>,就可以访问了。</p>
-
-<h3>五. 虚拟主机设置</h3>
-
-<p>1.修改Apache的配置文件</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo vi /etc/apache2/httpd.conf</span></code></pre></td></tr></table></div></figure>
-
-
-<p>去掉这行注释</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#Include /private/etc/apache2/extra/httpd-vhosts.conf</span></code></pre></td></tr></table></div></figure>
-
-
-<p>2.配置虚拟主机</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo vi /etc/apache2/extra/httpd-vhosts.conf</span></code></pre></td></tr></table></div></figure>
-
-
-<p>里面提供两个例子，</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;VirtualHost *:80&gt;
-</span><span class='line'>    ServerAdmin webmaster@dummy-host.example.com
-</span><span class='line'>    DocumentRoot "/usr/docs/dummy-host.example.com"
-</span><span class='line'>    ServerName dummy-host.example.com
-</span><span class='line'>    ErrorLog "/private/var/log/apache2/dummy-host.example.com-error_log"
-</span><span class='line'>    CustomLog "/private/var/log/apache2/dummy-host.example.com-access_log" common
-</span><span class='line'>&lt;/VirtualHost&gt;
-</span><span class='line'>&lt;VirtualHost *:80&gt;
-</span><span class='line'>    ServerAdmin webmaster@dummy-host2.example.com
-</span><span class='line'>    DocumentRoot "/usr/docs/dummy-host2.example.com"
-</span><span class='line'>    ServerName dummy-host2.example.com
-</span><span class='line'>    ErrorLog "/private/var/log/apache2/dummy-host2.example.com-error_log"
-</span><span class='line'>    CustomLog "/private/var/log/apache2/dummy-host2.example.com-access_log" common
-</span><span class='line'>&lt;/VirtualHost&gt; </span></code></pre></td></tr></table></div></figure>
-
-
-<p>改成你需要配置的主机。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;VirtualHost *:80&gt;
-</span><span class='line'>    DocumentRoot "/Users/username/Sites/b2c"
-</span><span class='line'>    ServerName www.b2c.com
-</span><span class='line'>    ErrorLog "/private/var/log/apache2/b2c-error_log"
-</span><span class='line'>    CustomLog "/private/var/log/apache2/b2c-access_log" common
-</span><span class='line'>&lt;/VirtualHost&gt; </span></code></pre></td></tr></table></div></figure>
-
-
-<p>最好在配置中加上Directory配置。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;VirtualHost *:80&gt;
-</span><span class='line'>  DocumentRoot "/Users/username/Sites/b2c"
-</span><span class='line'>  &lt;Directory "/Users/username/Sites/b2c"&gt;
-</span><span class='line'>      Options FollowSymLinks
-</span><span class='line'>      AllowOverride FileInfo
-</span><span class='line'>      Order allow,deny
-</span><span class='line'>      Allow from all
-</span><span class='line'>  &lt;/Directory&gt;
-</span><span class='line'>  ServerName www.b2c.com
-</span><span class='line'>  ErrorLog "/private/var/log/apache2/b2c-error_log"
-</span><span class='line'>  CustomLog "/private/var/log/apache2/b2c-access_log" common
-</span><span class='line'>&lt;/VirtualHost&gt; </span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>P.S:</strong> 站点目录一定要<code>/Users/username/Sites</code>，不能用<code>~/Sites</code>。</p>
-
-<p>保存退出，重启Apache<code>sudo apachectl restart</code></p>
-
-<p>3.修改host文件</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo vi /etc/hosts</span></code></pre></td></tr></table></div></figure>
-
-
-<p>加入新配置的本地环境</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>127.0.0.1 www.b2c.com</span></code></pre></td></tr></table></div></figure>
-
-
-<p>用浏览器访问www.b2c.com，大功告成。</p>
-
-<p>当然了，你还可以使用<a href="http://www.apachefriends.org/en/xampp-macosx.html" title="xampp" target="_blank">XAMPP</a>来配置开发环境，这个就相对比较简单了，里面集成的apache、mysql、phpmyadmin。对于爱折腾的我还是比较喜欢单独安装。</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/02/02/mac-php-mysql/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -465,108 +207,14 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>brew --help</span></code></pre></td></tr></table></div></figure>
 
 
-<ul>
-<li>安装软件</li>
-</ul>
 
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew install git</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>卸载软件</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew uninstall git</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>搜索软件</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew search git</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>显示已经安装软件列表</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew list</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>更新软件，把所有的Formula目录更新，并且会对本机已经安装并有更新的软件用*标明。</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew update</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>更新某具体软件</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew upgrade git</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>查看软件信息</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew [info | home] [FORMULA...]</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>删除程序，和upgrade一样，单个软件删除和所有程序老版删除。</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew cleanup git
-</span><span class='line'>brew cleanup</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>查看那些已安装的程序需要更新</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew outdated</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>程序安装路径及文件夹</h4>
-
-<p>Homebrew将本地的<code>/usr/local</code>初始化为git的工作树，并将目录所有者变更为当前所操作的用户，以后的操作将不需要sudo。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>-bin          用于存放所安装程序的启动链接（相当于快捷方式）
-</span><span class='line'>-Cellar       所以brew安装的程序，都将以[程序名/版本号]存放于本目录下
-</span><span class='line'>-etc          brew安装程序的配置文件默认存放路径
-</span><span class='line'>-Library      Homebrew 系统自身文件夹
-</span><span class='line'>+–Formula     程序的下载路径和编译参数及安装路径等配置文件存放地
-</span><span class='line'>+–Homebrew    brew程序自身命令集</span></code></pre></td></tr></table></div></figure>
 
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/02/01/homebrew-install/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -632,78 +280,15 @@ Mac下的解压缩出现最多问题就是乱码，试用了好几个软件，�
 在win下一直用这个软件，在mac下就不用调整，用的很顺。</li>
 </ul>
 </li>
-<li><p><strong>虚拟机</strong></p>
-
-<ul>
-<li><strong>VMware Fusion</strong> <br />
-也用过PD，当时感觉很卡，后来改用 VM，升级SSD更快了，也许是用习惯了，这两个软件不做评价，还是那句老话，适合自己的才是做好的。</li>
-</ul>
-</li>
-<li><p><strong>写作笔记</strong></p>
-
-<ul>
-<li><strong>Mou</strong>   <br />
-和iA Writer一样都是markdown软件，好处是可以即时预览，一边写，一般看效果。<br /><br /></li>
-<li><strong> iA Writer </strong> <br />
-一样的markdown软件，全屏下很爽，字很大，很舒服，很适合写文章。<br /><br /></li>
-<li><strong> Evernote </strong> <br />
-很好的学习笔记软件，写写日志，写写总结，写写学习笔记，还能跟safrai和Reeder互通，直接把好的内容保存下来。</li>
-</ul>
-</li>
-<li><p><strong>阅读订阅</strong></p>
-
-<ul>
-<li><strong>Reeder</strong> <br />
-很好的RSS阅读器，看起来很方面，阅读也很舒服。<br /><br /></li>
-<li><strong>Gruml</strong> <br/>
-以前用过0.9的版本，不是太好用，后来投向Reeder，最近升级的1.0不错，有点Reeder的意思。</li>
-</ul>
-</li>
-<li><p>音视频处理</p>
-
-<ul>
-<li><strong>Evom</strong> <br />
-强大的一款视频转换工具，同时也支持对音频的提取。<br /><br /></li>
-<li><strong>Audacity</strong> <br />
-音频处理剪辑软件，简单好用。<br /><br /></li>
-<li><strong>iMovie</strong> <br />
-非常简单的视频制作软件，还可以生成预告片，很赞，只要资源充足，可以很快的做出高质量的视频，当初我就用了几天时间就完成了结婚一周年纪念视频。<br /><br /></li>
-<li><strong>Final Cut Pro</strong><br />
-视频处理制作，比iMovie稍微高级点，现在版本升级越来越简单了，让能人更傻瓜一点，让傻瓜更能人一点。</li>
-</ul>
-</li>
-<li><p><strong>插件</strong></p>
-
-<ul>
-<li><strong>Calendar for Mac</strong> <br />
-很好的插件，直接在状态栏显示日历，最好的是他把iCal的事件也带过来了，很直观，很方便。<br /><br /></li>
-<li><strong>TotalFinder</strong> <br />
-用了都说好，Finder的标签插件，标签很方便工作。<br /><br /></li>
-<li><strong>Alfred</strong> <br />
-快速开启应用程序，比lion下鸡肋的Launchpad强多了。<br /><br /></li>
-<li> <strong>Growl</strong> <br />
-小熊爪，全局化的信息提示软件。<br /><br /></li>
-<li><strong>Perian</strong><br />
-mac的多媒体瑞士军刀，QuickTime的免费插件，安装后可以播放各种格式视频。<br /><br /></li>
-<li><strong>Jitouch</strong> <br />
-手势辅助软件，配置也很简单，有些手势还是很实在的。</li>
-</ul>
-</li>
-<li><p><strong>其他工具</strong></p>
-
-<ul>
-<li><strong>Markman</strong> <br />
-有爱又给力的长度标注神器！-设计师、前端工程师必备<br /><br /></li>
-<li><strong>iDocument Lite</strong> <br />
-文档整理软件，方便管理阅读。<br /><br /></li>
-<li><strong>xScope</strong> <br />
-设计辅助软件，量距离，角度的标尺，放大镜，精确垂直，吸色等等。</li>
-</ul>
-</li>
 </ol>
+
 
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/01/31/mac-soft-recommend2/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -774,74 +359,15 @@ Web移动应用调试工具，远程调试工具，更改元素，样式等。</
 著名的菊花，最近终于升级了2.0，还没空研究。</p></li>
 </ul>
 </li>
-<li><p><strong>下载</strong></p>
-
-<ul>
-<li><p><strong>迅雷</strong> <br />
-都说Mac的迅雷速度不行，不过我用它的唯一用处就是用来下载迅雷离线资源和bt电驴，下载这些速度还是可以的。</p></li>
-<li><p><strong>Speed Download</strong> <br />
-除了不能下载Bt、电驴，其他很好，很快，很快。</p></li>
-</ul>
-</li>
-<li><p><strong>词典</strong></p>
-
-<ul>
-<li><p><strong>欧路词典</strong> <br />
-必备的，在app store上面一直排名前列，好东西就有好的口碑。</p></li>
-<li><p><strong>有道词典</strong> <br />
-这个也值得推荐。我比较疑惑的是这两个软件在有些单词的发音上不太一样。</p></li>
-</ul>
-</li>
-<li><p><strong>输入法</strong></p>
-
-<ul>
-<li><strong>搜狗输入法</strong> <br />
-用遍了mac的各种输入法，什么自带的输入法、QQ输入法、FIT、QIM，还是那句话，适合自己的才好。</li>
-</ul>
-</li>
-<li><p><strong>媒体音乐播放</strong></p>
-
-<ul>
-<li><p><strong>Mplayer</strong> <br />
-是Mac下最好的视频播放软件，没有之一。</p></li>
-<li><p><strong>VLC</strong> <br/>
-老牌播放器，不错，不过有Mplayer足矣。</p></li>
-<li><p><strong>QuickTime Player</strong> <br/>
-系统自带，播放mov很好</p></li>
-<li><p><strong> iTunes</strong> <br />
-mac下最好的管理和播放音乐的软件</p></li>
-<li><p><strong>亦歌</strong> <br />
-在线听音乐，用过几次，还行，后来一直听豆瓣音乐。</p></li>
-<li><p><strong>MusicSeekerX</strong> <br />
-搜索下载歌曲，下载速度很快，好像开发这个软件的哥们还有个搞了个在线直播的，牛人。</p></li>
-</ul>
-</li>
-<li><p><strong>聊天</strong></p>
-
-<ul>
-<li><p><strong>QQ</strong> <br />
-这个么的话说，国人必备，话说这两年马化腾对mac支持很给力，从QQ到QQ拼音，投入很多，版本更新很快，值得很多国内的企业学习。</p></li>
-<li><p><strong>iChat</strong> <br />
-系统自带，用iPhone的人都很熟悉。很实在的软件，其实将来iMassage也会移植到OSX上。</p></li>
-<li><p><strong>MSN</strong> <br />
-半死不活的，没有办法，要不是有好友在上面，早就彻底说88了。</p></li>
-</ul>
-</li>
-<li><p><strong>在线视频</strong></p>
-
-<ul>
-<li><p><strong>PPS</strong> <br />
-原先买MBP的时候还在犹豫没有PPS，怎么看电影呢，现在好了，有了，都有了，虽说现在版本做的跟win下没什么区别，完全没有mac的风格，而且速度很慢，不过我相信，将来肯定会做的越来越好的。</p></li>
-<li><p><strong>PPlive</strong> <br />
-虽说这两个软件的速度都很慢，但是，我认为他比pps唯一强的就是界面做的好，怎么说也有点mac的风格。</p></li>
-</ul>
-</li>
 </ol>
 
 
-<p>写来写去，发现太多了，还是分两篇写吧。暂时先到这里，欲知后事如何，且听我下回分解！</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/01/30/mac-soft-recommend1/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -897,25 +423,12 @@ log/**/*.log    //忽略log目录下的包括子目录下的所有log文件
 </ul>
 
 
-<p>由于git不会加入空目录，所以下面做法会导致tmp不会存在</p>
-
-<pre><code>tmp/*             //忽略tmp文件夹所有文件
-</code></pre>
-
-<p>改下方法，在tmp下也加一个.gitignore,内容为</p>
-
-<pre><code>*
-!.gitignore
-</code></pre>
-
-<p>还有一种情况，就是已经commit了，再加入gitignore是无效的，所以需要删除下缓存</p>
-
-<pre><code>git rm --cached ignore_file
-</code></pre>
-
-<p>这样就OK了。</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/01/19/github-gitignore/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -975,83 +488,12 @@ log/**/*.log    //忽略log目录下的包括子目录下的所有log文件
 
 <p>首页git是必备的，具体看到github官网上查看<a href="http://help.github.com/mac-set-up-git/">帮助文档</a> ，这个就比较简单了。</p>
 
-<h4>安装Ruby</h4>
-
-<p>Ruby可以利用RVM或者rbenv来安装，很轻松帮你搞定首页Ruby环境，我是用RVM来安装的。</p>
-
-<h6>1.安装 RVM</h6>
-
-<p>RVM(Ruby Version Manager)</p>
-
-<pre><code>$ bash -s stable &lt; &lt;(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
-</code></pre>
-
-<h6>2.安装Ruby1.9.2</h6>
-
-<pre><code>rvm install 1.9.2 &amp;&amp; rvm use 1.9.2
-</code></pre>
-
-<h4>安装Octopress</h4>
-
-<h6>1.安装Octopress</h6>
-
-<pre><code>git clone git://github.com/imathis/octopress.git myblog
-cd myblog    //这边会有提示信息，yes就行
-ruby --version  //Ruby的版本需要在1.9.2版本
-</code></pre>
-
-<h6>2.安装插件等等</h6>
-
-<pre><code>gem install bundler //安装相关附属插件等
-bundle install
-</code></pre>
-
-<h6>3.安装Octopress 主题</h6>
-
-<pre><code>rake install
-</code></pre>
-
-<h6>4. 修改配置</h6>
-
-<p>修改配置文件_config.yml，修改url、title、subtitle、author等等，把评论disqus加上，google+、twitter、Facebook等等，统统都加上。
-在source下建CNAME文件，</p>
-
-<h5>5. 创建github pero</h5>
-
-<p>在<a href="www.github.com">github</a>上创建一个repository</p>
-
-<h5>6. 本地配置github分支</h5>
-
-<pre><code>rake setup_github_pages
-</code></pre>
-
-<p>当命令提示你输入github URL时，输入刚才建立的git地址</p>
-
-<h6>7. 写文章</h6>
-
-<pre><code>rake new_post["my first blog"] 
-</code></pre>
-
-<p>在&#8221;myblog/source/_post&#8221;下生成一个**.makedown文件，编辑文章即可。</p>
-
-<h5>8. 生成，预览</h5>
-
-<pre><code>rake generate
-rake preview
-</code></pre>
-
-<p>在本地 http://127.0.0.1:4000 就可在本地调试页面</p>
-
-<h5>9. git提交</h5>
-
-<pre><code>rake deploy
-</code></pre>
-
-<p>直接把_deploy提交到github上，完工！</p>
-
-<p>以后发博客只需要在本地用命令就OK了。</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/01/18/install-octopress/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -1094,7 +536,7 @@ rake preview
 <ol>
 <li><p>去年最大的事就是结婚了，由男孩成长为男人，责任更大了，压力更大了。</p></li>
 <li><p>终于狠心在亚马逊上面分期购买了MBP，为抢到亚马逊的秒杀价格特意写了一个小的JS程序，后来为了更好的体验，升级了SSD和8G内存，最后年底也入手了magic mouse，烧钱啊。</p></li>
-<li><p>旅游</p>
+<li>旅游
 
 <ul>
 <li>浙江安吉</li>
@@ -1102,52 +544,15 @@ rake preview
 <li>帝都</li>
 </ul>
 </li>
-<li><p>老婆在怀孕了，来年我们将有个龙宝宝了（^ - ^）。</p></li>
-<li>2012年元旦是我们结婚一周年，特意用一周的时间做了一个周年纪念视频。</li>
 </ol>
 
-
-<h4>二.工作及技术成长</h4>
-
-<ol>
-<li>前端团队的建设以及前端基础架构规范文档知识梳理</li>
-<li>Mobile web的研究试水</li>
-<li>开始IOS学习，渐渐入门</li>
-<li>熟悉OSX下的各种开发环境及工具</li>
-<li>部门分享
-
-<ul>
-<li>前端开发基础分享</li>
-<li>Mobile web 开发实践分享</li>
-</ul>
-</li>
-</ol>
-
-
-<h4>三.读书</h4>
-
-<ol>
-<li>《乔布斯传记》</li>
-<li>《Object-C》</li>
-<li>一堆分享的PDF</li>
-</ol>
-
-
-<br/>
-
-
-<h3>2012计划</h3>
-
-<hr />
-
-<ol>
-<li>加强学习IOS开发，多学技术。</li>
-<li>房子和车子不变的话题，年中孩子就要出生了，这两个最重要的问题要解决</li>
-<li>两地分居的问题，争取在年初解决</li>
-</ol>
 
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/01/03/annual-summarymou/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -1183,21 +588,12 @@ rake preview
 
   <div class="entry-content"><p><embed src="http://player.youku.com/player.php/sid/XMzM3OTU1NDY4/v.swf" allowFullScreen="true" quality="high" width="740" height="600" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
 
-<p>时光流逝，在感慨2012到来之际，我们也迎来了结婚一周年的日子。从相识到今天牵手走过了这些岁月，欢笑比眼泪多，这就足够让我坚信我的选择没有错。我们的婚姻没有那种富贵的成份，更多的也许只有两人背靠背的温暖和对这份感情的执着，也要谢谢你即使这样也陪在我的身边。</p>
-
-<p>虽然婚后我们两地分居，但两座城市的距离并没有将我们之间的距离拉远，反而更是让我期待，期待每次的见面，期待每次你笑脸相迎，这段不算太短的日子里，我们拥有着彼此。明年我们将要结束这样的日子，我们要每天都宅在一起，一起憧憬着宝宝出生后的美丽生活。</p>
-
-<p>每天早晨七点半电话叫你起床，晚上半小时的电话粥，这些也渐渐成了我的习惯，其实幸福就是平平淡淡中的一点一滴，和心爱的人唠嗑，分享生活中的点点滴滴，我要谢谢你给我带来这么多欢乐和幸福，让我对生活对今后对我们的未来有着更大的信心。</p>
-
-<p>人生很漫长，这短短的一年只是我们漫长的婚姻生活的小小阶段，只要感情化为一种承诺，固守化为一种信念，那么海枯石烂般的浪漫情怀终将不只是小说中的惯用章节。</p>
-
-<p>我相信，所有爱的路都不是一路都顺畅，生活也不并都是一开始就很辉煌，只要有彼此在身旁，那么，每个欣慰的眼神都会是我们的精神食粮。</p>
-
-<p>以此纪念我们结婚一周年，我感激命运对我的厚爱，让你来到我身边。</p>
-
-<p>亲爱的老婆! <strong>结婚一周年快乐！我爱你！</strong></p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/01/01/wedding-anniversary/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -1236,27 +632,12 @@ rake preview
 <p>首先需要找到设置中文的字符串资源文件，路径是/System/Library/CoreServices/SystemFolderLocalizations/zh_CN.lproj/SystemFolderLocalizations.strings。
 编辑文件显示是乱码，如图：</p>
 
-<p><img src="http://farm8.staticflickr.com/7009/6799330475_17e1b7f027_b.jpg"></p>
-
-<p>在lion系统中是二进制格式的，首先要把它转成XML格式的。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo plutil -convert xml1 SystemFolderLocalizations.strings</span></code></pre></td></tr></table></div></figure>
-
-
-<p>转换之后就可以编辑了，如图：</p>
-
-<p><img src="http://farm8.staticflickr.com/7146/6799330887_bdf040fa12_z.jpg"></p>
-
-<p>对应增加你想添加的中文名，之后再把文件转换成二进制。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo plutil -convert binary1 SystemFolderLocalizations.strings</span></code></pre></td></tr></table></div></figure>
-
-
-<p>最后一步，在需要中文名的文件夹下，新建一个名为.localized的隐藏文件即可。大功告成！</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/12/15/system-folder-localizations/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -1302,51 +683,12 @@ rake preview
 
 <p>可是我的SSD放在光驱位不能用，只能识别，不能抹盘，也不能装系统，所以我还是把SSD放在原来的硬盘位，至于所说的减震设计我也没不太去注意，平时使用的时候小心点。</p>
 
-<p>由于SSD空间有限，对于寸土寸金的SSD空间来说我们能省则省，充分发挥双硬盘的优势才是当务之急，综合网上很多办法，今天就把我的Mac的SSD优化方案分享给大家，给大家提高一个参考。</p>
-
-<p>更换SSD的最大好处就是速度快，最大的缺点就是空间小。如何充分发挥他的优势，弱化他的缺点正是我们优化的最终目的。针对这个就不难理解，把lion系统、bootcamp、应用程序等必须放在SSD上，其余的一些文件可以放在HDD上，必要的做个软连接。</p>
-
-<ol>
-<li>转移文件
-把Lion安装在SSD上，用Timemachine把备份恢复到新系统，在HDD上面对应的建上Documents, Downloads, Music, Movies, Pictures等目录</li>
-</ol>
-
-
-<p><img src="http://farm8.staticflickr.com/7025/6795320791_7550c3b37e.jpg"></p>
-
-<p>将想要移动的SSD的文件夹拷贝到HDD对应文件夹下<br />
-进入Terminal，</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cd /Users/username
-</span><span class='line'>sudo rm -rf Downloads     //Downloads为例,删除原用户下的Downloads文件夹
-</span><span class='line'>ln -s /Volumes/HDD/User/Downloads ~/Downloads  //将移动后的文件夹做个软连接放到用户文件夹下</span></code></pre></td></tr></table></div></figure>
-
-
-<p>按照相同的办法把想要转移的文件夹挪位。对于我来说，我通常会把下面这些文件夹从SSD移动到HDD。（如图）</p>
-
-<p><img src="http://farm8.staticflickr.com/7161/6795346321_05205b5a2c.jpg"></p>
-
-<ol>
-<li>开启trim <br /></li>
-</ol>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo cp /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage /IOAHCIBlockStorage.original
-</span><span class='line'>sudo perl -pi -e 's|(\x52\x6F\x74\x61\x74\x69\x6F\x6E\x61\x6C\x00).{9}(\x00\x51)|$1\x00\x00\x00\x00\x00\x00\x00\x00\x00$2|sg' /System/Library/Extensions/IOAHCIFamily.kext/Contents/PlugIns/IOAHCIBlockStorage.kext/Contents/MacOS/IOAHCIBlockStorage
-</span><span class='line'>sudo kextcache -system-prelinked-kernel
-</span><span class='line'>sudo kextcache -system-caches</span></code></pre></td></tr></table></div></figure>
-
-
-<p>经过这样简单的操作，我们就很好的把SSD和HDD利用起来了，体验秒开秒关的感觉，再也不要看菊花的眼色了！(^ _ ^)</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2011/12/08/optimize-ssd-on-mac/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -1391,6 +733,16 @@ rake preview
 <section>
   <h1>About Me</h1>
   <p>80后，前端开发工程师，混于南京。爱Google，爱Mac，爱折腾。</p>
+</section>
+
+<section>
+<h1>分类</h1>
+<ul>
+  <li><a href='/blog/categories/github'>Github (1)</a></li>
+  <li><a href='/blog/categories/mac'>Mac (7)</a></li>
+  <li><a href='/blog/categories/octopress'>Octopress (1)</a></li>
+  <li><a href='/blog/categories/other'>Other (2)</a></li>
+</ul>
 </section>
 
 <section>
