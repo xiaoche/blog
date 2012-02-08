@@ -1,0 +1,523 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Mac OSX Lion上安装Node环境 - 小车的博客</title>
+  <meta name="author" content="小车">
+
+  
+  <meta name="description" content="Node 是一个服务器端 JavaScript 解释器，它将改变服务器应该如何工作的概念。mac osx本地架设Node.js的环境。">
+  <meta name="keywords" content="mac,homebrew,包管理器,node,node.js,">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.xiaoche.me/blog/2012/02/08/bulid-nodejs-environment">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="小车的博客" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-27229289-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">小车的博客</a></h1>
+  
+    <h2>记录生活学习中的点点滴滴.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.xiaoche.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about-me">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Mac OSX Lion上安装Node环境</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-08T16:18:00+08:00" pubdate data-updated="true">Feb 8<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><img src="http://farm8.staticflickr.com/7147/6839112691_a966b82805.jpg"></p>
+
+<p>Node.js，很火吧，火的很。爱折腾，爱前沿的我肯定不能落下队伍，今天我就来分享下如何在本地架设Node.js的环境。</p>
+
+<h3>何为Node.js</h3>
+
+<blockquote><p>Node.js is a platform built on Chrome&#8217;s JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.</p></blockquote>
+
+
+<p>这是官网网站上的一段介绍。</p>
+
+<!-- more -->
+
+
+<p>有一篇很好的博文相信介绍了，大家可以看看。<a href="http://blog.sina.com.cn/s/blog_6d677b680100sgr5.html" target="_blank" title="" >Node.js 究竟是什么？</a></p>
+
+<h3>安装Node.js</h3>
+
+<p>在Mac Lion下，我还是用简单的Homebrew的包安装方法来安装，不会Homebrew的看这里。<a href="http://www.xiaoche.me/blog/2012/02/01/homebrew-install/" target="_blank" title="Mac开发者利器-Homebrew介绍及安装">Mac开发者利器-Homebrew介绍及安装</a></p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>brew install node
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>安装完成node，会提示你没有安装npm，并告诉你具体的安装办法。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Homebrew has NOT installed npm. We recommend the following method of
+</span><span class='line'>installation:
+</span><span class='line'>  curl http://npmjs.org/install.sh | sh
+</span><span class='line'>
+</span><span class='line'>After installing, add the following path to your NODE_PATH environment
+</span><span class='line'>variable to have npm libraries picked up:
+</span><span class='line'>  /usr/local/lib/node_modules</span></code></pre></td></tr></table></div></figure>
+
+
+<p>安装npm。</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>curl http://npmjs.org/install.sh | sh
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>安装成功</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>/usr/local/bin/npm -&gt; /usr/local/lib/node_modules/npm/bin/npm-cli.js
+</span><span class='line'>npm@1.1.0-3 /usr/local/lib/node_modules/npm
+</span><span class='line'>It worked
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>设置NODE_PATH环境变量</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">export </span><span class="nv">NODE_PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/lib/node_modules/&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>测试</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>vi example.js
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">});</span>
+</span><span class='line'>        <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">&#39;Hello World\n&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8888</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Server running at http://127.0.0.1:8888/&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>node example.js
+</span><span class='line'>Server running at http://127.0.0.1:8888/
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>测试成功</p>
+
+<p><img src="http://farm8.staticflickr.com/7015/6839229965_e48d481a6d_m.jpg"></p>
+
+<p>安装express框架</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>npm install express
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>新建一个Node server文件夹<code>~/node_server</code></p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">cd</span> ~
+</span><span class='line'><span class="nv">$ </span>mkdir node_server
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>node_server
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>创建项目文件夹<code>nodetest</code></p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>express nodetest
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>create : nodetest
+</span><span class='line'>create : nodetest/package.json
+</span><span class='line'>create : nodetest/app.js
+</span><span class='line'>create : nodetest/public
+</span><span class='line'>create : nodetest/routes
+</span><span class='line'>create : nodetest/routes/index.js
+</span><span class='line'>create : nodetest/views
+</span><span class='line'>create : nodetest/views/layout.jade
+</span><span class='line'>create : nodetest/views/index.jade
+</span><span class='line'>create : nodetest/public/javascripts
+</span><span class='line'>create : nodetest/public/images
+</span><span class='line'>create : nodetest/public/stylesheets
+</span><span class='line'>create : nodetest/public/stylesheets/style.css
+</span><span class='line'>
+</span><span class='line'>dont forget to install dependencies:
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>nodetest <span class="o">&amp;&amp;</span> npm install
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>安装npm</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">cd </span>nodetest
+</span><span class='line'><span class="nv">$ </span>npm install
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>node app.js
+</span><span class='line'>Express server listening on port 3000 in development mode
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>安装成功，浏览器输入<code>http://127.0.0.1:3000/</code>，即可看到效果。
+<img src="http://farm8.staticflickr.com/7035/6839403705_70aa4091f4.jpg"></p>
+
+<p>npm中有许多我们需要的库，比如：</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>npm install jquery
+</span><span class='line'><span class="nv">$ </span>npm install yui
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">小车</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-08T16:18:00+08:00" pubdate data-updated="true">Feb 8<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/node/'>node</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/02/02/mac-php-mysql/" title="Previous Post: Mac OSX Lion中Web开发环境配置">&laquo; Mac OSX Lion中Web开发环境配置</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/02/08/bulid-nodejs-environment/">Mac OSX Lion上安装Node环境</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/02/mac-php-mysql/">Mac OSX Lion中Web开发环境配置</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/01/homebrew-install/">Mac开发者利器-Homebrew介绍及安装</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/31/mac-soft-recommend2/">Mac常用软件推荐（二）</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/01/30/mac-soft-recommend1/">Mac常用软件推荐（一）</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>About Me</h1>
+  <p>80后，前端开发工程师，混于南京。爱Google，爱Mac，爱折腾。</p>
+</section>
+<section>
+ <h1>Categories</h1>
+ <ul id="categories">
+ <li class='category'><a href='/categories/Mac/'>Mac (7)</a></li>
+<li class='category'><a href='/categories/github/'>github (1)</a></li>
+<li class='category'><a href='/categories/node/'>node (1)</a></li>
+<li class='category'><a href='/categories/octopress/'>octopress (1)</a></li>
+<li class='category'><a href='/categories/other/'>other (2)</a></li>
+
+ </ul>
+</section>
+<section>
+  <h1>友情链接</h1>
+  <ul id="links">
+      <li class="post">
+        <a href="http://www.im-ux.com" title="四海商舟用户体验部博客" target="_blank">四海商舟IUX</a>
+      </li>
+      <li class="post">
+        <a href="http://www.smallni.com" title="Smallni的博客" target="_blank">Smallni&#039;s blog</a>
+      </li>
+      <li class="post"><a href="http://hikejun.com" title="豆瓣克军" target="_blank">kejun</a></li>
+      <li class="post"><a href="http://blog.linxz.de" title="《CSS那些事儿》作者林小志" target="_blank">linxz</a></li>
+      <li class="post"><a href="http://www.qianduan.net" target="_blank">前端观察</a></li>
+      <li class="post"><a href="http://www.daqianduan.com" title="前端资源博客" target="_blank">大前端</a></li>
+      <li class="post"><a href="http://ued.taobao.com/" title="淘宝UED" target="_blank">淘宝UED</a></li>
+      <li class="post"><a href="http://isux.tencent.com" title="腾讯ISUX" target="_blank">腾讯ISUX</a></li>
+      <li class="post">
+        <a href="http://www.qinbin.me" title="小木同的博客" target="_blank">小木同的博客</a>
+      </li>
+      <li class="post">
+        <a href="http://www.ganguoyuan.com" title="网站分析博客" target="_blank">网站分析博客</a>
+      </li>
+      <li class="post">
+        <a href="http://www.vicenteforever.com" title="" target="_blank">王强LAMP博客</a>
+      </li>
+  </ul>
+</section>
+<section>
+  <h1>最新评论</h1>
+  <div id="recentcomments" class="dsq-widget"><script type="text/javascript" src="http://xiaoche.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=0&avatar_size=32&excerpt_length=200"></script></div>
+</section>
+
+<section class="">
+  <iframe width="100%" height="70" class="share_self"  frameborder="0"
+      scrolling="no"
+      src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=70&fansRow=2&ptype=1&speed=0&skin=0&isTitle=0&noborder=0&isWeibo=0&isFans=0&uid=1801663534&verifier=3b01a22b&colors=d6f3f7,f2f2f2,666666,0082cb,ecfbfd&dpc=1"></iframe>
+</section>
+
+
+
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/116312353002157513508?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - 小车 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'xiaoche';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.xiaoche.me/blog/2012/02/08/bulid-nodejs-environment/';
+        var disqus_url = 'http://www.xiaoche.me/blog/2012/02/08/bulid-nodejs-environment/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

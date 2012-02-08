@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: node | 小车的博客]]></title>
+  <link href="http://www.xiaoche.me/blog/categories/node/atom.xml" rel="self"/>
+  <link href="http://www.xiaoche.me/"/>
+  <updated>2012-02-08T13:45:04+08:00</updated>
+  <id>http://www.xiaoche.me/</id>
+  <author>
+    <name><![CDATA[小车]]></name>
+    <email><![CDATA[xiaoche2012@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mac OSX Lion上安装Node环境]]></title>
+    <link href="http://www.xiaoche.me/blog/2012/02/08/bulid-nodejs-environment/"/>
+    <updated>2012-02-08T16:18:00+08:00</updated>
+    <id>http://www.xiaoche.me/blog/2012/02/08/bulid-nodejs-environment</id>
+    <content type="html"><![CDATA[<p><img src="http://farm8.staticflickr.com/7147/6839112691_a966b82805.jpg"></p>
+
+<p>Node.js，很火吧，火的很。爱折腾，爱前沿的我肯定不能落下队伍，今天我就来分享下如何在本地架设Node.js的环境。</p>
+
+<h3>何为Node.js</h3>
+
+<p><blockquote><p>Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.</p></blockquote>
+这是官网网站上的一段介绍。</p>
+
+<!-- more -->
+
+
+<p>有一篇很好的博文相信介绍了，大家可以看看。<a href="http://blog.sina.com.cn/s/blog_6d677b680100sgr5.html" target="_blank" title="" >Node.js 究竟是什么？</a></p>
+
+<h3>安装Node.js</h3>
+
+<p>在Mac Lion下，我还是用简单的Homebrew的包安装方法来安装，不会Homebrew的看这里。<a href="http://www.xiaoche.me/blog/2012/02/01/homebrew-install/" target="_blank" title="Mac开发者利器-Homebrew介绍及安装">Mac开发者利器-Homebrew介绍及安装</a>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>brew install node
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+安装完成node，会提示你没有安装npm，并告诉你具体的安装办法。
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Homebrew has NOT installed npm. We recommend the following method of
+</span><span class='line'>installation:
+</span><span class='line'>  curl http://npmjs.org/install.sh | sh&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>After installing, add the following path to your NODE_PATH environment
+</span><span class='line'>variable to have npm libraries picked up:
+</span><span class='line'>  /usr/local/lib/node_modules</span></code></pre></td></tr></table></div></figure></notextile></div>
+安装npm。
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>curl http://npmjs.org/install.sh | sh
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+安装成功
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>/usr/local/bin/npm -&gt; /usr/local/lib/node_modules/npm/bin/npm-cli.js
+</span><span class='line'>npm@1.1.0-3 /usr/local/lib/node_modules/npm
+</span><span class='line'>It worked
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>设置NODE_PATH环境变量
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">export </span><span class="nv">NODE_PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/lib/node_modules/&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>测试
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>vi example.js
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span>    <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">});</span>
+</span><span class='line'>    <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">&#39;Hello World\n&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8888</span><span class="p">);</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Server running at http://127.0.0.1:8888/&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>node example.js
+</span><span class='line'>Server running at http://127.0.0.1:8888/
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>测试成功</p>
+
+<p><img src="http://farm8.staticflickr.com/7015/6839229965_e48d481a6d_m.jpg"></p>
+
+<p>安装express框架
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>npm install express
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>新建一个Node server文件夹<code>~/node_server</code>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">cd</span> ~
+</span><span class='line'><span class="nv">$ </span>mkdir node_server
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>node_server
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+创建项目文件夹<code>nodetest</code>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>express nodetest
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>create : nodetest
+</span><span class='line'>create : nodetest/package.json
+</span><span class='line'>create : nodetest/app.js
+</span><span class='line'>create : nodetest/public
+</span><span class='line'>create : nodetest/routes
+</span><span class='line'>create : nodetest/routes/index.js
+</span><span class='line'>create : nodetest/views
+</span><span class='line'>create : nodetest/views/layout.jade
+</span><span class='line'>create : nodetest/views/index.jade
+</span><span class='line'>create : nodetest/public/javascripts
+</span><span class='line'>create : nodetest/public/images
+</span><span class='line'>create : nodetest/public/stylesheets
+</span><span class='line'>create : nodetest/public/stylesheets/style.css&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;dont forget to install dependencies:
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>nodetest &amp;amp;&amp;amp; npm install
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>安装npm
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span><span class="nb">cd </span>nodetest
+</span><span class='line'><span class="nv">$ </span>npm install
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>node app.js
+</span><span class='line'>Express server listening on port 3000 in development mode
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>安装成功，浏览器输入<code>http://127.0.0.1:3000/</code>，即可看到效果。
+<img src="http://farm8.staticflickr.com/7035/6839403705_70aa4091f4.jpg"></p>
+
+<p>npm中有许多我们需要的库，比如：
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>npm install jquery
+</span><span class='line'><span class="nv">$ </span>npm install yui
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+</feed>
