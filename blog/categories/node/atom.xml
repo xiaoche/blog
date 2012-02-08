@@ -4,7 +4,7 @@
   <title><![CDATA[Category: node | 小车的博客]]></title>
   <link href="http://www.xiaoche.me/blog/categories/node/atom.xml" rel="self"/>
   <link href="http://www.xiaoche.me/"/>
-  <updated>2012-02-08T13:45:04+08:00</updated>
+  <updated>2012-02-08T13:48:56+08:00</updated>
   <id>http://www.xiaoche.me/</id>
   <author>
     <name><![CDATA[小车]]></name>
@@ -25,12 +25,12 @@
 <h3>何为Node.js</h3>
 
 <p><blockquote><p>Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.</p></blockquote>
-这是官网网站上的一段介绍。</p>
+这是官网上的一段介绍。</p>
 
 <!-- more -->
 
 
-<p>有一篇很好的博文相信介绍了，大家可以看看。<a href="http://blog.sina.com.cn/s/blog_6d677b680100sgr5.html" target="_blank" title="" >Node.js 究竟是什么？</a></p>
+<p>还有一篇很好的博文详细介绍了Node，大家可以看看。<a href="http://blog.sina.com.cn/s/blog_6d677b680100sgr5.html" target="_blank" title="" >Node.js 究竟是什么？</a></p>
 
 <h3>安装Node.js</h3>
 
