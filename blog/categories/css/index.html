@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>github中不加入版本控制.gitignore设定 - 小车的博客</title>
+  <title>Category: CSS - 小车的博客</title>
   <meta name="author" content="小车">
 
   
-  <meta name="description" content="github中不加入版本控制.gitignore设定">
-  <meta name="keywords" content="github,版本控制,gitignore,">
+  <meta name="description" content="Category: CSS">
+  
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.xiaoche.me/blog/2012/01/19/github-gitignore">
+  <link rel="canonical" href="http://www.xiaoche.meblog/categories/css">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -75,134 +75,36 @@
   <div id="main">
     <div id="content">
       <div>
-<article class="hentry" role="article">
+<article role="article">
   
   <header>
-    
-      <h1 class="entry-title">github中不加入版本控制.gitignore设定</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-19T10:16:00+08:00" pubdate data-updated="true">Jan 19<span>th</span>, 2012</time>
-        
-      </p>
+    <h1 class="entry-title">Category: CSS</h1>
     
   </header>
-
-
-<div class="entry-content"><p>这几天研究github page，由于用jekyll本地测试时会生成_site文件夹，所以需要把这个文件夹排除在外再提交到github，到底怎么设置呢？</p>
-
-<p>这就需要用到.gitignore，即不加入版本控制，在git根目录下建立.gitignore，具体设定如下：</p>
-
-<pre><code>tmp.txt         //忽略tmp.txt
-*.log           //忽略所有log文件
-tmp/*           //忽略tmp文件夹所有文件
-log/**/*.log    //忽略log目录下的包括子目录下的所有log文件
-</code></pre>
-
-<p>其他的一些过滤条件</p>
-
-<ul>
-<li>？：代表任意的一个字符</li>
-<li>＊：代表任意数目的字符</li>
-<li>{!ab}：必须不是此类型</li>
-<li>{ab,bb,cx}：代表ab,bb,cx中任一类型即可</li>
-<li>[abc]：代表a,b,c中任一字符即可</li>
-<li>[ ^abc]：代表必须不是a,b,c中任一字符</li>
-</ul>
-
-
-<!--more-->
-
-
-<p>由于git不会加入空目录，所以下面做法会导致tmp不会存在</p>
-
-<pre><code>tmp/*             //忽略tmp文件夹所有文件
-</code></pre>
-
-<p>改下方法，在tmp下也加一个.gitignore,内容为</p>
-
-<pre><code>*
-!.gitignore
-</code></pre>
-
-<p>还有一种情况，就是已经commit了，再加入gitignore是无效的，所以需要删除下缓存</p>
-
-<pre><code>git rm --cached ignore_file
-</code></pre>
-
-<p>这样就OK了。</p>
-</div>
-
-
-  <footer>
-    <p class="meta">
-      
   
-
-<span class="byline author vcard">Posted by <span class="fn">小车</span></span>
-
-      
-
-
-
-
-
+  <div id="blog-archives" class="category">
 
 
 
   
+  <h2>2012</h2>
+
+<article>
+  
+<h1><a href="/blog/2012/02/27/sass-less/">认识Sass/Scss&Less</a></h1>
+<time datetime="2012-02-27T17:02:00+08:00" pubdate><span class='month'>Feb</span> <span class='day'>27</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/css/'>CSS</a></span>
+</footer>
 
 
-<time datetime="2012-01-19T10:16:00+08:00" pubdate data-updated="true">Jan 19<span>th</span>, 2012</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/github/'>github</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  
-  <div class="g-plusone" data-size="medium"></div>
-  
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2012/01/18/install-octopress/" title="Previous Post: 从零开始在github上安装octopress">&laquo; 从零开始在github上安装octopress</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2012/01/30/mac-soft-recommend1/" title="next Post: Mac常用软件推荐（一）">Mac常用软件推荐（一） &raquo;</a>
-      
-    </p>
-  </footer>
 </article>
 
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-  </section>
+
+  
+</article>
 
 </div>
 
@@ -322,10 +224,7 @@ log/**/*.log    //忽略log目录下的包括子目录下的所有log文件
       var disqus_shortname = 'xiaoche';
       
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.xiaoche.me/blog/2012/01/19/github-gitignore/';
-        var disqus_url = 'http://www.xiaoche.me/blog/2012/01/19/github-gitignore/';
-        var disqus_script = 'embed.js';
+        var disqus_script = 'count.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

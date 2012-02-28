@@ -4,7 +4,7 @@
   <title><![CDATA[小车的博客]]></title>
   <link href="http://www.xiaoche.me/atom.xml" rel="self"/>
   <link href="http://www.xiaoche.me/"/>
-  <updated>2012-02-27T15:51:36+08:00</updated>
+  <updated>2012-02-28T17:30:30+08:00</updated>
   <id>http://www.xiaoche.me/</id>
   <author>
     <name><![CDATA[小车]]></name>
@@ -12,6 +12,637 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[认识Sass/Scss&Less]]></title>
+    <link href="http://www.xiaoche.me/blog/2012/02/27/sass-less/"/>
+    <updated>2012-02-27T17:02:00+08:00</updated>
+    <id>http://www.xiaoche.me/blog/2012/02/27/sass-less</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://farm8.staticflickr.com/7181/6934567423_d2820051b5.jpg" title="less&sass less&sass" ></p>
+
+<h3>一. Sass/Scss&amp;Less是什么？</h3>
+
+<p><a href="http://sass-lang.com" title="sass">Sass</a> (Syntactically Awesome Stylesheets)是一种动态样式语言，语法跟css一样(但多了些功能)，比css好写，而且更容易阅读。Sass语法类似与Haml，属于缩排语法（makeup），用意就是为了快速写Html和Css。</p>
+
+<p><a href="http://www.lesscss.org" title="less">LESS</a>一种动态样式语言. 将CSS赋予了动态语言的特性，如变量，继承，运算， 函数. LESS 既可以在客户端上运行 (支持IE 6+, Webkit, Firefox)，也可一在服务端运行 (借助 Node.js)。<a href="http://www.lesscss.org" title="less">less英文站</a>需要翻墙，也可以访问<a href="http://www.lesscss.net" title="less">中文站</a></p>
+
+<!--more-->
+
+
+<p>Sass与Scss有什么差别</p>
+
+<p>Sass原先跟Haml一样的缩排语法，对于写惯Css的前端来说是很不直观的，也不能将原来的Css加到Sass里面，因此Sass改良了语法，Sass 3就变成了Scss(Sassy CSS)。与原来的语法兼容，只是用{}取代了原来的缩进。</p>
+
+<figure class='code'><figcaption><span>Sass </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='sass'><span class='line'><span class="nc">.content</span>
+</span><span class='line'>  <span class="na">margin</span><span class="o">:</span><span class="mi">10</span><span class="kt">px</span> <span class="no">auto</span>
+</span><span class='line'>  <span class="nt">h1</span>
+</span><span class='line'>      <span class="na">font-size</span><span class="o">:</span><span class="mi">24</span><span class="kt">px</span><span class="err">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>Scss </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nc">.content</span><span class="p">{</span>
+</span><span class='line'>  <span class="na">margin</span><span class="o">:</span><span class="mi">10</span><span class="kt">px</span> <span class="no">auto</span>
+</span><span class='line'>  <span class="n">h1</span><span class="p">{</span>
+</span><span class='line'>      <span class="na">font-size</span><span class="o">:</span><span class="mi">24</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>二. Sass/Scss&amp;Less区别？</h3>
+
+<p>1.Sass是基于Ruby的，是在服务端处理的，而Less是需要引入less.js来处理Less代码输出Css到浏览器，也可以在开发环节使用Less，然后编译成Css文件，直接放到项目中，也有 <a href="http://incident57.com/less/">Less.app</a>、<a href="http://wearekiss.com/simpless" title="simpleless.app">SimpleLess</a>、<a href="http://incident57.com/codekit/" title="codekit.app">CodeKit.app</a>这样的工具，也有<a href="http://less.cnodejs.net/" title="在线编译">在线编译</a>地址。</p>
+
+<p>2.变量符不一样，less是@，而Scss是%，而且变量的作用域也不一样，后面会讲到。</p>
+
+<p>3.输出设置，Less没有输出设置，Sass提供4中输出选项：nested, compact, compressed 和 expanded。</p>
+
+<p>4.Sass支持条件语句，可以使用if{}else{},for{}循环等等。</p>
+
+<figure class='code'><figcaption><span>Scss条件语句与控制 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="cm">/* Sample Sass &quot;if&quot; statement */</span>
+</span><span class='line'><span class="k">@if</span> <span class="nf">lightness</span><span class="p">(</span><span class="nv">$color</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="kt">%</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">background-color</span><span class="o">:</span> <span class="mh">#000</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span> <span class="k">@else</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">background-color</span><span class="o">:</span> <span class="mh">#fff</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/* Sample Sass &quot;for&quot; loop */</span>
+</span><span class='line'><span class="k">@for</span> <span class="nv">$i</span> <span class="ow">from</span> <span class="mi">1</span> <span class="ow">to</span> <span class="mi">10</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nc">.border-</span><span class="si">#{</span><span class="nv">$i</span><span class="si">}</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">border</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$i</span><span class="si">}</span><span class="no">px</span> <span class="no">solid</span> <span class="nb">blue</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>三. Sass/Scss&amp;Less的共同特征</h3>
+
+<h4>1.变量</h4>
+
+<p>允许我们单独定义通用的样式，这样可以在css中调用。</p>
+
+<figure class='code'><figcaption><span>less-变量 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'> <span class="k">@color</span><span class="nd">:</span><span class="nn">#4d926f</span><span class="o">;</span>
+</span><span class='line'>  <span class="nn">#header</span><span class="p">{</span>
+</span><span class='line'>      <span class="na">color</span><span class="o">:@</span><span class="no">color</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="nt">h2</span><span class="p">{</span>
+</span><span class='line'>      <span class="na">color</span><span class="o">:@</span><span class="no">color</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>scss-变量 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'> <span class="nv">$color</span><span class="o">:</span><span class="mh">#4d926f</span><span class="p">;</span>
+</span><span class='line'>  <span class="nn">#header</span><span class="p">{</span>
+</span><span class='line'>      <span class="na">color</span><span class="o">:</span><span class="nv">$color</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="nt">h2</span><span class="p">{</span>
+</span><span class='line'>      <span class="na">color</span><span class="o">:</span><span class="nv">$color</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>编译后的css</p>
+
+<figure class='code'><figcaption><span>css </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'>  <span class="nf">#header</span><span class="p">{</span><span class="k">color</span><span class="o">:</span><span class="m">#4d926f</span><span class="p">;}</span>
+</span><span class='line'>  <span class="nt">h2</span><span class="p">{</span><span class="k">color</span><span class="o">:</span><span class="m">#4d926f</span><span class="p">;}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>2.混合</h4>
+
+<p>混合可以将一个定义好的class A轻松的引入到另一个class B中，从而简单实现class B继承class A中的所有属性。我们还可以带参数地调用，就像使用函数一样。</p>
+
+<figure class='code'><figcaption><span>less-混合 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="na">.rounded-corners</span><span class="err"> </span><span class="na">(@radius</span><span class="o">:</span> <span class="mi">5</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">border-radius</span><span class="o">:</span> <span class="o">@</span><span class="n">radius</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">-webkit-border-radius</span><span class="o">:</span> <span class="o">@</span><span class="n">radius</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">-moz-border-radius</span><span class="o">:</span> <span class="o">@</span><span class="n">radius</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nn">#header</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nc">.rounded-corners</span><span class="o">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nn">#footer</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nc">.rounded-corners</span><span class="o">(</span><span class="nt">11px</span><span class="o">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>scss-混合 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="k">@mixin</span><span class="nf"> rounded-corners</span> <span class="p">(</span><span class="nv">$radius</span><span class="o">:</span> <span class="mi">5</span><span class="kt">px</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">border-radius</span><span class="o">:</span> <span class="nv">$radius</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">-webkit-border-radius</span><span class="o">:</span> <span class="nv">$radius</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">-moz-border-radius</span><span class="o">:</span> <span class="nv">$radius</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nn">#header</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">@include</span><span class="nd"> rounded-corners</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nn">#footer</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">@include</span><span class="nd"> rounded-corners</span><span class="p">(</span><span class="mi">11</span><span class="kt">px</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>编译后的css</p>
+
+<figure class='code'><figcaption><span>css </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nf">#header</span><span class="p">{</span>
+</span><span class='line'>  <span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="m">5px</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="m">5px</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="m">5px</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nf">#footer</span><span class="p">{</span>
+</span><span class='line'>  <span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="m">11px</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="m">11px</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="m">11px</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>3.嵌套</h4>
+
+<p>我们可以在一个选择器中嵌套另一个选择器来实现继承，这样很大程度减少了代码量，并且代码看起来更加的清晰。</p>
+
+<figure class='code'><figcaption><span>less-嵌套 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nn">#header</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nt">h1</span> <span class="p">{</span>
+</span><span class='line'>    <span class="na">font-size</span><span class="o">:</span> <span class="mi">26</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>    <span class="na">font-weight</span><span class="o">:</span> <span class="no">bold</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="nt">p</span> <span class="p">{</span> <span class="na">font-size</span><span class="o">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>    <span class="nt">a</span> <span class="p">{</span> <span class="na">text-decoration</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">&amp;</span><span class="nd">:hover</span> <span class="p">{</span> <span class="na">border-width</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>scss-嵌套 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nn">#header</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nt">h1</span> <span class="p">{</span>
+</span><span class='line'>    <span class="na">font-size</span><span class="o">:</span> <span class="mi">26</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>    <span class="na">font-weight</span><span class="o">:</span> <span class="no">bold</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="nt">p</span> <span class="p">{</span> <span class="na">font-size</span><span class="o">:</span> <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>    <span class="nt">a</span> <span class="p">{</span> <span class="na">text-decoration</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">&amp;</span><span class="nd">:hover</span> <span class="p">{</span> <span class="na">border-width</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>编译后的css</p>
+
+<figure class='code'><figcaption><span>css </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nf">#header</span> <span class="nt">h1</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">font-size</span><span class="o">:</span> <span class="m">26px</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">font-weight</span><span class="o">:</span> <span class="k">bold</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nf">#header</span> <span class="nt">p</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">font-size</span><span class="o">:</span> <span class="m">12px</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nf">#header</span> <span class="nt">p</span> <span class="nt">a</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nf">#header</span> <span class="nt">p</span> <span class="nt">a</span><span class="nd">:hover</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">border-width</span><span class="o">:</span> <span class="m">1px</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>3.函数&amp;运算</h4>
+
+<p>运算提供了加，减，乘，除操作；我们可以做属性值和颜色的运算，这样就可以实现属性值之间的复杂关系。</p>
+
+<figure class='code'><figcaption><span>less-函数运算 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="k">@the-border</span><span class="nd">:</span> <span class="nt">1px</span><span class="o">;</span>
+</span><span class='line'><span class="o">@</span><span class="nt">base-color</span><span class="nd">:</span> <span class="nn">#111</span><span class="o">;</span>
+</span><span class='line'><span class="o">@</span><span class="nt">red</span><span class="nd">:</span>        <span class="nn">#842210</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nn">#header</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">color</span><span class="o">:</span> <span class="o">@</span><span class="n">base-color</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">border-left</span><span class="o">:</span> <span class="o">@</span><span class="n">the-border</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">border-right</span><span class="o">:</span> <span class="o">@</span><span class="n">the-border</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nn">#footer</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">color</span><span class="o">:</span> <span class="o">@</span><span class="n">base-color</span> <span class="o">+</span> <span class="mh">#003300</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">border-color</span><span class="o">:</span> <span class="nf">desaturate</span><span class="p">(</span><span class="o">@</span><span class="nb">red</span><span class="o">,</span> <span class="mi">10</span><span class="kt">%</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>Scss-函数运算 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="na">$the-border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="na">$base-color</span><span class="o">:</span> <span class="mh">#111</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$red</span><span class="o">:</span>        <span class="mh">#842210</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nn">#header</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">color</span><span class="o">:</span> <span class="nv">$base-color</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">border-left</span><span class="o">:</span> <span class="nv">$the-border</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">border-right</span><span class="o">:</span> <span class="nv">$the-border</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nn">#footer</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">color</span><span class="o">:</span> <span class="nv">$base-color</span> <span class="o">+</span> <span class="mh">#003300</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">border-color</span><span class="o">:</span> <span class="nf">desaturate</span><span class="p">(</span><span class="nv">$red</span><span class="o">,</span> <span class="mi">10</span><span class="kt">%</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>编译后的css</p>
+
+<figure class='code'><figcaption><span>css </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nf">#header</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span> <span class="m">#333</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">border-left</span><span class="o">:</span> <span class="m">1px</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">border-right</span><span class="o">:</span> <span class="m">2px</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nf">#footer</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span> <span class="m">#114411</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">border-color</span><span class="o">:</span> <span class="m">#7d2717</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>4.color函数</h4>
+
+<p>提供了一系列的颜色运算函数. 颜色会先被转化成 HSL 色彩空间, 然后在通道级别操作:</p>
+
+<figure class='code'><figcaption><span>Less-color函数 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">lighten</span><span class="o">(</span><span class="k">@color</span><span class="o">,</span> <span class="nt">10</span><span class="o">%)</span><span class="p">;</span>
+</span><span class='line'><span class="c">/* return a color which is 10% *lighter* than @color */</span>
+</span><span class='line'><span class="nt">darken</span><span class="o">(</span><span class="k">@color</span><span class="o">,</span> <span class="nt">10</span><span class="o">%)</span><span class="p">;</span>
+</span><span class='line'><span class="c">/* return a color which is 10% *darker* than @color */</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">saturate</span><span class="o">(</span><span class="k">@color</span><span class="o">,</span> <span class="nt">10</span><span class="o">%)</span><span class="p">;</span>
+</span><span class='line'><span class="c">/* return a color 10% *more* saturated than @color */</span>
+</span><span class='line'><span class="nt">desaturate</span><span class="o">(</span><span class="k">@color</span><span class="o">,</span> <span class="nt">10</span><span class="o">%)</span><span class="p">;</span>
+</span><span class='line'><span class="c">/* return a color 10% *less* saturated than @color */</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">fadein</span><span class="o">(</span><span class="k">@color</span><span class="o">,</span> <span class="nt">10</span><span class="o">%)</span><span class="p">;</span>
+</span><span class='line'><span class="c">/* return a color 10% *less* transparent than @color */</span>
+</span><span class='line'><span class="nt">fadeout</span><span class="o">(</span><span class="k">@color</span><span class="o">,</span> <span class="nt">10</span><span class="o">%)</span><span class="p">;</span>
+</span><span class='line'><span class="c">/* return a color 10% *more* transparent than @color */</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">spin</span><span class="o">(</span><span class="k">@color</span><span class="o">,</span> <span class="nt">10</span><span class="o">)</span><span class="p">;</span>
+</span><span class='line'><span class="c">/* return a color with a 10 degree larger in hue than @color */</span>
+</span><span class='line'><span class="nt">spin</span><span class="o">(</span><span class="k">@color</span><span class="o">,</span> <span class="nt">-10</span><span class="o">)</span><span class="p">;</span>
+</span><span class='line'><span class="c">/* return a color with a 10 degree smaller hue than @color */</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Scss同样也支持color函数，只需要将@改为$即可。</p>
+
+<h4>5.作用域</h4>
+
+<figure class='code'><figcaption><span>Less-作用域 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="k">@color</span><span class="o">:</span> <span class="nf">#00c</span><span class="p">;</span> <span class="c">/* 蓝色 */</span>
+</span><span class='line'><span class="nf">#header</span> <span class="p">{</span>
+</span><span class='line'>  <span class="o">@</span><span class="k">color</span><span class="o">:</span> <span class="m">#c00</span><span class="p">;</span> <span class="c">/* red */</span>
+</span><span class='line'>  <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="o">@</span><span class="k">color</span><span class="p">;</span> <span class="c">/* 红色边框 */</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nf">#footer</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="o">@</span><span class="k">color</span><span class="p">;</span> <span class="c">/* 蓝色边框 */</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>Less-作用域编译后 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nn">#header</span><span class="p">{</span><span class="na">border</span><span class="o">:</span><span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#cc0000</span><span class="p">;}</span>
+</span><span class='line'><span class="nn">#footer</span><span class="p">{</span><span class="na">border</span><span class="o">:</span><span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#0000cc</span><span class="p">;}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>scss-作用域 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nv">$color</span><span class="o">:</span> <span class="mh">#00c</span><span class="p">;</span> <span class="cm">/* 蓝色 */</span>
+</span><span class='line'><span class="nn">#header</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nv">$color</span><span class="o">:</span> <span class="mh">#c00</span><span class="p">;</span> <span class="cm">/* red */</span>
+</span><span class='line'>  <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="nv">$color</span><span class="p">;</span> <span class="cm">/* 红色边框 */</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nn">#footer</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="nv">$color</span><span class="p">;</span> <span class="cm">/* 蓝色边框 */</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>Less-作用域编译后 </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nn">#header</span><span class="p">{</span><span class="na">border</span><span class="o">:</span><span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#c00</span><span class="p">}</span>
+</span><span class='line'><span class="nn">#footer</span><span class="p">{</span><span class="na">border</span><span class="o">:</span><span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#c00</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>我们可以看出来，less和scss中的变量会随着作用域的变化而不一样，上面的例子能很好的解释这点。</p>
+
+<h4>6.Importing</h4>
+
+<p>文件引入</p>
+
+<figure class='code'><figcaption><span>Less-import </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="k">@import</span> <span class="s2">&quot;lib.less&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="k">@import</span> <span class="s2">&quot;lib&quot;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在Scss中，也是可以import。</p>
+
+<figure class='code'><figcaption><span>scss-import </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="c1">//需要被 import 的文件必须以 _开头命名，如 _rounded.scss</span>
+</span><span class='line'><span class="k">@import</span> <span class="s2">&quot;rounded&quot;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>四. Sass/Scss安装</h3>
+
+<p>Scss的安装需要Ruby环境</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>gem install sass
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>安装后就可以直接编译Sass了</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>sass --watch style.scss:style.css
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>还有一个利器就是大名顶顶的Compass，后面我会用一篇博文来介绍下。</p>
+
+<h3>五. Less安装使用</h3>
+
+<h4>1.在客户端使用</h4>
+
+<p>引入你的 .less 样式文件的时候要设置 rel 属性值为 “stylesheet/less”:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet/less&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href=</span><span class="s">&quot;styles.less&quot;</span><span class="nt">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后点击页面顶部download按钮下载 less.js, 在<head> 中引入:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;less.js&quot;</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>注意你的less样式文件一定要在引入less.js前先引入。</p>
+
+<h4>2.在服务端安装使用</h4>
+
+<h5>* 安装</h5>
+
+<p>在服务器端安装 LESS 的最简单方式就是通过 npm(node 的包管理器), 像这样:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>npm install less
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如果你想下载最新稳定版本的 LESS，可以尝试像下面这样操作:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>npm install less@latest
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>* 使用</h5>
+
+<p>在命令行下使用</p>
+
+<p>你可以在终端调用 LESS 解析器:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ lessc styles.less</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上面的命令会将编译后的 CSS 传递给 stdout, 你可以将它保存到一个文件中:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ lessc styles.less > styles.css</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如何你想将编译后的 CSS 压缩掉，那么加一个 -x 参数就可以了.
+还有些编译工具上面也有讲过，那些更加的方便。</p>
+
+<p>参考资料<br/>
+<a href="http://coding.smashingmagazine.com/2011/09/09/an-introduction-to-less-and-comparison-to-sass/">http://coding.smashingmagazine.com/2011/09/09/an-introduction-to-less-and-comparison-to-sass/</a><br/>
+<a href="http://www.lesscss.org">http://www.lesscss.org</a><br/>
+<a href="http://www.lesscss.net">http://www.lesscss.net</a><br/>
+<a href="http://sass-lang.com">http://sass-lang.com</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[《点球成金》--人生的价值与人生的选择]]></title>
