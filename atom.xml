@@ -4,7 +4,7 @@
   <title><![CDATA[小车的博客]]></title>
   <link href="http://www.xiaoche.me/atom.xml" rel="self"/>
   <link href="http://www.xiaoche.me/"/>
-  <updated>2012-03-08T11:37:03+08:00</updated>
+  <updated>2012-03-08T11:39:12+08:00</updated>
   <id>http://www.xiaoche.me/</id>
   <author>
     <name><![CDATA[小车]]></name>
@@ -18,7 +18,7 @@
     <link href="http://www.xiaoche.me/blog/2012/03/02/compass-scss/"/>
     <updated>2012-03-02T10:12:00+08:00</updated>
     <id>http://www.xiaoche.me/blog/2012/03/02/compass-scss</id>
-    <content type="html"><![CDATA[<p><img src="http://farm8.staticflickr.com/7201/6817230508_e8f963dae7_b.jpg" title="scss&compass" ></p>
+    <content type="html"><![CDATA[<p><img class="center" src="http://farm8.staticflickr.com/7201/6817230508_e8f963dae7_b.jpg" title="scss&compass" ></p>
 
 <h3>一.何为Compass</h3>
 
@@ -28,6 +28,9 @@
 <p>Compass是一个开源的CSS创作框架。</p>
 
 <blockquote><p>Compass = Sass framework powered by community</p></blockquote>
+
+
+<!--more-->
 
 
 <p><strong>Compass特点</strong></p>

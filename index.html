@@ -9,7 +9,7 @@
   <meta name="author" content="小车">
 
   
-  <meta name="description" content="一.何为Compass Compass is an open-source CSS Authoring Framework. Compass是一个开源的CSS创作框架。 Compass = Sass framework powered by community Compass特点 &hellip;">
+  <meta name="description" content=" 一.何为Compass Compass is an open-source CSS Authoring Framework. Compass是一个开源的CSS创作框架。 Compass = Sass framework powered by community ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -105,7 +105,7 @@
   </header>
 
 
-  <div class="entry-content"><p><img src="http://farm8.staticflickr.com/7201/6817230508_e8f963dae7_b.jpg" title="scss&compass" ></p>
+  <div class="entry-content"><p><img class="center" src="http://farm8.staticflickr.com/7201/6817230508_e8f963dae7_b.jpg" title="scss&compass" ></p>
 
 <h3>一.何为Compass</h3>
 
@@ -117,242 +117,12 @@
 <blockquote><p>Compass = Sass framework powered by community</p></blockquote>
 
 
-<p><strong>Compass特点</strong></p>
-
-<ul>
-<li>拥有内建的CSS3 mixins</li>
-<li>很多的实用的CSS取代方法</li>
-<li>很多辅助工具</li>
-<li>输出SASS文件为压缩的CSS</li>
-</ul>
-
-
-<h3>二.安装Compass建立项目</h3>
-
-<p>1.安装Compass
-Compass需要运行在Ruby环境下，必须确定本地已经安装Ruby。</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>gem update --system
-</span><span class='line'><span class="nv">$ </span>gem install compass
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>2.建立项目</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>gem compass create &lt;myproject&gt;
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>在config.rb配置文件中，可以修改一些基础配置</p>
-
-<p>3.实时编译Scss文件</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">cd</span> &lt;myproject&gt;
-</span><span class='line'>compass watch
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>每次保存完scss文件，compass会实时编译生成css文件。</p>
-
-<h3>三.Compass核心框架</h3>
-
-<h4>1.CSS3</h4>
-
-<p>说实话开始我很厌烦CSS3的原因在于我要花费很多时间来处理不同浏览器属性，如：-webkit， -moz等等。
-CSS3圆角</p>
-
-<figure class='code'><figcaption><span>CSS </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.box</span><span class="p">{</span>
-</span><span class='line'>  <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="m">5px</span><span class="p">;</span>
-</span><span class='line'>  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="m">5px</span><span class="p">;</span>
-</span><span class='line'>  <span class="o">-</span><span class="err">o</span><span class="o">-</span><span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="m">5px</span><span class="p">;</span>
-</span><span class='line'>  <span class="o">-</span><span class="n">ms</span><span class="o">-</span><span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="m">5px</span><span class="p">;</span>
-</span><span class='line'>  <span class="o">-</span><span class="n">khtml</span><span class="o">-</span><span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="m">5px</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="m">5px</span><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>CSS3的渐变色</p>
-
-<figure class='code'><figcaption><span>CSS </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='css'><span class='line'> <span class="nf">#linear-gradient</span> <span class="p">{</span>
-</span><span class='line'>   <span class="k">background-image</span><span class="o">:</span> <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="n">linear</span><span class="o">,</span> <span class="m">0</span><span class="o">%</span> <span class="m">0</span><span class="o">%,</span> <span class="m">100</span><span class="o">%</span> <span class="m">100</span><span class="o">%,</span> <span class="k">color</span><span class="o">-</span><span class="n">stop</span><span class="p">(</span><span class="m">0</span><span class="o">%,</span> <span class="m">#ffffff</span><span class="p">)</span><span class="o">,</span> <span class="k">color</span><span class="o">-</span><span class="n">stop</span><span class="p">(</span><span class="m">100</span><span class="o">%,</span> <span class="m">#dddddd</span><span class="p">));</span>
-</span><span class='line'>   <span class="k">background-image</span><span class="o">:</span> <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="k">left</span> <span class="k">top</span><span class="o">,</span> <span class="m">#ffffff</span><span class="o">,</span> <span class="m">#dddddd</span><span class="p">);</span>
-</span><span class='line'>   <span class="k">background-image</span><span class="o">:</span> <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="k">left</span> <span class="k">top</span><span class="o">,</span> <span class="m">#ffffff</span><span class="o">,</span> <span class="m">#dddddd</span><span class="p">);</span>
-</span><span class='line'>   <span class="k">background-image</span><span class="o">:</span> <span class="o">-</span><span class="err">o</span><span class="o">-</span><span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="k">left</span> <span class="k">top</span><span class="o">,</span> <span class="m">#ffffff</span><span class="o">,</span> <span class="m">#dddddd</span><span class="p">);</span>
-</span><span class='line'>   <span class="k">background-image</span><span class="o">:</span> <span class="o">-</span><span class="n">ms</span><span class="o">-</span><span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="k">left</span> <span class="k">top</span><span class="o">,</span> <span class="m">#ffffff</span><span class="o">,</span> <span class="m">#dddddd</span><span class="p">);</span>
-</span><span class='line'>   <span class="k">background-image</span><span class="o">:</span> <span class="n">linear</span><span class="o">-</span><span class="n">gradient</span><span class="p">(</span><span class="k">left</span> <span class="k">top</span><span class="o">,</span> <span class="m">#ffffff</span><span class="o">,</span> <span class="m">#dddddd</span><span class="p">);</span>
-</span><span class='line'> <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>面对这样繁琐的浏览器属性谁的头都会大，看看Compass是怎样一句话解决的。</p>
-
-<figure class='code'><figcaption><span>SCSS </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="k">@import</span> <span class="s2">&quot;compass/css3&quot;</span>
-</span><span class='line'><span class="o">.</span><span class="n">box</span><span class="p">{</span>
-</span><span class='line'>  <span class="k">@include</span><span class="nd"> border-radius</span><span class="p">(</span><span class="mi">5</span><span class="kt">px</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>SCSS </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='scss'><span class='line'> <span class="nn">#linear-gradient</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> background-image</span><span class="p">(</span><span class="nf">linear-gradient</span><span class="p">(</span><span class="no">left</span> <span class="no">top</span><span class="o">,</span> <span class="nb">white</span><span class="o">,</span> <span class="mh">#dddddd</span><span class="p">));</span> <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>在官网上也有很多渐变的Demo，还有圆角等等。</p>
-
-<p><img src="http://farm8.staticflickr.com/7195/6817212882_b62d535a00_b.jpg"></p>
-
-<p>更多的Compass CSS3请到<a href="http://compass-style.org/reference/compass/css3/" target="_blank" >官方网站</a>。</p>
-
-<p>你还在厌烦CSS3不同浏览器属性吗？快来用Compass吧！</p>
-
-<h4>2.Typography （文字基础样式）</h4>
-
-<ul>
-<li>Links</li>
-<li>Lists</li>
-<li>Text</li>
-<li>Vertical Rhythm</li>
-</ul>
-
-
-<p>官网有详细的<a href="http://compass-style.org/reference/compass/typography/" target="_blank">文档</a></p>
-
-<h4>3.Utilities（实用工具）</h4>
-
-<ul>
-<li>Color</li>
-<li>General</li>
-<li>Print</li>
-<li>Sprites</li>
-<li>Tables</li>
-</ul>
-
-
-<p>里面有个最实用的功能当属sprite。
-你在还在一点一点的拼sprite图吗？快用Compass吧。<br/>
-我们只要把小图放在一个文件夹里，compass会自动合并并计算出位置。</p>
-
-<figure class='code'><figcaption><span>scss </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nt">import</span> <span class="s2">&quot;icon/*.png&quot;</span><span class="o">;</span>
-</span><span class='line'><span class="o">@</span><span class="nt">include</span> <span class="nt">all-icon-sprites</span><span class="o">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>compass生成后的CSS，强的一米。</p>
-
-<figure class='code'><figcaption><span>CSS </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.icon-sprite</span><span class="o">,</span>
-</span><span class='line'><span class="nc">.icon-delete</span><span class="o">,</span>
-</span><span class='line'><span class="nc">.icon-edit</span><span class="o">,</span>
-</span><span class='line'><span class="nc">.icon-new</span><span class="o">,</span>
-</span><span class='line'><span class="nc">.icon-save</span>   <span class="p">{</span> <span class="k">background</span><span class="o">:</span> <span class="sx">url(&#39;/images/icon-s34fe0604ab.png&#39;)</span> <span class="k">no-repeat</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'><span class="nc">.icon-delete</span> <span class="p">{</span> <span class="k">background-position</span><span class="o">:</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'><span class="nc">.icon-edit</span>   <span class="p">{</span> <span class="k">background-position</span><span class="o">:</span> <span class="m">0</span> <span class="m">-32px</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'><span class="nc">.icon-new</span>    <span class="p">{</span> <span class="k">background-position</span><span class="o">:</span> <span class="m">0</span> <span class="m">-64px</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'><span class="nc">.icon-save</span>   <span class="p">{</span> <span class="k">background-position</span><span class="o">:</span> <span class="m">0</span> <span class="m">-96px</span><span class="p">;</span> <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>4.Reset</h4>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='Scss'><span class='line'><span class="k">@import</span> <span class="s2">&quot;compass/reset&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>一句话把所有的reset搞定</p>
-
-<h4>5.Layout</h4>
-
-<p>Compass也提供layout布局，简单看了，貌似用处不大</p>
-
-<h3>四.Blueprint Module</h3>
-
-<p>Compass里面带有Blueprint框架，在建立项目的时候可以直接应用到项目中。</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>compass create my_project --using blueprint
-</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>my_project
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>向已建立的项目中加入Blueprint</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>compass install blueprint
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>具体的试用可以到<a href="http://compass-style.org/reference/blueprint/" target="_blank">官网</a>上去查询。</p>
-
-<h3>五.其他</h3>
-
-<p>你可以去github上引用他人已经做好的效果，比如 <a href="https://github.com/imathis/fancy-buttons/" target="_blanl">Fancy Buttons</a></p>
-
-<p><img src="http://farm8.staticflickr.com/7204/6963329245_547dcbb8a6_z.jpg"></p>
-
-<h3>六.Firebug</h3>
-
-<p>如何在firebug中看到Scss，而不是生成的Css呢。我们就可以安装<a href="https://addons.mozilla.org/zh-CN/firefox/addon/firesass-for-firebug/" target="_blank">FireSass</a>。</p>
-
-<p>还需要在Scss配置文件中修改，打开项目目录下的config.rb。添加</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="n">sass_options</span> <span class="o">=</span> <span class="p">{</span><span class="ss">:debug_info</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>这样我们就能在firebug里面看到Sass的行号了。</p>
-
-<p>有个很不错的Sass&amp;Compass的分享，讲的很详细也很实在。（好像需要翻墙）</p>
-
-<script src="http://speakerdeck.com/embed/4eb80921b029470054011d3f.js"></script>
-
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/03/02/compass-scss/">Read on &rarr;</a>
+    </footer>
   
 
 
